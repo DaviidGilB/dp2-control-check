@@ -1,0 +1,3815 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2019 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<bean id ="configuration" class="domain.Configuration">
+		<property name="spainTelephoneCode" value="+34" />
+		<property name="maxFinderResults" value="100"/>
+		<property name="minFinderResults" value="10" />
+		<property name="spamWords">
+			<list>
+				<value>sex</value>
+				<value>viagra</value>
+				<value>cialis</value>
+				<value>one million</value>
+				<value>you’ve been selected</value>
+				<value>Nigeria</value>
+				<value>sexo</value>
+				<value>un millón</value>
+				<value>ha sido seleccionado</value>
+				<value>pene</value>
+				<value>maduras</value>
+				<value>astolfo</value>
+				<value>furry</value>
+				<value>ugly bastard</value>
+				<value>chase</value>
+				<value>wals</value>
+			</list>
+		</property>
+		<property name="priorityLvl">
+			<list>
+				<value>HIGH</value>
+				<value>NEUTRAL</value>
+				<value>LOW</value>
+			</list>
+		</property>
+		<property name="cardType">
+			<list>
+				<value>VISA</value>
+				<value>MASTER</value>
+				<value>DINNERS</value>
+				<value>AMEX</value>
+				<value>FLY</value>
+			</list>
+		</property>
+		<property name="priorityLvlSpa">
+			<list>
+				<value>ALTA</value>
+				<value>NEUTRAL</value>
+				<value>BAJA</value>
+			</list>
+		</property>
+		<property name="goodWords" value="good, fantastic, excellent, great, amazing, terrific, beautiful, bueno, fantastico, excelente, increible, estupendo, hermoso" />
+		<property name="badWords" value="not, bad, horrible, average, disaster, no, malo, horrible, mediocre, desastre " />
+		
+		<property name="minTimeFinder" value="1" />
+		<property name="maxTimeFinder" value="24" />
+		<property name="finderResult" value="10"/>
+		<property name="timeFinder" value="1"/>
+
+		
+		<property name="welcomeMessageEnglish" value="Welcome to Acme rookie !We´re IT rookie´s favourite job marketplace!" />
+		<property name="welcomeMessageSpanish" value="¡Bienvenidos a Acme Rookie ! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+		
+		<property name="systemName" value="Acme Rookies" />
+		<property name="imageURL" value="https://i.imgur.com/PX5WdRH.png" />
+
+		<property name="VAT" value="21" />
+		<property name="fare" value="1" />
+		
+		<property name="isRebrandingBroadcasted" value="false" />
+		
+	</bean>
+
+	<!-- USER ACCOUNT -->
+
+	<!-- ADMIN1 -->
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password"
+			value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- ADMIN2 -->
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password"
+			value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- ROOKIE1 -->
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="rookie1" />
+		<property name="password"
+			value="9701eb1802a4c63f51e1501512fbdd30" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- ROOKIE2 -->
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="rookie2" />
+		<property name="password"
+			value="124be4fa2a59341a1d7e965ac49b2923" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- ROOKIE3 -->
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="rookie3" />
+		<property name="password"
+			value="b723fa2fd1c2dc65d166df3e7f83e329" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- ROOKIE4 -->
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="rookie4" />
+		<property name="password"
+			value="78dfa0fab9872b58c8affee48f0c4252" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- COMPANY1 -->
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="company1" />
+		<property name="password"
+			value="df655f976f7c9d3263815bd981225cd9" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- COMPANY2 -->
+	<bean id="userAccount8" class="security.UserAccount">
+		<property name="username" value="company2" />
+		<property name="password"
+			value="d196a28097115067fefd73d25b0c0be8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- COMPANY3 -->
+	<bean id="userAccount9" class="security.UserAccount">
+		<property name="username" value="company3" />
+		<property name="password"
+			value="e828ae3339b8d80b3902c1564578804e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- COMPANY4 -->
+	<bean id="userAccount10" class="security.UserAccount">
+		<property name="username" value="company4" />
+		<property name="password"
+			value="856dfd9045541fa727ef6ad392835eb0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="COMPANY" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- PROVIDER1 -->
+	<bean id="userAccount11" class="security.UserAccount">
+		<property name="username" value="provider1" />
+		<property name="password"
+			value="cdb82d56473901641525fbbd1d5dab56" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- PROVIDER2 -->
+		<bean id="userAccount12" class="security.UserAccount">
+		<property name="username" value="provider2" />
+		<property name="password"
+			value="ebfc815ee2cc6a16225105bb7b3e1e53" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+        		</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- AUDITOR1 -->
+	<bean id="userAccount15" class="security.UserAccount">
+		<property name="username" value="auditor1" />
+		<property name="password"
+			value="175d2e7a63f386554a4dd66e865c3e14" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR2 -->
+	<bean id="userAccount13" class="security.UserAccount">
+		<property name="username" value="auditor2" />
+		<property name="password"
+			value="04dd94ba3212ac52ad3a1f4cbfb52d4f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR3 -->
+	<bean id="userAccount14" class="security.UserAccount">
+		<property name="username" value="auditor3" />
+		<property name="password"
+			value="fc2073dbe4f65dfd71e46602f8e6a5f3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR4 -->
+	<bean id="userAccount17" class="security.UserAccount">
+		<property name="username" value="auditor4" />
+		<property name="password"
+			value="6cc8affcba51a854192a33af68c08f49" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR5 -->
+	<bean id="userAccount18" class="security.UserAccount">
+		<property name="username" value="auditor5" />
+		<property name="password"
+			value="3775bf00262284e83013c9cea5f41431" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR6 -->
+	<bean id="userAccount19" class="security.UserAccount">
+		<property name="username" value="auditor6" />
+		<property name="password"
+			value="5d78d53d65022ce05a759cd3c057782e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR7 -->
+	<bean id="userAccount20" class="security.UserAccount">
+		<property name="username" value="auditor7" />
+		<property name="password"
+			value="cb22ac7c563939f50b8b44ec70dfecb4" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR8 -->
+	<bean id="userAccount21" class="security.UserAccount">
+		<property name="username" value="auditor8" />
+		<property name="password"
+			value="069f7c7f3a56f0dac98c04ed15be3eb8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR9 -->
+	<bean id="userAccount22" class="security.UserAccount">
+		<property name="username" value="auditor9" />
+		<property name="password"
+			value="85d2032079a1080ff6cda41e8b4e26c3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<!-- AUDITOR10 -->
+	<bean id="userAccount23" class="security.UserAccount">
+		<property name="username" value="auditor10" />
+		<property name="password"
+			value="0c57417643b323ea8721f3a222099384" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="AUDITOR" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="userAccount16" class="security.UserAccount">
+		<property name="username" value="system" />
+		<property name="password"
+			value="54b53072540eeeb8f8e9343e71f28176" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+
+	<!-- FIN USER ACCOUNT -->
+
+	<!-- ACTOR -->
+	
+	<!-- AUDITOR -->
+		<!-- AUDITOR1 -->
+			<bean id="auditor1" class="domain.Auditor">
+				<property name="name" value="John" />
+				<property name="surname" value="Unknown" />
+				<property name="VATNumber" value="SE321456789" />
+				<property name="creditCard" ref="creditCard12" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor1@gmail.com" />
+				<property name="phone" value="+34609236921" />
+				<property name="address" value="Auditor1 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					<ref bean="audit1"/>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount15" />
+			</bean>
+		
+		<!-- AUDITOR2 -->
+			<bean id="auditor2" class="domain.Auditor">
+				<property name="name" value="Jane" />
+				<property name="surname" value="Also Unknown" />
+				<property name="VATNumber" value="SE123456987" />
+				<property name="creditCard" ref="creditCard13" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor2@gmail.com" />
+				<property name="phone" value="+34609116921" />
+				<property name="address" value="Auditor2 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+						<ref bean="audit2"/>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount13" />
+			</bean>
+		
+		<!-- AUDITOR3 -->
+			<bean id="auditor3" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount14" />
+			</bean>
+			
+		<!-- AUDITOR4 -->
+			<bean id="auditor4" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount17" />
+			</bean>
+			
+	<!-- AUDITOR5 -->
+			<bean id="auditor5" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount18" />
+			</bean>
+			
+	<!-- AUDITOR6 -->
+			<bean id="auditor6" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount19" />
+			</bean>
+	
+	<!-- AUDITOR7 -->
+			<bean id="auditor7" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount20" />
+			</bean>
+	
+	<!-- AUDITOR8 -->
+			<bean id="auditor8" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount21" />
+			</bean>
+			
+	<!-- AUDITOR9 -->
+			<bean id="auditor9" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount22" />
+			</bean>
+	
+	<!-- AUDITOR10 -->
+			<bean id="auditor10" class="domain.Auditor">
+				<property name="name" value="Jacob" />
+				<property name="surname" value="Elmonzo" />
+				<property name="VATNumber" value="SE123666987" />
+				<property name="creditCard" ref="creditCard14" />
+				<property name="photo"
+					value="https://trello.com/c/unl0e9cp/1-requisitos" />
+				<property name="email" value="auditor3@gmail.com" />
+				<property name="phone" value="+34609161921" />
+				<property name="address" value="Auditor3 address" />
+				<property name="socialProfiles">
+					<list>
+					</list>
+				</property>
+				<property name="messages">
+					<list>
+					</list>
+				</property>
+				<property name="audits">
+					<list>
+					</list>
+				</property>
+				<property name="userAccount" ref="userAccount23" />
+			</bean>
+	
+	
+	<!-- PROVIDER -->
+
+	<bean id="provider1" class="domain.Provider">
+		<property name="make" value="the master provider"/>
+		<property name="name" value="provider" />
+		<property name="surname" value="provider surname" />
+		<property name="VATNumber" value="SE123456778" />
+		<property name="creditCard" ref="creditCard11" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider1@gmail.com" />
+		<property name="phone" value="+34609882920" />
+		<property name="address" value="Sevilla Este" />
+		<property name="userAccount" ref="userAccount11" />
+		<property name="items">
+			<list>
+				<ref bean="item1" />
+				<ref bean="item2" />
+				<ref bean="item3" />
+			</list>
+		</property>
+		<property name="sponsorships">
+			<list>
+			<ref bean="sponsorship1" />
+			<ref bean="sponsorship3" />
+			</list>
+		</property>
+	</bean>	
+	
+		<bean id="provider2" class="domain.Provider">
+		<property name="make" value="Acme"/>
+		<property name="name" value="Wile E" />
+		<property name="surname" value="Coyote" />
+		<property name="VATNumber" value="SE123456778" />
+		<property name="creditCard" ref="creditCard12" />
+		<property name="photo"
+			value="http://tuitmarketing.com/wp-content/uploads/2018/07/6951120-thumb.jpg" />
+		<property name="email" value="provider2@gmail.com" />
+		<property name="phone" value="+34609882920" />
+		<property name="address" value="Sevilla Oeste" />
+		<property name="userAccount" ref="userAccount12" />
+		<property name="items">
+			<list>
+				<ref bean="item4" />
+				<ref bean="item5" />
+				<ref bean="item6" />
+			</list>
+		</property>
+		<property name="sponsorships">
+			<list>
+			<ref bean="sponsorship2" />
+			</list>
+		</property>
+	</bean>	
+	
+	<!-- ADMIN -->
+	<!-- ADMIN1 -->
+	<bean id="admin1" class="domain.Admin">
+		<property name="name" value="admin" />
+		<property name="surname" value="admin surname" />
+		<property name="VATNumber" value="SE123456789" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="admin1@gmail.com" />
+		<property name="phone" value="+34609236920" />
+		<property name="address" value="Reino de los Cielos" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile1" />
+				<ref bean="socialProfile2" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			<ref bean="message1" />
+			<ref bean="message2" />
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+
+	<!-- ADMIN2 -->
+	<bean id="admin2" class="domain.Admin">
+		<property name="name" value="admin2" />
+		<property name="surname" value="admin2 surname2" />
+		<property name="VATNumber" value="SE987654321" />
+		<property name="creditCard" ref="creditCard2" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="admin2@gmail.com" />
+		<property name="phone" value="+34609237221" />
+		<property name="address" value="Rookieland" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile3" />
+				<ref bean="socialProfile4" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			<ref bean="message3" />
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount2" />
+	</bean>
+	
+	<bean id="system" class="domain.Admin">
+		<property name="name" value="system" />
+		<property name="surname" value="system system" />
+		<property name="VATNumber" value="SE987654322" />
+		<property name="creditCard" ref="creditCard2" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="system@gmail.com" />
+		<property name="phone" value="+34609237221" />
+		<property name="address" value="system" />
+		<property name="socialProfiles">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount16" />
+	</bean>
+
+	<!-- ROOKIE -->
+	<!-- ROOKIE1 -->
+	<bean id="rookie1" class="domain.Rookie">
+		<property name="name" value="rookie1" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard7" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie1@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="hasSpam" value="True" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile11" />
+				<ref bean="socialProfile12" />
+			</list>
+		</property>
+
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+
+		<property name="curriculums">
+			<list>
+				<ref bean="curriculum1" />
+				<ref bean="curriculum2" />
+			</list>
+		</property>
+
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+
+		<property name="finder" ref="finder1" />
+		<property name="userAccount" ref="userAccount3" />
+	</bean>
+
+	<!-- ROOKIE2 -->
+	<bean id="rookie2" class="domain.Rookie">
+		<property name="name" value="rookie2" />
+		<property name="surname" value="rookie2 surname" />
+		<property name="VATNumber" value="SE123204321" />
+		<property name="creditCard" ref="creditCard8" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie2@gmail.com" />
+		<property name="phone" value="+34609235523" />
+		<property name="address" value="rookie2House" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile13" />
+			</list>
+		</property>
+
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+
+		<property name="curriculums">
+			<list>
+				<ref bean="curriculum3" />
+			</list>
+		</property>
+
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+
+		<property name="finder" ref="finder2" />
+		<property name="userAccount" ref="userAccount4" />
+	</bean>
+
+	<!-- ROOKIE3 -->
+	<bean id="rookie3" class="domain.Rookie">
+		<property name="name" value="rookie3" />
+		<property name="surname" value="rookie3 surname" />
+		<property name="VATNumber" value="SE593204321" />
+		<property name="creditCard" ref="creditCard9" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie3@gmail.com" />
+		<property name="phone" value="+34609235524" />
+		<property name="address" value="rookie3House" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile14" />
+			</list>
+		</property>
+
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+
+		<property name="curriculums">
+			<list>
+				<ref bean="curriculum4" />
+			</list>
+		</property>
+
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+
+		<property name="finder" ref="finder3" />
+		<property name="userAccount" ref="userAccount5" />
+	</bean>
+
+	<!-- ROOKIE4 -->
+	<bean id="rookie4" class="domain.Rookie">
+		<property name="name" value="rookie4" />
+		<property name="surname" value="rookie4 surname" />
+		<property name="VATNumber" value="SE593204281" />
+		<property name="creditCard" ref="creditCard10" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie4@gmail.com" />
+		<property name="phone" value="+34609235525" />
+		<property name="address" value="rookie4House" />
+		<property name="socialProfiles">
+			<list>
+			</list>
+		</property>
+
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+
+		<property name="curriculums">
+			<list>
+			</list>
+		</property>
+
+		<property name="applications">
+			<list>
+			</list>
+		</property>
+
+		<property name="finder" ref="finder4" />
+		<property name="userAccount" ref="userAccount6" />
+	</bean>
+
+	<!-- COMPANY -->
+	<!-- COMPANY1 -->
+	<bean id="company1" class="domain.Company">
+		<property name="name" value="company1" />
+		<property name="surname" value="company1 surname1" />
+		<property name="VATNumber" value="SE456234853" />
+		<property name="creditCard" ref="creditCard3" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="company1@gmail.com" />
+		<property name="phone" value="+34609235639" />
+		<property name="address" value="CompanyLand" />
+		<property name="score" value="1" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile5" />
+				<ref bean="socialProfile6" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount7" />
+		<property name="companyName" value="company1" />
+		<property name="positions">
+			<list>
+				<ref bean="position1" />
+				<ref bean="position2" />
+				<ref bean="position3" />
+				<ref bean="position4" />
+			</list>
+		</property>
+		<property name="problems">
+			<list>
+				<ref bean="problem1" />
+				<ref bean="problem2" />
+				<ref bean="problem3" />
+				<ref bean="problem4" />
+				<ref bean="problem5" />
+				<ref bean="problem6" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- COMPANY2 -->
+	<bean id="company2" class="domain.Company">
+		<property name="name" value="company2" />
+		<property name="surname" value="company2 surname2" />
+		<property name="VATNumber" value="SE432790321" />
+		<property name="creditCard" ref="creditCard4" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="company2@gmail.com" />
+		<property name="phone" value="+34609235528" />
+		<property name="address" value="CompanyLand2" />
+		<property name="score" value="0" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile7" />
+				<ref bean="socialProfile8" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount8" />
+		<property name="companyName" value="company2" />
+		<property name="positions">
+			<list>
+				<ref bean="position5" />
+				<ref bean="position6" />
+			</list>
+		</property>
+		<property name="problems">
+			<list>
+				<ref bean="problem7" />
+				<ref bean="problem8" />
+				<ref bean="problem9" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- COMPANY3 -->
+	<bean id="company3" class="domain.Company">
+		<property name="name" value="company3" />
+		<property name="surname" value="company3 surname3" />
+		<property name="VATNumber" value="SE328431097" />
+		<property name="creditCard" ref="creditCard5" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="company3@gmail.com" />
+		<property name="phone" value="+34609236527" />
+		<property name="address" value="CompanyLand3" />
+		<property name="score" value="0" />
+		<property name="socialProfiles">
+			<list>
+				<ref bean="socialProfile9" />
+				<ref bean="socialProfile10" />
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount9" />
+		<property name="companyName" value="company3" />
+		<property name="positions">
+			<list>
+				<ref bean="position7" />
+				<ref bean="position8" />
+			</list>
+		</property>
+		<property name="problems">
+			<list>
+				<ref bean="problem10" />
+				<ref bean="problem11" />
+				<ref bean="problem12" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- COMPANY4 -->
+	<bean id="company4" class="domain.Company">
+		<property name="name" value="company4" />
+		<property name="surname" value="company4 surname4" />
+		<property name="VATNumber" value="SE432456444" />
+		<property name="creditCard" ref="creditCard6" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="company4@gmail.com" />
+		<property name="phone" value="+34609236726" />
+		<property name="address" value="CompanyLand4" />
+		<property name="score" value="0" />
+		<property name="socialProfiles">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount10" />
+		<property name="companyName" value="company4" />
+		<property name="positions">
+			<list>
+			</list>
+		</property>
+		<property name="problems">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- FIN ACTOR -->
+
+	<!-- CREDIT CARD -->
+	<!-- ADMIN -->
+	<!-- ADMIN1 -->
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4880576829512546" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	<!-- ADMIN2 -->
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4880576829512546" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="18" />
+		<property name="cvvCode" value="234" />
+	</bean>
+
+	<!-- COMPANY -->
+
+	<!-- COMPANY1 -->
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="Otto Octavius" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4449064407720173" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="27" />
+		<property name="cvvCode" value="285" />
+	</bean>
+
+	<!-- COMPANY2 -->
+	<bean id="creditCard4" class="domain.CreditCard">
+		<property name="holderName" value="Juan Carlos" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4198817549021591" />
+		<property name="expirationMonth" value="04" />
+		<property name="expirationYear" value="22" />
+		<property name="cvvCode" value="978" />
+	</bean>
+
+	<!-- COMPANY3 -->
+	<bean id="creditCard5" class="domain.CreditCard">
+		<property name="holderName" value="Dio Brando" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4235191107129443" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="20" />
+		<property name="cvvCode" value="640" />
+	</bean>
+
+	<!-- COMPANY4 -->
+	<bean id="creditCard6" class="domain.CreditCard">
+		<property name="holderName" value="Jotaro Kujo" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4706720254967575" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="951" />
+	</bean>
+	<!-- ROOKIE -->
+	<!-- ROOKIE1 -->
+	<bean id="creditCard7" class="domain.CreditCard">
+		<property name="holderName" value="Giorno Giovanna" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4394520390502949" />
+		<property name="expirationMonth" value="05" />
+		<property name="expirationYear" value="27" />
+		<property name="cvvCode" value="678" />
+	</bean>
+
+	<!-- ROOKIE2 -->
+	<bean id="creditCard8" class="domain.CreditCard">
+		<property name="holderName" value="Giorno Giovanna" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4598266351198327" />
+		<property name="expirationMonth" value="02" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="725" />
+	</bean>
+
+	<!-- ROOKIE3 -->
+	<bean id="creditCard9" class="domain.CreditCard">
+		<property name="holderName" value="Jolyne Cujoh" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4326407502453976" />
+		<property name="expirationMonth" value="09" />
+		<property name="expirationYear" value="21" />
+		<property name="cvvCode" value="260" />
+	</bean>
+
+	<!-- ROOKIE4 -->
+	<bean id="creditCard10" class="domain.CreditCard">
+		<property name="holderName" value="Johny Joestar" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4552196258057173" />
+		<property name="expirationMonth" value="08" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="560" />
+	</bean>
+	
+	<bean id="creditCard11" class="domain.CreditCard">
+		<property name="holderName" value="Provider One" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4552196258057173" />
+		<property name="expirationMonth" value="08" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<!-- AUDITOR -->
+		<!-- AUDITOR1 -->
+			<bean id="creditCard12" class="domain.CreditCard">
+				<property name="holderName" value="Provider One" />
+				<property name="brandName" value="VISA" />
+				<property name="number" value="4552196498057173" />
+				<property name="expirationMonth" value="08" />
+				<property name="expirationYear" value="23" />
+				<property name="cvvCode" value="123" />
+			</bean>
+			
+		<!-- AUDITOR2 -->
+			<bean id="creditCard13" class="domain.CreditCard">
+				<property name="holderName" value="Provider Two" />
+				<property name="brandName" value="VISA" />
+				<property name="number" value="5442196258057173" />
+				<property name="expirationMonth" value="08" />
+				<property name="expirationYear" value="23" />
+				<property name="cvvCode" value="321" />
+			</bean>
+		
+		<!-- AUDITOR3 -->
+			<bean id="creditCard14" class="domain.CreditCard">
+				<property name="holderName" value="Provider One" />
+				<property name="brandName" value="VISA" />
+				<property name="number" value="4559216258057173" />
+				<property name="expirationMonth" value="08" />
+				<property name="expirationYear" value="23" />
+				<property name="cvvCode" value="123" />
+			</bean>
+		
+
+	<!-- FIN CREDIT CARD -->
+
+	<!-- SOCIAL PROFILES -->
+		<!-- ADMIN -->
+			<!-- ADMIN1 -->
+				<bean class="domain.SocialProfile" id="socialProfile1">
+					<property value="Administrador1" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile2">
+					<property value="Administrador1" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- ADMIN2 -->
+				<bean class="domain.SocialProfile" id="socialProfile3">
+					<property value="Administrador2" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile4">
+					<property value="Administrador2" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+		<!-- FIN ADMIN -->		
+		
+		<!-- COMPANY -->
+		
+			<!-- COMPANY1 -->
+				<bean class="domain.SocialProfile" id="socialProfile5">
+					<property value="Company1" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile6">
+					<property value="Company1" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- COMPANY2 -->
+				<bean class="domain.SocialProfile" id="socialProfile7">
+					<property value="Company2" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile8">
+					<property value="Company2" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- COMPANY3 -->
+				<bean class="domain.SocialProfile" id="socialProfile9">
+					<property value="Company3" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile10">
+					<property value="Company3" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- COMPANY 4 NO TIENE -->
+			
+		<!-- FIN COMPANY -->
+		
+		<!-- ROOKIE -->
+		
+			<!-- ROOKIE1 -->
+				<bean class="domain.SocialProfile" id="socialProfile11">
+					<property value="Rookie1" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+				<bean class="domain.SocialProfile" id="socialProfile12">
+					<property value="Rookie1" name="nick" />
+					<property value="Twitter" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+			
+			<!-- ROOKIE2 -->
+				<bean class="domain.SocialProfile" id="socialProfile13">
+					<property value="Rookie2" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- ROOKIE3 -->
+				<bean class="domain.SocialProfile" id="socialProfile14">
+					<property value="Rookie3" name="nick" />
+					<property value="Facebook" name="name" />
+					<property value="https://www.social1.com/link1" name="profileLink" />
+				</bean>
+				
+			<!-- ROOKIE4 NO TIENE -->
+				
+		<!-- FIN ROOKIE -->
+	
+	<!-- FIN SOCIAL PROFILES -->
+	
+	<!-- MESSAGES -->
+	
+	<bean class="domain.Message" id="message1">
+		<property value="11/11/2011 11:11" name="moment" />
+		<property value="This is a sent message by admin1"
+			name="subject" />
+		<property value="from admin1 to admin2" name="body" />
+		<property value="tag" name="tags"/>
+		<property value="admin1" name="sender"/>	
+		<property value="admin2" name="receiver"/>	
+	</bean>
+	
+	<bean class="domain.Message" id="message2">
+		<property value="11/11/2011 11:11" name="moment" />
+		<property value="This is a sent message by admin1"
+			name="subject" />
+		<property value="from admin1 to admin2" name="body" />
+		<property value="tag" name="tags"/>
+		<property value="admin1" name="sender"/>	
+		<property value="admin2" name="receiver"/>	
+	</bean>
+	
+	<bean class="domain.Message" id="message3">
+		<property value="11/11/2011 11:11" name="moment" />
+		<property value="This is a sent message by admin1"
+			name="subject" />
+		<property value="from admin1 to admin2" name="body" />
+		<property value="tag" name="tags"/>
+		<property value="admin2" name="sender"/>	
+		<property value="admin1" name="receiver"/>	
+	</bean>
+	<!-- FIN MESSAGES -->
+	
+	<!-- CURRICULUM -->
+		<!-- ROOKIE1 -->
+			 	<bean id="curriculum1" class="domain.Curriculum">
+					<property name="title" value="curriculum1" />
+					<property name="personalData" ref ="personalData1" />
+					
+					<property name="positionData">
+						<list>
+							<ref bean="positionData1" />
+							<ref bean="positionData2" />
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+							<ref bean="educationData1" />
+							<ref bean="educationData2" />
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+							<ref bean="miscellaneousData1" />
+							<ref bean="miscellaneousData2" />
+						</list>
+					</property>
+				</bean>	
+	
+		<!-- ROOKIE1 -->
+			 	<bean id="curriculum2" class="domain.Curriculum">
+					<property name="title" value="curriculum2" />
+					<property name="personalData" ref ="personalData2" />
+					
+					<property name="positionData">
+						<list>
+							<ref bean="positionData3" />
+							<ref bean="positionData4" />
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+							<ref bean="educationData3" />
+							<ref bean="educationData4" />
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+							<ref bean="miscellaneousData3" />
+							<ref bean="miscellaneousData4" />
+						</list>
+					</property>
+				</bean>
+				<!-- COPIAS DE CURRICULUM PARA APPLICATION -->
+				<!-- ############################################# -->
+					<bean id="curriculum5" class="domain.Curriculum">
+					<property name="title" value="curriculum1Copy" />
+					<property name="personalData" ref ="personalData5" />
+					
+					<property name="positionData">
+						<list>
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+						</list>
+					</property>
+				</bean>
+
+				<bean id="curriculum6" class="domain.Curriculum">
+					<property name="title" value="curriculum1Copy" />
+					<property name="personalData" ref ="personalData5" />
+					
+					<property name="positionData">
+						<list>
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+						</list>
+					</property>
+				</bean>
+				
+		<!-- ROOKIE2 -->
+			 	<bean id="curriculum3" class="domain.Curriculum">
+					<property name="title" value="curriculum3" />
+					<property name="personalData" ref ="personalData3" />
+					
+					<property name="positionData">
+						<list>
+							<ref bean="positionData5" />
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+							<ref bean="educationData5" />
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+						</list>
+					</property>
+				</bean>
+				
+		<!-- ROOKIE3 -->
+			 	<bean id="curriculum4" class="domain.Curriculum">
+					<property name="title" value="curriculum4" />
+					<property name="personalData" ref ="personalData4" />
+					
+					<property name="positionData">
+						<list>
+						
+						</list>
+					</property>
+					
+					<property name="educationData">
+						<list>
+						</list>
+					</property>
+					
+					<property name="miscellaneousData">
+						<list>
+						</list>
+					</property>
+				</bean>
+	<!-- FIN CURRICULUM -->
+	
+	<!-- DATA FROM CURRICULUM -->
+		<!-- CURRICULUM1 -->
+			<!-- PERSONALDATA -->
+				<bean id ="personalData1" class="domain.PersonalData">
+					<property name="fullName" value="Bruno Buccellati" />
+					<property name="statement" value="Sticky fingers" />
+					<property name="phoneNumber" value="+34609236920" />
+					<property name="gitHubProfile" value="https://github.com/JuanCarlosAlonsoValenzuela" />
+					<property name="linkedinProfile" value="https://github.com/JuanCarlosAlonsoValenzuela" />
+				</bean>
+				
+			<!-- POSITIONDATA -->
+				<bean id ="positionData1" class="domain.PositionData">
+					<property name="title" value="title1" />
+					<property name="description" value="Sticky fingers" />
+					<property name="startDate" value="02/01/2015 11:30" />
+					<property name="endDate" value="02/01/2018 11:30" />
+				</bean>
+				
+				<bean id ="positionData2" class="domain.PositionData">
+					<property name="title" value="title2" />
+					<property name="description" value="Sticky fingers" />
+					<property name="startDate" value="02/01/2012 11:30" />
+					<property name="endDate" value="02/01/2014 11:30" />
+				</bean>
+				
+			<!-- EDUCATIONDATA -->
+				<bean id ="educationData1" class="domain.EducationData">
+					<property name="degree" value="degree1" />
+					<property name="institution" value="Institution1" />
+					<property name="mark" value="A" />
+					<property name="startDate" value="02/01/2009 11:30" />
+					<property name="endDate" value="02/01/2013 11:30" />
+				</bean>
+				
+				<bean id ="educationData2" class="domain.EducationData">
+					<property name="degree" value="degree2" />
+					<property name="institution" value="Institution2" />
+					<property name="mark" value="B" />
+					<property name="startDate" value="02/01/2005 11:30" />
+					<property name="endDate" value="02/01/2009 11:30" />
+				</bean>
+				
+			<!-- MISCELLANEOUSDATA -->
+				<bean id ="miscellaneousData1" class="domain.MiscellaneousData">
+					<property name="freeText" value="freeText1" />
+					<property name="attachments">
+						<list>
+							<value>https://www.youtube.com/watch?v=BQGRN0D1SDA</value>
+							<value>https://www.youtube.com/watch?v=dv13gl0a-FA</value>
+						</list>
+					</property>	
+				</bean>
+				
+				<bean id ="miscellaneousData2" class="domain.MiscellaneousData">
+					<property name="freeText" value="freeText2" />
+					<property name="attachments">
+						<list>
+							<value>https://www.youtube.com/watch?v=BQGRN0D1SDA</value>
+							<value>https://www.youtube.com/watch?v=dv13gl0a-FA</value>
+						</list>
+					</property>	
+				</bean>
+				
+		<!-- CURRICULUM2 -->
+			<!-- PERSONALDATA -->
+				<bean id ="personalData2" class="domain.PersonalData">
+					<property name="fullName" value="Giorno Giovanna" />
+					<property name="statement" value="Golden Experience Requiem" />
+					<property name="phoneNumber" value="+34609236921" />
+					<property name="gitHubProfile" value="https://github.com/Alegomcab1" />
+					<property name="linkedinProfile" value="https://github.com/Alegomcab1" />
+				</bean>
+				
+			<!-- POSITIONDATA -->
+				<bean id ="positionData3" class="domain.PositionData">
+					<property name="title" value="title3" />
+					<property name="description" value="Golden Experience Requiem" />
+					<property name="startDate" value="02/01/2015 11:30" />
+					<property name="endDate" value="02/01/2018 11:30" />
+				</bean>
+				
+				<bean id ="positionData4" class="domain.PositionData">
+					<property name="title" value="title4" />
+					<property name="description" value="Golden Experience Requiem" />
+					<property name="startDate" value="02/01/2012 11:30" />
+					<property name="endDate" value="02/01/2014 11:30" />
+				</bean>
+				
+			<!-- EDUCATIONDATA -->
+				<bean id ="educationData3" class="domain.EducationData">
+					<property name="degree" value="degree3" />
+					<property name="institution" value="Institution3" />
+					<property name="mark" value="A" />
+					<property name="startDate" value="02/01/2009 11:30" />
+					<property name="endDate" value="02/01/2013 11:30" />
+				</bean>
+				
+				<bean id ="educationData4" class="domain.EducationData">
+					<property name="degree" value="degree4" />
+					<property name="institution" value="Institution4" />
+					<property name="mark" value="B" />
+					<property name="startDate" value="02/01/2005 11:30" />
+					<property name="endDate" value="02/01/2009 11:30" />
+				</bean>
+				
+			<!-- MISCELLANEOUSDATA -->
+				<bean id ="miscellaneousData3" class="domain.MiscellaneousData">
+					<property name="freeText" value="freeText3" />
+					<property name="attachments">
+						<list>
+							<value>https://www.youtube.com/watch?v=BQGRN0D1SDA</value>
+							<value>https://www.youtube.com/watch?v=dv13gl0a-FA</value>
+						</list>
+					</property>	
+				</bean>
+				
+				<bean id ="miscellaneousData4" class="domain.MiscellaneousData">
+					<property name="freeText" value="freeText4" />
+					<property name="attachments">
+						<list>
+							<value>https://www.youtube.com/watch?v=BQGRN0D1SDA</value>
+							<value>https://www.youtube.com/watch?v=dv13gl0a-FA</value>
+						</list>
+					</property>	
+				</bean>
+				
+		<!-- CURRICULUM3 -->
+			<!-- PERSONALDATA -->
+				<bean id ="personalData3" class="domain.PersonalData">
+					<property name="fullName" value="Leone Abbacchio" />
+					<property name="statement" value="Moody Blues" />
+					<property name="phoneNumber" value="+34690236921" />
+					<property name="gitHubProfile" value="https://github.com/RobertoHermoso" />
+					<property name="linkedinProfile" value="https://github.com/RobertoHermoso" />
+				</bean>	
+				
+			<!-- POSITIONDATA -->
+				<bean id ="positionData5" class="domain.PositionData">
+					<property name="title" value="title5" />
+					<property name="description" value="Moody Blues" />
+					<property name="startDate" value="02/01/2015 11:30" />
+					<property name="endDate" value="02/01/2018 11:30" />
+				</bean>
+				
+			<!-- EDUCATIONDATA -->
+				<bean id ="educationData5" class="domain.EducationData">
+					<property name="degree" value="degree5" />
+					<property name="institution" value="Institution5" />
+					<property name="mark" value="A" />
+					<property name="startDate" value="02/01/2009 11:30" />
+					<property name="endDate" value="02/01/2013 11:30" />
+				</bean>
+				
+		<!-- CURRICULUM4 -->
+			<!-- PERSONALDATA -->
+				<bean id ="personalData4" class="domain.PersonalData">
+					<property name="fullName" value="Narancia Ghirga" />
+					<property name="statement" value="Aerosmith" />
+					<property name="phoneNumber" value="+34690236921" />
+					<property name="gitHubProfile" value="https://github.com/DaviidGilB" />
+					<property name="linkedinProfile" value="https://github.com/DaviidGilB" />
+				</bean>	
+				
+		<!-- CURRICULUM5 (COPY CURRICULUM1) -->
+		<bean id ="personalData5" class="domain.PersonalData">
+					<property name="fullName" value="Bruno Buccellati" />
+					<property name="statement" value="Sticky fingers" />
+					<property name="phoneNumber" value="+34609236920" />
+					<property name="gitHubProfile" value="https://github.com/JuanCarlosAlonsoValenzuela" />
+					<property name="linkedinProfile" value="https://github.com/JuanCarlosAlonsoValenzuela" />
+				</bean>
+				
+	<!-- FIN DATA FROM CURRICULUM -->
+	
+	<!-- APPLICATION -->
+	
+	
+			<bean id ="application1" class="domain.Application">
+				<property name="creationMoment" value="02/01/2017 11:30" />
+				<property name="link" value="https://www.youtube.com/watch?v=SVfovID6QU8" />
+				<property name="explication" value="Explication 1" />
+				<property name="submitMoment" value="02/01/2018 11:30" />
+				
+				<property name="status" value="SUBMITTED" />
+				<property name="problem" ref="problem2" />
+				<property name="position" ref="position1" />
+				<property name="curriculum" ref="curriculum5" />
+				<property name="rookie" ref="rookie1" />
+			</bean>
+			
+			<bean id ="application2" class="domain.Application">
+				<property name="creationMoment" value="02/05/2019 12:00" />
+				<property name="status" value="PENDING" />
+				<property name="problem" ref="problem3" />
+				<property name="position" ref="position1" />
+				<property name="curriculum" ref="curriculum6" />
+				<property name="rookie" ref="rookie1" />
+			</bean>
+	<!-- FIN APPLICATION -->
+			
+	<!-- FINDER -->
+		<!-- ROOKIE1 -->
+			<bean id ="finder1" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="deadLine" value="02/01/2025 11:30" />
+				<property name="minSalary" value="0" />
+				<property name="maxDeadLine" value="02/01/2025 11:30" />
+				<property name="lastEdit" value="01/04/2019 01:00" />
+			</bean>
+			
+		<!-- ROOKIE2 -->
+			<bean id ="finder2" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="deadLine" value="02/01/2025 11:30" />
+				<property name="minSalary" value="0" />
+				<property name="maxDeadLine" value="02/01/2025 11:30" />
+				<property name="lastEdit" value="02/01/2018 11:30" />
+			</bean>
+			
+		<!-- ROOKIE3 -->
+			<bean id ="finder3" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="deadLine" value="02/01/2025 11:30" />
+				<property name="minSalary" value="0" />
+				<property name="maxDeadLine" value="02/01/2025 11:30" />
+				<property name="lastEdit" value="02/01/2018 11:30" />
+			</bean>
+			
+		<!-- ROOKIE4 -->
+			<bean id ="finder4" class="domain.Finder">
+				<property name="keyWord" value="" />
+				<property name="deadLine" value="02/01/2025 11:30" />
+				<property name="minSalary" value="0" />
+				<property name="maxDeadLine" value="02/01/2025 11:30" />
+				<property name="lastEdit" value="02/01/2018 11:30" />
+			</bean>
+			
+	<!-- FIN FINDER -->
+
+	<!-- POSITION -->
+	<!-- COMPANY1 -->
+	<bean id="position1" class="domain.Position">
+		<property name="title" value="position1" />
+		<property name="description" value="description1" />
+		<property name="deadline" value="02/01/2025 11:30" />
+		<property name="requiredProfile" value="A++ in DP" />
+		<property name="requiredSkills">
+			<list>
+				<value>Skill 1</value>
+				<value>Skill 2</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Windows XP</value>
+				<value>MY SQL 5.5 </value>
+				<value>Tomcat 7</value>
+				<value>Eclipse Indigo</value>
+				<value>A really complex system based on pulleys</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="1200.0" />
+		<property name="ticker" value="posi-1234" />
+		<property name="isDraftMode" value="false" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem1" />
+				<ref bean="problem2" />
+				<ref bean="problem3" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+		<property name="sponsorships">
+			<list>
+			<ref bean="sponsorship1" />
+			<ref bean="sponsorship2" />
+			</list>
+		</property>
+	</bean>
+
+
+	<bean id="position2" class="domain.Position">
+		<property name="title" value="position2" />
+		<property name="description" value="description2" />
+		<property name="deadline" value="02/01/2022 12:45" />
+		<property name="requiredProfile" value="F- in DP" />
+		<property name="requiredSkills">
+			<list>
+				<value>Skill 3</value>
+				<value>Skill 4</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Windows 10</value>
+				<value>MY SQL 11 </value>
+				<value>Tomcat 9</value>
+				<value>Eclipse Photon</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="140.0" />
+		<property name="ticker" value="posi-1235" />
+		<property name="isDraftMode" value="false" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem3" />
+				<ref bean="problem4" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			<ref bean="audit1" />
+			</list>
+		</property>
+		<property name="sponsorships">
+			<list>
+			<ref bean="sponsorship3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="position3" class="domain.Position">
+		<property name="title" value="position3" />
+		<property name="description" value="description3" />
+		<property name="deadline" value="02/01/2027 19:30" />
+		<property name="requiredProfile" value="Requirement Engineer" />
+		<property name="requiredSkills">
+			<list>
+				<value>Skill 5</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Ubuntu</value>
+				<value>PL/SQL </value>
+				<value>Eclipse Neon</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="3240.0" />
+		<property name="ticker" value="posi-1225" />
+		<property name="isDraftMode" value="true" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem1" />
+				<ref bean="problem3" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="position4" class="domain.Position">
+		<property name="title" value="position4" />
+		<property name="description" value="description4" />
+		<property name="deadline" value="02/01/2021 19:30" />
+		<property name="requiredProfile" value="AI Expert" />
+		<property name="requiredSkills">
+			<list>
+				<value>Skill 6</value>
+				<value>Skill 7</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Ubuntu</value>
+				<value>PL/SQL </value>
+				<value>Eclipse Neon</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="3240.0" />
+		<property name="ticker" value="posi-4225" />
+		<property name="isDraftMode" value="false" />
+		<property name="isCancelled" value="true" />
+		<property name="problems">
+			<list>
+				<ref bean="problem1" />
+				<ref bean="problem2" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- COMPANY2 -->
+	<bean id="position5" class="domain.Position">
+		<property name="title" value="position5" />
+		<property name="description" value="description5" />
+		<property name="deadline" value="11/11/2025 11:30" />
+		<property name="requiredProfile" value="A++ in IR" />
+		<property name="requiredSkills">
+			<list>
+				<value>Requirement Engineer</value>
+				<value>Navigable mockups</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Balsamiq</value>
+				<value>Word </value>
+				<value>REM</value>
+				<value>A really complex system based on pulleys</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="3.0" />
+		<property name="ticker" value="posi-1329" />
+		<property name="isDraftMode" value="false" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem7" />
+				<ref bean="problem9" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+				<ref bean="audit2" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="position6" class="domain.Position">
+		<property name="title" value="position6" />
+		<property name="description" value="description6" />
+		<property name="deadline" value="11/11/2025 11:30" />
+		<property name="requiredProfile" value="A++ in PSG" />
+		<property name="requiredSkills">
+			<list>
+				<value>Scrum</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Niko Niko Diagram</value>
+				<value>Word </value>
+				<value>A really complex system based on pulleys</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="31.0" />
+		<property name="ticker" value="posi-7329" />
+		<property name="isDraftMode" value="true" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem8" />
+				<ref bean="problem9" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- COMPANY3 -->
+
+	<bean id="position7" class="domain.Position">
+		<property name="title" value="position7" />
+		<property name="description" value="description7" />
+		<property name="deadline" value="11/11/2025 11:30" />
+		<property name="requiredProfile" value="ORA ORA ORA" />
+		<property name="requiredSkills">
+			<list>
+				<value>Requirement Engineer</value>
+				<value>Navigable mockups</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Balsamiq</value>
+				<value>Word </value>
+				<value>REM</value>
+				<value>A really complex system based on pulleys</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="3.0" />
+		<property name="ticker" value="posi-1329" />
+		<property name="isDraftMode" value="false" />
+		<property name="isCancelled" value="true" />
+		<property name="problems">
+			<list>
+				<ref bean="problem10" />
+				<ref bean="problem11" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="position8" class="domain.Position">
+		<property name="title" value="position8" />
+		<property name="description" value="description8" />
+		<property name="deadline" value="11/11/2030 11:30" />
+		<property name="requiredProfile" value="ARI ARI ARI" />
+		<property name="requiredSkills">
+			<list>
+				<value>Requirement Engineer</value>
+				<value>Navigable mockups</value>
+			</list>
+		</property>
+		<property name="requiredTecnologies">
+			<list>
+				<value>Balsamiq</value>
+				<value>Word </value>
+				<value>REM</value>
+				<value>A really complex system based on pulleys</value>
+			</list>
+		</property>
+		<property name="offeredSalary" value="3.0" />
+		<property name="ticker" value="posi-1329" />
+		<property name="isDraftMode" value="true" />
+		<property name="isCancelled" value="false" />
+		<property name="problems">
+			<list>
+				<ref bean="problem10" />
+				<ref bean="problem12" />
+			</list>
+		</property>
+		<property name="audits">
+			<list>
+			</list>
+		</property>
+	</bean>
+
+	<!-- FIN POSITION -->
+
+	<!-- PROBLEM -->
+	<!-- COMPANY1 -->
+	<bean id="problem1" class="domain.Problem">
+		<property name="title" value="problem1" />
+		<property name="statement" value="The First Problem" />
+		<property name="hint" value="Pero vamos a ver" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment1.com</value>
+				<value>https://www.attachment2.com</value>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem2" class="domain.Problem">
+		<property name="title" value="problem2" />
+		<property name="statement" value="The Second Problem" />
+		<property name="hint" value="Pero has borrao la cashé?" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment4.com</value>
+				<value>https://www.attachment5.com</value>
+				<value>https://www.attachment6.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem3" class="domain.Problem">
+		<property name="title" value="problem3" />
+		<property name="statement" value="The Third Problem" />
+		<property name="hint" value="Preguntale a M" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment7.com</value>
+				<value>https://www.attachment8.com</value>
+				<value>https://www.attachment9.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem4" class="domain.Problem">
+		<property name="title" value="problem4" />
+		<property name="statement" value="The Fourth Problem" />
+		<property name="hint" value="I cant install Pycharm" />
+		<property name="attachments">
+			<list>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem5" class="domain.Problem">
+		<property name="title" value="problem5" />
+		<property name="statement" value="The Fith Problem" />
+		<property name="hint" value="MUDA MUDA MUDA" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment13.com</value>
+			</list>
+		</property>
+		<property value="true" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem6" class="domain.Problem">
+		<property name="title" value="problem6" />
+		<property name="statement" value="The Fith Problem" />
+		<property name="hint"
+			value="Try to use an Operative System that wasn't released in 2001" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment14.com</value>
+			</list>
+		</property>
+		<property value="true" name="isDraftMode" />
+	</bean>
+
+	<!-- COMPANY2 -->
+	<bean id="problem7" class="domain.Problem">
+		<property name="title" value="problem7" />
+		<property name="statement" value="The Seventh Problem" />
+		<property name="hint" value="Try to restart your computer" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem8" class="domain.Problem">
+		<property name="title" value="problem8" />
+		<property name="statement" value="The eighth Problem" />
+		<property name="hint" value="Try to turn on your computer" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem9" class="domain.Problem">
+		<property name="title" value="problem9" />
+		<property name="statement" value="The last Problem" />
+		<property name="hint" value="Try to turn off your computer" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+	<!-- COMPANY3 -->
+	<bean id="problem10" class="domain.Problem">
+		<property name="title" value="problem10" />
+		<property name="statement" value="The last Problem1" />
+		<property name="hint" value="Change the POM.xml" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem11" class="domain.Problem">
+		<property name="title" value="problem11" />
+		<property name="statement" value="The last Problem2" />
+		<property name="hint" value="Change the web.xml" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+	<bean id="problem12" class="domain.Problem">
+		<property name="title" value="problem12" />
+		<property name="statement" value="The last Problem3" />
+		<property name="hint" value="Change the readme.md" />
+		<property name="attachments">
+			<list>
+				<value>https://www.attachment3.com</value>
+			</list>
+		</property>
+		<property value="false" name="isDraftMode" />
+	</bean>
+
+
+	<!-- COMPANY 4 HAS NO PROBLEMS -->
+
+	<!-- FIN PROBLEM -->
+
+	<!-- NEW ROOKIES FOR TESTING-->
+	<!-- ROOKIE5 -->
+	<bean id="userAccount100" class="security.UserAccount">
+		<property name="username" value="rookie5" />
+		<property name="password"
+			value="71c3559edfab3474860637d46b7c39de" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie5" class="domain.Rookie">
+		<property name="name" value="rookie5" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard100" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder100" />
+		<property name="userAccount" ref="userAccount100" />
+	</bean>
+	
+	<bean id="creditCard100" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder100" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE6 -->
+	<bean id="userAccount101" class="security.UserAccount">
+		<property name="username" value="rookie6" />
+		<property name="password"
+			value="2ac0966e96640cedb5d2f770e21b86db" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie6" class="domain.Rookie">
+		<property name="name" value="rookie6" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard101" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder101" />
+		<property name="userAccount" ref="userAccount101" />
+	</bean>
+	
+	<bean id="creditCard101" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder101" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE7 -->
+	<bean id="userAccount102" class="security.UserAccount">
+		<property name="username" value="rookie7" />
+		<property name="password"
+			value="03e82f65437ab841c7249c041060d6f9" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie7" class="domain.Rookie">
+		<property name="name" value="rookie7" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard102" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder102" />
+		<property name="userAccount" ref="userAccount102" />
+	</bean>
+	
+	<bean id="creditCard102" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder102" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE8 -->
+	<bean id="userAccount103" class="security.UserAccount">
+		<property name="username" value="rookie8" />
+		<property name="password"
+			value="a91134f99b47c300dd03771543b77b59" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie8" class="domain.Rookie">
+		<property name="name" value="rookie8" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard103" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder103" />
+		<property name="userAccount" ref="userAccount103" />
+	</bean>
+	
+	<bean id="creditCard103" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder103" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE9 -->
+	<bean id="userAccount104" class="security.UserAccount">
+		<property name="username" value="rookie9" />
+		<property name="password"
+			value="b03ff77f0b1dec7fe41676276cc5854c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie9" class="domain.Rookie">
+		<property name="name" value="rookie9" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard104" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder104" />
+		<property name="userAccount" ref="userAccount104" />
+	</bean>
+	
+	<bean id="creditCard104" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder104" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE10 -->
+	<bean id="userAccount105" class="security.UserAccount">
+		<property name="username" value="rookie10" />
+		<property name="password"
+			value="a4bbe3ce404dd4c8c94764b2a671c832" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie10" class="domain.Rookie">
+		<property name="name" value="rookie10" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard105" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder105" />
+		<property name="userAccount" ref="userAccount105" />
+	</bean>
+	
+	<bean id="creditCard105" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder105" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE11 -->
+	<bean id="userAccount106" class="security.UserAccount">
+		<property name="username" value="rookie11" />
+		<property name="password"
+			value="3b7b7cbc16336ab8dd2a7cee877848ae" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie11" class="domain.Rookie">
+		<property name="name" value="rookie11" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard106" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder106" />
+		<property name="userAccount" ref="userAccount106" />
+	</bean>
+	
+	<bean id="creditCard106" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder106" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE12 -->
+	<bean id="userAccount107" class="security.UserAccount">
+		<property name="username" value="rookie12" />
+		<property name="password"
+			value="c2654929a6f94541d6ee7e04562236f6" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie12" class="domain.Rookie">
+		<property name="name" value="rookie12" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE123654321" />
+		<property name="creditCard" ref="creditCard107" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder107" />
+		<property name="userAccount" ref="userAccount107" />
+	</bean>
+	
+	<bean id="creditCard107" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<bean id ="finder107" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE13 -->
+	<bean id="userAccount108" class="security.UserAccount">
+		<property name="username" value="rookie13" />
+		<property name="password"
+			value="8a956a97345ef7d7a9e097069ebb9f99" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie13" class="domain.Rookie">
+		<property name="name" value="rookie13" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE133654321" />
+		<property name="creditCard" ref="creditCard108" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder108" />
+		<property name="userAccount" ref="userAccount108" />
+	</bean>
+	
+	<bean id="creditCard108" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="133" />
+	</bean>
+	
+	<bean id ="finder108" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE14 -->
+	<bean id="userAccount109" class="security.UserAccount">
+		<property name="username" value="rookie14" />
+		<property name="password"
+			value="9236e9ff785a9f594b39f5d1b74113c7" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie14" class="domain.Rookie">
+		<property name="name" value="rookie14" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE143654321" />
+		<property name="creditCard" ref="creditCard109" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder109" />
+		<property name="userAccount" ref="userAccount109" />
+	</bean>
+	
+	<bean id="creditCard109" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="143" />
+	</bean>
+	
+	<bean id ="finder109" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+		<!-- ROOKIE15 -->
+	<bean id="userAccount110" class="security.UserAccount">
+		<property name="username" value="rookie15" />
+		<property name="password"
+			value="af2a4693bb18fe19e1bb32b34cbcc234" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie15" class="domain.Rookie">
+		<property name="name" value="rookie15" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE153654321" />
+		<property name="creditCard" ref="creditCard110" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder110" />
+		<property name="userAccount" ref="userAccount110" />
+	</bean>
+	
+	<bean id="creditCard110" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="153" />
+	</bean>
+	
+	<bean id ="finder110" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE16 -->
+	<bean id="userAccount111" class="security.UserAccount">
+		<property name="username" value="rookie16" />
+		<property name="password"
+			value="4af527d747e4ef79ef787903d3979ad8" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie16" class="domain.Rookie">
+		<property name="name" value="rookie16" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE163654321" />
+		<property name="creditCard" ref="creditCard111" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder111" />
+		<property name="userAccount" ref="userAccount111" />
+	</bean>
+	
+	<bean id="creditCard111" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="163" />
+	</bean>
+	
+	<bean id ="finder111" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE17 -->
+	<bean id="userAccount112" class="security.UserAccount">
+		<property name="username" value="rookie17" />
+		<property name="password"
+			value="6977ce9994025f9785c464eaadcad12f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie17" class="domain.Rookie">
+		<property name="name" value="rookie17" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE173654321" />
+		<property name="creditCard" ref="creditCard112" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder112" />
+		<property name="userAccount" ref="userAccount112" />
+	</bean>
+	
+	<bean id="creditCard112" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="173" />
+	</bean>
+	
+	<bean id ="finder112" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE18 -->
+	<bean id="userAccount113" class="security.UserAccount">
+		<property name="username" value="rookie18" />
+		<property name="password"
+			value="0d4010052438861f884c8c27b7bc22ba" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie18" class="domain.Rookie">
+		<property name="name" value="rookie18" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE183654321" />
+		<property name="creditCard" ref="creditCard113" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder113" />
+		<property name="userAccount" ref="userAccount113" />
+	</bean>
+	
+	<bean id="creditCard113" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="183" />
+	</bean>
+	
+	<bean id ="finder113" class="domain.Finder">
+		<property name="keyWord" value="" />
+		<property name="deadLine" value="02/01/2025 11:30" />
+		<property name="minSalary" value="0" />
+		<property name="maxDeadLine" value="02/01/2025 11:30" />
+		<property name="lastEdit" value="01/04/2019 01:00" />
+	</bean>
+	
+	<!-- ROOKIE19 -->
+	<bean id="userAccount114" class="security.UserAccount">
+		<property name="username" value="rookie19" />
+		<property name="password"
+			value="7614c0940fd0977a29899304b5d23166" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie19" class="domain.Rookie">
+		<property name="name" value="rookie19" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard114" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder114" />
+		<property name="userAccount" ref="userAccount114" />
+	</bean>
+	
+	<bean id="creditCard114" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<bean id ="finder114" class="domain.Finder"/>
+	
+	<!-- ROOKIE20 -->
+	<bean id="userAccount115" class="security.UserAccount">
+		<property name="username" value="rookie20" />
+		<property name="password"
+			value="8216e8d35f06366a262dc2aa498e144f" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie20" class="domain.Rookie">
+		<property name="name" value="rookie20" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE203654321" />
+		<property name="creditCard" ref="creditCard115" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder115" />
+		<property name="userAccount" ref="userAccount115" />
+	</bean>
+	
+	<bean id="creditCard115" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="203" />
+	</bean>
+	
+	<bean id ="finder115" class="domain.Finder"/>
+	
+	<!-- ROOKIE21 -->
+	<bean id="userAccount116" class="security.UserAccount">
+		<property name="username" value="rookie21" />
+		<property name="password"
+			value="639d0083d764c60666fcad38213054fe" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie21" class="domain.Rookie">
+		<property name="name" value="rookie21" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE213654321" />
+		<property name="creditCard" ref="creditCard116" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder116" />
+		<property name="userAccount" ref="userAccount116" />
+	</bean>
+	
+	<bean id="creditCard116" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="213" />
+	</bean>
+	
+	<bean id ="finder116" class="domain.Finder"/>
+	
+	<!-- ROOKIE22 -->
+	<bean id="userAccount117" class="security.UserAccount">
+		<property name="username" value="rookie22" />
+		<property name="password"
+			value="f58225e43fe219c59609c0bed2727e55" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie22" class="domain.Rookie">
+		<property name="name" value="rookie22" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE223654322" />
+		<property name="creditCard" ref="creditCard117" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder117" />
+		<property name="userAccount" ref="userAccount117" />
+	</bean>
+	
+	<bean id="creditCard117" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="223" />
+	</bean>
+	
+	<bean id ="finder117" class="domain.Finder"/>
+	
+	<!-- ROOKIE23 -->
+	<bean id="userAccount118" class="security.UserAccount">
+		<property name="username" value="rookie23" />
+		<property name="password"
+			value="210c7e72ee16c42058d52c05a6b7c297" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie23" class="domain.Rookie">
+		<property name="name" value="rookie23" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE233654323" />
+		<property name="creditCard" ref="creditCard118" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609235523" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder118" />
+		<property name="userAccount" ref="userAccount118" />
+	</bean>
+	
+	<bean id="creditCard118" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="233" />
+	</bean>
+	
+	<bean id ="finder118" class="domain.Finder"/>
+	
+	<!-- ROOKIE24 -->
+	<bean id="userAccount119" class="security.UserAccount">
+		<property name="username" value="rookie24" />
+		<property name="password" value="b98cecc41a094045c465dcb457062e91" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie24" class="domain.Rookie">
+		<property name="name" value="rookie24" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE243654324" />
+		<property name="creditCard" ref="creditCard119" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609245524" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder119" />
+		<property name="userAccount" ref="userAccount119" />
+	</bean>
+	
+	<bean id="creditCard119" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="243" />
+	</bean>
+	
+	<bean id ="finder119" class="domain.Finder"/>
+
+	<!-- ROOKIE25 -->
+	<bean id="userAccount120" class="security.UserAccount">
+		<property name="username" value="rookie25" />
+		<property name="password"
+			value="4ec7335cda63c4de6dd85e619999cdbd" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie25" class="domain.Rookie">
+		<property name="name" value="rookie25" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE253654325" />
+		<property name="creditCard" ref="creditCard120" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609255525" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder120" />
+		<property name="userAccount" ref="userAccount120" />
+	</bean>
+	
+	<bean id="creditCard120" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="25" />
+		<property name="cvvCode" value="253" />
+	</bean>
+	
+	<bean id ="finder120" class="domain.Finder"/>
+	
+	<!-- ROOKIE26 -->
+	<bean id="userAccount121" class="security.UserAccount">
+		<property name="username" value="rookie26" />
+		<property name="password"
+			value="428742ba3f5c773a116a56508dedc346" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie26" class="domain.Rookie">
+		<property name="name" value="rookie26" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE263654326" />
+		<property name="creditCard" ref="creditCard121" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609265526" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder121" />
+		<property name="userAccount" ref="userAccount121" />
+	</bean>
+	
+	<bean id="creditCard121" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="26" />
+		<property name="cvvCode" value="263" />
+	</bean>
+	
+	<bean id ="finder121" class="domain.Finder"/>
+	
+	<!-- ROOKIE27 -->
+	<bean id="userAccount122" class="security.UserAccount">
+		<property name="username" value="rookie27" />
+		<property name="password"
+			value="c098206f7cd3cad8da08892d9dc2d167" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie27" class="domain.Rookie">
+		<property name="name" value="rookie27" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE273654327" />
+		<property name="creditCard" ref="creditCard122" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609275527" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder122" />
+		<property name="userAccount" ref="userAccount122" />
+	</bean>
+	
+	<bean id="creditCard122" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="27" />
+		<property name="cvvCode" value="273" />
+	</bean>
+	
+	<bean id ="finder122" class="domain.Finder"/>
+	
+	<!-- ROOKIE28 -->
+	<bean id="userAccount123" class="security.UserAccount">
+		<property name="username" value="rookie28" />
+		<property name="password"
+			value="7ceae1c5f97af36459621d8897c6d6ab" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie28" class="domain.Rookie">
+		<property name="name" value="rookie28" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE283654328" />
+		<property name="creditCard" ref="creditCard123" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609285528" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder123" />
+		<property name="userAccount" ref="userAccount123" />
+	</bean>
+	
+	<bean id="creditCard123" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="28" />
+		<property name="cvvCode" value="283" />
+	</bean>
+	
+	<bean id ="finder123" class="domain.Finder"/>
+
+	<!-- ROOKIE29 -->
+	<bean id="userAccount124" class="security.UserAccount">
+		<property name="username" value="rookie29" />
+		<property name="password"
+			value="7ee97c9d0613002e647a37f2bb1d7996" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie29" class="domain.Rookie">
+		<property name="name" value="rookie29" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE293654329" />
+		<property name="creditCard" ref="creditCard124" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609295529" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder124" />
+		<property name="userAccount" ref="userAccount124" />
+	</bean>
+	
+	<bean id="creditCard124" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401" />
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="29" />
+		<property name="cvvCode" value="293" />
+	</bean>
+	
+	<bean id ="finder124" class="domain.Finder"/>
+
+	<!-- ROOKIE30 -->
+	<bean id="userAccount125" class="security.UserAccount">
+		<property name="username" value="rookie30" />
+		<property name="password"
+			value="57d8a8078a2e822cedc5bcb539b79efc" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ROOKIE" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="rookie30" class="domain.Rookie">
+		<property name="name" value="rookie30" />
+		<property name="surname" value="rookie surname" />
+		<property name="VATNumber" value="SE303654330" />
+		<property name="creditCard" ref="creditCard125" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="rookie@gmail.com" />
+		<property name="phone" value="+34609305530" />
+		<property name="address" value="rookie1House" />
+		<property name="finder" ref="finder125" />
+		<property name="userAccount" ref="userAccount125" />
+	</bean>
+	
+	<bean id="creditCard125" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4526487840286401"/>
+		<property name="expirationMonth" value="10" />
+		<property name="expirationYear" value="30" />
+		<property name="cvvCode" value="303" />
+	</bean>
+	
+	<bean id ="finder125" class="domain.Finder"/>
+	
+	<!-- ITEMS -->
+	
+	<!-- Provider1 -->
+	
+	<bean id="item1" class="domain.Item">
+		<property name="name" value="PyCharm" />
+		<property name="description" value="A very simple program to install" />
+		<property name="links">
+		<list>
+			<value>https://www.jetbrains.com/pycharm/</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>https://www.jetbrains.com/pycharm/img/screenshots/simpleLook@2x.jpg</value>
+		</list>
+		</property>
+	</bean>
+	
+		<bean id="item2" class="domain.Item">
+		<property name="name" value="Dreamweaver" />
+		<property name="description" value="A very free IDE" />
+		<property name="links">
+		<list>
+			<value>https://www.adobe.com/es/products/dreamweaver.html</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>https://imag.malavida.com/mvimgbig/download-fs/dreamweaver-4084-7.jpg</value>
+		</list>
+		</property>
+	</bean>
+	
+		<bean id="item3" class="domain.Item">
+		<property name="name" value="Eclipse for Python" />
+		<property name="description" value="A not really good IDE for Python" />
+		<property name="links">
+		<list>
+			<value>http://www.pydev.org</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>https://i.ytimg.com/vi/1BsWjVByonk/maxresdefault.jpg</value>
+		</list>
+		</property>
+	</bean>
+	
+	<!-- Provider2 -->
+	
+		
+	<bean id="item4" class="domain.Item">
+		<property name="name" value="Tomcat" />
+		<property name="description" value="A really nice program that always works" />
+		<property name="links">
+		<list>
+			<value>http://tomcat.apache.org</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>https://i.ytimg.com/vi/NrQSk9uwqaI/maxresdefault.jpg</value>
+		</list>
+		</property>
+	</bean>
+	
+	<bean id="item5" class="domain.Item">
+		<property name="name" value="Clevercloud" />
+		<property name="description" value="A really nice platform that always works" />
+		<property name="links">
+		<list>
+			<value>https://www.clever-cloud.com/en/</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>https://www.notaweaponofwar.org/wp-content/uploads/2018/06/logo_clever-cloud.png</value>
+		</list>
+		</property>
+	</bean>
+	
+	<bean id="item6" class="domain.Item">
+		<property name="name" value="Aptana" />
+		<property name="description" value="A really nice IDE that always works" />
+		<property name="links">
+		<list>
+			<value>http://www.aptana.com</value>
+		</list>
+		</property>
+		<property name="pictures">
+		<list>
+			<value>http://www.aptana.com/images/hero/studio3.png</value>
+		</list>
+		</property>
+	</bean>
+	
+	<!-- MORE PROVIDERS POR TESTING -->
+	<!-- PROVIDER3 -->
+	<bean id="userAccount200" class="security.UserAccount">
+		<property name="username" value="provider3" />
+		<property name="password"
+			value="a575bf1b9ca7d068cef7bbc8fa7f43e1" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider3" class="domain.Provider">
+		<property name="name" value="Provider3" />
+		<property name="make" value="provider3" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard200" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider3@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider3House" />
+		<property name="userAccount" ref="userAccount200" />
+	</bean>
+	
+	<bean id="creditCard200" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER4 -->
+	<bean id="userAccount201" class="security.UserAccount">
+		<property name="username" value="provider4" />
+		<property name="password"
+			value="5d35a7d891c4aae477f56ebf807fbd0a" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider4" class="domain.Provider">
+		<property name="name" value="Provider4" />
+		<property name="make" value="provider4" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard201" />
+		<property name="photo" value="" />
+		<property name="email" value="provider4@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider3House" />
+		<property name="userAccount" ref="userAccount201" />
+	</bean>
+	
+	<bean id="creditCard201" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER5 -->
+	<bean id="userAccount202" class="security.UserAccount">
+		<property name="username" value="provider5" />
+		<property name="password"
+			value="bd19ee25be71cfc77f532c4b26b4a54e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider5" class="domain.Provider">
+		<property name="name" value="Provider5" />
+		<property name="make" value="provider5" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard202" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider5@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider5House" />
+		<property name="userAccount" ref="userAccount202" />
+	</bean>
+	
+	<bean id="creditCard202" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER6 -->
+	<bean id="userAccount203" class="security.UserAccount">
+		<property name="username" value="provider6" />
+		<property name="password"
+			value="85202849e05dc23e4b80f2af8be3650c" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider6" class="domain.Provider">
+		<property name="name" value="Provider6" />
+		<property name="make" value="provider6" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard203" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider6@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider6House" />
+		<property name="userAccount" ref="userAccount203" />
+	</bean>
+	
+	<bean id="creditCard203" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER7 -->
+	<bean id="userAccount204" class="security.UserAccount">
+		<property name="username" value="provider7" />
+		<property name="password"
+			value="081695deabc539ca794c3437d1937158" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider7" class="domain.Provider">
+		<property name="name" value="Provider7" />
+		<property name="make" value="provider7" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard204" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider7@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider7House" />
+		<property name="userAccount" ref="userAccount204" />
+	</bean>
+	
+	<bean id="creditCard204" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER8 -->
+	<bean id="userAccount205" class="security.UserAccount">
+		<property name="username" value="provider8" />
+		<property name="password"
+			value="cbfad803a31165e7449a6c1633ab4f4e" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider8" class="domain.Provider">
+		<property name="name" value="Provider8" />
+		<property name="make" value="provider8" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard205" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider8@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider8House" />
+		<property name="userAccount" ref="userAccount205" />
+	</bean>
+	
+	<bean id="creditCard205" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<!-- PROVIDER9 -->
+	<bean id="userAccount206" class="security.UserAccount">
+		<property name="username" value="provider9" />
+		<property name="password"
+			value="f1e8c5669cca265538f0ea1ea66d99e0" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider9" class="domain.Provider">
+		<property name="name" value="Provider9" />
+		<property name="make" value="provider9" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard206" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider9@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider9House" />
+		<property name="userAccount" ref="userAccount206" />
+	</bean>
+	
+	<bean id="creditCard206" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+		<!-- PROVIDER10 -->
+	<bean id="userAccount207" class="security.UserAccount">
+		<property name="username" value="provider10" />
+		<property name="password"
+			value="947bf0ada3428bc94b6770b617e727d5" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="PROVIDER" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="provider10" class="domain.Provider">
+		<property name="name" value="Provider10" />
+		<property name="make" value="provider10" />
+		<property name="surname" value="P Surname" />
+		<property name="VATNumber" value="SE193654321" />
+		<property name="creditCard" ref="creditCard207" />
+		<property name="photo" value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="provider10@gmail.com" />
+		<property name="phone" value="+34609235522" />
+		<property name="address" value="provider10House" />
+		<property name="userAccount" ref="userAccount207" />
+	</bean>
+	
+	<bean id="creditCard207" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4593930285819531" />
+		<property name="expirationMonth" value="11" />
+		<property name="expirationYear" value="24" />
+		<property name="cvvCode" value="193" />
+	</bean>
+	
+	<bean id="sponsorship1" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard11" />
+		<property name="banner" value="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" />
+		<property name="targetUrl" value="http://www.github.com" />
+		<property name="position" ref="position1" />
+		<property name="provider" ref="provider1" />
+	</bean>
+	
+	<bean id="sponsorship2" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard12" />
+		<property name="banner" value="https://images.vexels.com/media/users/3/137419/isolated/preview/b1a3fab214230557053ed1c4bf17b46c-icono-de-twitter-logo-by-vexels.png" />
+		<property name="targetUrl" value="http://www.github.com" />
+		<property name="position" ref="position1" />
+		<property name="provider" ref="provider2" />
+	</bean>
+	
+	<bean id="sponsorship3" class="domain.Sponsorship">
+		<property name="creditCard" ref="creditCard11" />
+		<property name="banner" value="https://ih1.redbubble.net/image.418233732.0994/flat,800x800,075,f.u1.jpg" />
+		<property name="targetUrl" value="http://www.github.com" />
+		<property name="position" ref="position2" />
+		<property name="provider" ref="provider1" />
+	</bean>
+
+	
+	<!-- AUDITS -->
+		<!-- AUDIT1 -->
+		
+		<bean id="audit1" class="domain.Audit">
+			<property name="auditor" ref="auditor1" />
+			<property name="position" ref="position2" />
+			<property name="freeText" value="freetext1" />
+			<property name="score" value="9" />
+			<property name="isDraftMode" value="false" />
+			<property name="momentCreation" value="11/11/2018 11:30" />
+			<property name="controlEntity">
+				<list>
+					<ref bean="controlEntity1" />
+				</list>
+			</property>
+		</bean>
+		
+		<!-- AUDIT2 -->
+		<bean id="audit2" class="domain.Audit">
+			<property name="auditor" ref="auditor2" />
+			<property name="position" ref="position5" />
+			<property name="freeText" value="freetext2" />
+			<property name="score" value="5" />
+			<property name="isDraftMode" value="false" />
+			<property name="momentCreation" value="11/11/2016 11:30" />
+			<property name="controlEntity">
+				<list>
+				</list>
+			</property>
+		</bean>
+
+	<!-- CONTROL ENTITY -->
+		<!-- CONTROL ENTITY 1 -->
+		<bean id="controlEntity1" class="domain.ControlEntity">
+			<property name="ticker" value="190611-ABCDE"/>
+			<property name="publicationMoment" value="05/05/2019 11:30"/>
+			<property name="body" value="This is an example body"/>
+			<property name="picture" value="http://www.picture.com/example"/>
+			<property name="isDraftMode" value="false"/>
+		</bean>
+
+</beans>

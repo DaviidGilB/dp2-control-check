@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="termsAndConditionsEN" extends="master.page">	
+		<put-attribute name="body" value="/views/anonymous/termsAndConditionsEN.jsp" />
+	</definition>
+	
+	<definition name="termsAndConditionsES" extends="master.page">	
+		<put-attribute name="body" value="/views/anonymous/termsAndConditionsES.jsp" />
+	</definition>
+	
+	<definition name="anonymous/rookie/create" extends="master.page">	
+		<put-attribute name="title" value="Register as rookie" />
+		<put-attribute name="body" value="/views/anonymous/createRookie.jsp" />
+	</definition>
+	
+	<definition name="anonymous/provider/create" extends="master.page">	
+		<put-attribute name="title" value="Register as provider" />
+		<put-attribute name="body" value="/views/anonymous/createProvider.jsp" />
+	</definition>
+	
+	<definition name="anonymous/position/list" extends="master.page">	
+		<put-attribute name="title" value="Public positions" />
+		<put-attribute name="body" value="/views/anonymous/filteredPositions.jsp" />
+	</definition>
+	
+	<definition name="anonymous/problem/list" extends="master.page">	
+		<put-attribute name="title" value="Public problems" />
+		<put-attribute name="body" value="/views/company/problemList.jsp" />
+	</definition>
+	
+	<definition name="anonymous/application/list" extends="master.page">	
+		<put-attribute name="title" value="Applications" />
+		<put-attribute name="body" value="/views/anonymous/showApplicationsPosition.jsp" />
+	</definition>
+	
+	<definition name="anonymous/company/listOne" extends="master.page">	
+		<put-attribute name="title" value="Company profile" />
+		<put-attribute name="body" value="/views/actor/listSocialProfiles.jsp" />
+	</definition>
+	
+	<definition name="anonymous/company/list" extends="master.page">	
+		<put-attribute name="title" value="Companies" />
+		<put-attribute name="body" value="/views/anonymous/listOfCompanies.jsp" />
+	</definition>
+	
+	<definition name="anonymous/attachement/list" extends="master.page">	
+		<put-attribute name="title" value="Attachments" />
+		<put-attribute name="body" value="/views/company/showAttachments.jsp" />
+	</definition>
+	
+	<definition name="anonymous/company/positions" extends="master.page">	
+		<put-attribute name="title" value="Positions list" />
+		<put-attribute name="body" value="/views/anonymous/publicPositions.jsp" />
+	</definition>
+	
+	<definition name="anonymous/filtered/create" extends="master.page">	
+		<put-attribute name="title" value="Filtered Positions" />
+		<put-attribute name="body" value="/views/anonymous/filteredPositions.jsp" />
+	</definition>
+	
+	<definition name="anonymous/filtered/positions" extends="master.page">	
+		<put-attribute name="title" value="Filtered Positions" />
+		<put-attribute name="body" value="/views/anonymous/filteredPositions.jsp" />
+	</definition>
+	
+	<definition name="anonymous/company/create" extends="master.page">	
+		<put-attribute name="title" value="Register as company" />
+		<put-attribute name="body" value="/views/anonymous/createCompany.jsp" />
+	</definition>
+	
+		<definition name="anonymous/curriculum/list" extends="master.page">	
+		<put-attribute name="title" value="Curriculums list" />
+		<put-attribute name="body" value="/views/anonymous/curriculumOfApplication.jsp" />
+	</definition>
+	
+	<definition name="anonymous/audit/list" extends="master.page">	
+		<put-attribute name="title" value="Audits" />
+		<put-attribute name="body" value="/views/anonymous/showAuditsPosition.jsp" />
+	</definition>
+	
+	<definition name="anonymous/provider/list" extends="master.page">	
+		<put-attribute name="title" value="Providers" />
+		<put-attribute name="body" value="/views/anonymous/listOfProvider.jsp" />
+	</definition>
+
+	<definition name="anonymous/item/list" extends="master.page">	
+		<put-attribute name="title" value="Items" />
+		<put-attribute name="body" value="/views/anonymous/listOfItems.jsp" />
+	</definition>
+	
+	<definition name="anonymous/item/listLinks" extends="master.page">	
+		<put-attribute name="title" value="Item's Links" />
+		<put-attribute name="body" value="/views/anonymous/links.jsp" />
+	</definition>
+	
+		<definition name="anonymous/item/listPictures" extends="master.page">	
+		<put-attribute name="title" value="Item's Pictures" />
+		<put-attribute name="body" value="/views/anonymous/pictures.jsp" />
+	</definition>
+	
+	<definition name="anonymous/provider/listOne" extends="master.page">	
+		<put-attribute name="title" value="Provider" />
+		<put-attribute name="body" value="/views/actor/listSocialProfiles.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>
+

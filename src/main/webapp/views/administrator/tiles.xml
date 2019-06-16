@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="administrator/administrator/create" extends="master.page">	
+		<put-attribute name="title" value="Create a new Administrator" />
+		<put-attribute name="body" value="/views/administrator/createAdmin.jsp" />
+	</definition>
+	
+	<definition name="statistics/administrator/show" extends="master.page">	
+		<put-attribute name="title" value="Statistics" />
+		<put-attribute name="body" value="/views/administrator/statistics.jsp" />
+	</definition>
+	
+	<definition name="administrator/configuration" extends="master.page">	
+		<put-attribute name="title" value="Configuration" /> 
+		<put-attribute name="body" value="/views/administrator/configuration.jsp" />
+	</definition>
+	
+	<definition name="administrator/editConfiguration" extends="master.page">	
+		<put-attribute name="title" value="Edit Configuration" /> 
+		<put-attribute name="body" value="/views/administrator/editConfiguration.jsp" />
+	</definition>
+	
+	<definition name="broadcast/administrator/send" extends="master.page">	
+		<put-attribute name="title" value="Broadcast notification" /> 
+		<put-attribute name="body" value="/views/administrator/broadcast.jsp" />
+	</definition>
+	
+	<definition name="suspicious/administrator/list" extends="master.page">	
+		<put-attribute name="title" value="Administrator: Ban/unban" />
+		<put-attribute name="body" value="/views/administrator/banUnban.jsp" />
+	</definition>
+	
+	<definition name="administrator/auditor/create" extends="master.page">	
+		<put-attribute name="title" value="Create a new auditor" />
+		<put-attribute name="body" value="/views/administrator/createAuditor.jsp" />
+	</definition>
+	
+	<definition name="broadcast/administrator/sendRebranding" extends="master.page">	
+		<put-attribute name="title" value="Broadcast rebranding notification" /> 
+		<put-attribute name="body" value="/views/administrator/broadcast.jsp" />
+	</definition>
+	
+</tiles-definitions>

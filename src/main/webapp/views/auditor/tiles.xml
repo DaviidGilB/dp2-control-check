@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles.xml
+ *
+ * Copyright (C) 2018 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+       
+<tiles-definitions>
+
+	<definition name="position/auditor/listAssignablePositions" extends="master.page">	
+		<put-attribute name="title" value="Assignable positions" />
+		<put-attribute name="body" value="/views/auditor/listAssignablePositions.jsp" />
+	</definition>
+	
+	<definition name="audit/auditor/edit" extends="master.page">	
+		<put-attribute name="title" value="Edit audit" />
+		<put-attribute name="body" value="/views/auditor/editAudit.jsp" />
+	</definition>
+	
+	<definition name="audit/auditor/list" extends="master.page">	
+		<put-attribute name="title" value="List of audits" />
+		<put-attribute name="body" value="/views/auditor/showAudits.jsp" />
+	</definition>
+	
+	<definition name="position/auditor/audit/list" extends="master.page">	
+		<put-attribute name="title" value="Audits" />
+		<put-attribute name="body" value="/views/anonymous/showAuditsPosition.jsp" />
+	</definition>
+	
+		<definition name="position/auditor/problem/list" extends="master.page">	
+		<put-attribute name="title" value="Problems" />
+		<put-attribute name="body" value="/views/company/problemList.jsp" />
+	</definition>
+	
+		<definition name="position/auditor/application/list" extends="master.page">	
+		<put-attribute name="title" value="Aplicaciones" />
+		<put-attribute name="body" value="/views/company/showApplicationsPosition.jsp" />
+	</definition>
+	
+	<definition name="position/auditor/company/listOne" extends="master.page">	
+		<put-attribute name="title" value="Company" />
+		<put-attribute name="body" value="/views/actor/listSocialProfiles.jsp" />
+	</definition>
+	
+	
+</tiles-definitions>

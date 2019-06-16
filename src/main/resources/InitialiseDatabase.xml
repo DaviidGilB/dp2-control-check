@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- 
+ * PopulateDatabase.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+	
+	<!-- User accounts -->
+	
+	<bean id ="configuration" class="domain.Configuration">
+		<property name="spainTelephoneCode" value="+34" />
+		<property name="maxFinderResults" value="100"/>
+		<property name="minFinderResults" value="10" />
+		<property name="spamWords">
+			<list>
+				<value>sex</value>
+				<value>viagra</value>
+				<value>cialis</value>
+				<value>one million</value>
+				<value>you’ve been selected</value>
+				<value>Nigeria</value>
+				<value>sexo</value>
+				<value>un millón</value>
+				<value>ha sido seleccionado</value>
+				<value>pene</value>
+				<value>maduras</value>
+				<value>astolfo</value>
+				<value>furry</value>
+				<value>ugly bastard</value>
+				<value>chase</value>
+				<value>wals</value>
+			</list>
+		</property>
+		<property name="priorityLvl">
+			<list>
+				<value>HIGH</value>
+				<value>NEUTRAL</value>
+				<value>LOW</value>
+			</list>
+		</property>
+		<property name="cardType">
+			<list>
+				<value>VISA</value>
+				<value>MASTER</value>
+				<value>DINNERS</value>
+				<value>AMEX</value>
+				<value>FLY</value>
+			</list>
+		</property>
+		<property name="priorityLvlSpa">
+			<list>
+				<value>ALTA</value>
+				<value>NEUTRAL</value>
+				<value>BAJA</value>
+			</list>
+		</property>
+		<property name="goodWords" value="good, fantastic, excellent, great, amazing, terrific, beautiful, bueno, fantastico, excelente, increible, estupendo, hermoso" />
+		<property name="badWords" value="not, bad, horrible, average, disaster, no, malo, horrible, mediocre, desastre " />
+		
+		<property name="minTimeFinder" value="1" />
+		<property name="maxTimeFinder" value="24" />
+		<property name="finderResult" value="10"/>
+		<property name="timeFinder" value="1"/>
+
+		
+		<property name="welcomeMessageEnglish" value="Welcome to Acme rookie !We´re IT rookie´s favourite job marketplace!" />
+		<property name="welcomeMessageSpanish" value="¡Bienvenidos a Acme Rookie ! ¡Somos el mercado de trabajo favorito de los profesionales de las TICs!" />
+		
+		<property name="systemName" value="Acme Rookies" />
+		<property name="imageURL" value="https://i.imgur.com/PX5WdRH.png" />
+
+		<property name="VAT" value="21" />
+		<property name="fare" value="1" />
+		
+		<property name="isRebrandingBroadcasted" value="false" />
+		
+	</bean>
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password"
+			value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+		<property name="isNotLocked" value="True" />
+	</bean>
+	
+	<bean id="admin1" class="domain.Admin">
+		<property name="name" value="admin" />
+		<property name="surname" value="admin surname" />
+		<property name="VATNumber" value="SE123456789" />
+		<property name="creditCard" ref="creditCard1" />
+		<property name="photo"
+			value="https://trello.com/c/unl0e9cp/1-requisitos" />
+		<property name="email" value="admin1@gmail.com" />
+		<property name="phone" value="+34609236920" />
+		<property name="address" value="Reino de los Cielos" />
+		<property name="socialProfiles">
+			<list>
+			</list>
+		</property>
+		<property name="messages">
+			<list>
+			</list>
+		</property>
+		<property name="userAccount" ref="userAccount1" />
+	</bean>
+	
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="David" />
+		<property name="brandName" value="VISA" />
+		<property name="number" value="4880576829512546" />
+		<property name="expirationMonth" value="12" />
+		<property name="expirationYear" value="23" />
+		<property name="cvvCode" value="123" />
+	</bean>
+	
+	<!-- Other domain beans come here -->	
+	
+</beans>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- 
+ * tiles_es.xml
+ *
+ * Copyright (C) 2019 Universidad de Sevilla
+ * 
+ * The use of this project is hereby constrained to the conditions of the 
+ * TDG Licence, a copy of which you may download from 
+ * http://www.tdg-seville.info/License.html
+ -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+      
+<tiles-definitions>
+
+	<definition name="provider/items" extends="master.page">	
+		<put-attribute name="title" value="Articulos" />
+		<put-attribute name="body" value="/views/provider/items.jsp" />
+	</definition>
+	
+	<definition name="provider/links" extends="master.page">	
+		<put-attribute name="title" value="Enlaces" />
+		<put-attribute name="body" value="/views/provider/links.jsp" />
+	</definition>
+	
+	<definition name="provider/pictures" extends="master.page">	
+		<put-attribute name="title" value="Imagenes" />
+		<put-attribute name="body" value="/views/provider/pictures.jsp" />
+	</definition>
+	
+	<definition name="provider/createItem" extends="master.page">	
+		<put-attribute name="title" value="Crear articulo" />
+		<put-attribute name="body" value="/views/provider/createEditItem.jsp" />
+	</definition>
+	
+	<definition name="provider/editItem" extends="master.page">	
+		<put-attribute name="title" value="Editar articulo" />
+		<put-attribute name="body" value="/views/provider/createEditItem.jsp" />
+	</definition>
+	
+	<definition name="provider/sponsorships" extends="master.page">	
+		<put-attribute name="title" value="Patrocinios" />
+		<put-attribute name="body" value="/views/provider/sponsorships.jsp" />
+	</definition>
+	
+	<definition name="sponsorship/create" extends="master.page">	
+		<put-attribute name="title" value="Crear patrocinio" />
+		<put-attribute name="body" value="/views/provider/createSponsorship.jsp" />
+	</definition>
+	
+	<definition name="sponsorship/edit" extends="master.page">	
+		<put-attribute name="title" value="Crear patrocinio" />
+		<put-attribute name="body" value="/views/provider/createSponsorship.jsp" />
+	</definition>
+
+</tiles-definitions>

@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!-- * tiles.xml * * Copyright (C) 2019 Universidad de Sevilla * * The use 
+	of this project is hereby constrained to the conditions of the * TDG Licence, 
+	a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+	<definition name="customer/action-1" extends="master.page">
+		<put-attribute name="title" value="Customer: Action 1" />
+		<put-attribute name="body"
+			value="/views/customer/action-1.jsp" />
+	</definition>
+
+	<definition name="customer/action-2" extends="master.page">
+		<put-attribute name="title" value="Customer: Action 2" />
+		<put-attribute name="body"
+			value="/views/customer/action-2.jsp" />
+	</definition>
+
+	<definition name="application/rookie/list"
+		extends="master.page">
+		<put-attribute name="title" value="Applications" />
+		<put-attribute name="body"
+			value="/views/rookie/applications.jsp" />
+	</definition>
+	
+	<definition name="application/rookie/edit"
+		extends="master.page">
+		<put-attribute name="title" value="Edit application" />
+		<put-attribute name="body"
+			value="/views/rookie/editApplication.jsp" />
+	</definition>
+	
+	<definition name="rookie/finderResult" extends="master.page">	
+		<put-attribute name="title" value="Finder results" />
+		<put-attribute name="body" value="/views/rookie/finderResult.jsp" />
+	</definition>
+	
+	<definition name="rookie/finder" extends="master.page">	
+		<put-attribute name="title" value="Finder" />
+		<put-attribute name="body" value="/views/rookie/finder.jsp" />
+	</definition>
+	
+	<definition name="rookie/curriculums" extends="master.page">	
+		<put-attribute name="title" value="Curriculums" />
+		<put-attribute name="body" value="/views/rookie/curriculums.jsp" />
+	</definition>
+	
+	<definition name="rookie/curriculum" extends="master.page">	
+		<put-attribute name="title" value="Curriculum" />
+		<put-attribute name="body" value="/views/rookie/curriculum.jsp" />
+	</definition>
+	
+	<definition name="rookie/attachments" extends="master.page">	
+		<put-attribute name="title" value="Attachments" />
+		<put-attribute name="body" value="/views/rookie/attachments.jsp" />
+	</definition>
+	
+	<definition name="rookie/createCurriculum" extends="master.page">	
+		<put-attribute name="title" value="Create curriculum" />
+		<put-attribute name="body" value="/views/rookie/createEditCurriculum.jsp" />
+	</definition>
+	
+	<definition name="rookie/editCurriculum" extends="master.page">	
+		<put-attribute name="title" value="Edit curriculum" />
+		<put-attribute name="body" value="/views/rookie/createEditCurriculum.jsp" />
+	</definition>
+	
+	<definition name="rookie/createPositionData" extends="master.page">	
+		<put-attribute name="title" value="Create position data" />
+		<put-attribute name="body" value="/views/rookie/createEditPositionData.jsp" />
+	</definition>
+	
+	<definition name="rookie/editPositionData" extends="master.page">	
+		<put-attribute name="title" value="Edit position data" />
+		<put-attribute name="body" value="/views/rookie/createEditPositionData.jsp" />
+	</definition>
+	
+	<definition name="rookie/createEducationData" extends="master.page">	
+		<put-attribute name="title" value="Create educacion data" />
+		<put-attribute name="body" value="/views/rookie/createEditEducationData.jsp" />
+	</definition>
+	
+	<definition name="rookie/editEducationData" extends="master.page">	
+		<put-attribute name="title" value="Edit education data" />
+		<put-attribute name="body" value="/views/rookie/createEditEducationData.jsp" />
+	</definition>
+	
+	<definition name="rookie/createMiscellaneousData" extends="master.page">	
+		<put-attribute name="title" value="Create miscellaneous data" />
+		<put-attribute name="body" value="/views/rookie/createEditMiscellaneousData.jsp" />
+	</definition>
+	
+	<definition name="rookie/editMiscellaneousData" extends="master.page">	
+		<put-attribute name="title" value="Edit miscellaneous data" />
+		<put-attribute name="body" value="/views/rookie/createEditMiscellaneousData.jsp" />
+	</definition>
+	
+	<definition name="rookie/createAttachment" extends="master.page">	
+		<put-attribute name="title" value="Create attachment" />
+		<put-attribute name="body" value="/views/rookie/createAttachment.jsp" />
+	</definition>
+	
+	<definition name="rookie/skills" extends="master.page">	
+		<put-attribute name="title" value="Skills" />
+		<put-attribute name="body" value="/views/rookie/skills.jsp" />
+	</definition>
+	
+	<definition name="rookie/technologies" extends="master.page">	
+		<put-attribute name="title" value="Technologies" />
+		<put-attribute name="body" value="/views/rookie/technologies.jsp" />
+	</definition>
+	
+	<definition name="position/rookie/audit/list" extends="master.page">	
+		<put-attribute name="title" value="Audits" />
+		<put-attribute name="body" value="/views/anonymous/showAuditsPosition.jsp" />
+	</definition>
+	
+</tiles-definitions>
