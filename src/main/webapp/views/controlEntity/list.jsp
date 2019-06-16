@@ -33,15 +33,15 @@
 	<display:table pagesize="5" name="controlEntity" id="row" requestURI="${requestURI}" >
 	
 		<jstl:choose>
-			<jstl:when test="${row.publicationMoment < now && row.publicationMoment >= oneMonth}">
+			<jstl:when test="${row.publicationMoment < now && row.publicationMoment >= oneMonth && !row.isDraftMode}">
 				<jstl:set var="color" value="Indigo" />
 			</jstl:when>
 			
-			<jstl:when test="${row.publicationMoment < oneMonth && row.publicationMoment >= twoMonth}">
+			<jstl:when test="${row.publicationMoment < oneMonth && row.publicationMoment >= twoMonth && !row.isDraftMode}">
 				<jstl:set var="color" value="DarkSlateGrey" />
 			</jstl:when>
 			
-			<jstl:when test="${row.publicationMoment < twoMonth}">
+			<jstl:when test="${row.publicationMoment < twoMonth && !row.isDraftMode}">
 				<jstl:set var="color" value="PapayaWhip" />
 			</jstl:when>
 			
