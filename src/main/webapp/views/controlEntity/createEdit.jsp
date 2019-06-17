@@ -8,7 +8,7 @@
 
 <security:authorize access="hasRole('AUDITOR')">
 
-	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
+	<form:form modelAttribute="controlEntity" action="controlEntity/auditor/save.do">
 		<!--Hidden Attributes -->
 		<form:hidden path="id" />
 		<form:hidden path="version" />
@@ -37,7 +37,7 @@
 			</jstl:otherwise>
 		</jstl:choose>
 		
-		<acme:cancel url="/controlEntity/company/list.do" code="controlEntity.cancel" />
+		<acme:cancel url="/controlEntity/auditor/list.do" code="controlEntity.cancel" />
 
 	</form:form>
 	
