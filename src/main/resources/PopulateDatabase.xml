@@ -820,7 +820,7 @@
 		</property>
 		<property name="userAccount" ref="userAccount16" />
 	</bean>
-
+	
 	<!-- ROOKIE -->
 	<!-- ROOKIE1 -->
 	<bean id="rookie1" class="domain.Rookie">
@@ -855,6 +855,9 @@
 
 		<property name="applications">
 			<list>
+				<ref bean="application1"/>
+				<ref bean="application3"/>
+				<ref bean="application4"/>
 			</list>
 		</property>
 
@@ -892,6 +895,8 @@
 
 		<property name="applications">
 			<list>
+				<ref bean="application2"/>
+				<ref bean="application5"/>
 			</list>
 		</property>
 
@@ -1735,21 +1740,79 @@
 	
 	<!-- APPLICATION -->
 	
-	
 			<bean id ="application1" class="domain.Application">
 				<property name="creationMoment" value="02/01/2017 11:30" />
 				<property name="link" value="https://www.youtube.com/watch?v=SVfovID6QU8" />
 				<property name="explication" value="Explication 1" />
 				<property name="submitMoment" value="02/01/2018 11:30" />
 				
-				<property name="status" value="SUBMITTED" />
+				<property name="status" value="ACCEPTED" />
 				<property name="problem" ref="problem2" />
 				<property name="position" ref="position1" />
 				<property name="curriculum" ref="curriculum5" />
 				<property name="rookie" ref="rookie1" />
+				<property name="controlEntity">
+					<list>
+						<ref bean="controlEntity1" />
+					</list>
+				</property>
 			</bean>
 			
 			<bean id ="application2" class="domain.Application">
+				<property name="creationMoment" value="02/01/2017 11:30" />
+				<property name="link" value="https://www.youtube.com/watch?v=SVfovID6QU8" />
+				<property name="explication" value="Explication 2" />
+				<property name="submitMoment" value="02/01/2018 11:30" />
+				
+				<property name="status" value="ACCEPTED" />
+				<property name="problem" ref="problem1" />
+				<property name="position" ref="position1" />
+				<property name="curriculum" ref="curriculum5" />
+				<property name="rookie" ref="rookie2" />
+				<property name="controlEntity">
+					<list>
+						<ref bean="controlEntity3" />
+					</list>
+				</property>
+			</bean>
+			
+			<bean id ="application4" class="domain.Application">
+				<property name="creationMoment" value="02/01/2017 11:30" />
+				<property name="link" value="https://www.youtube.com/watch?v=SVfovID6QU8" />
+				<property name="explication" value="Explication 4" />
+				<property name="submitMoment" value="02/01/2018 11:30" />
+				
+				<property name="status" value="ACCEPTED" />
+				<property name="problem" ref="problem7" />
+				<property name="position" ref="position5" />
+				<property name="curriculum" ref="curriculum5" />
+				<property name="rookie" ref="rookie1" />
+				<property name="controlEntity">
+					<list>
+						<ref bean="controlEntity2" />
+					</list>
+				</property>
+			</bean>
+			
+			<bean id ="application5" class="domain.Application">
+				<property name="creationMoment" value="02/01/2017 11:30" />
+				<property name="link" value="https://www.youtube.com/watch?v=SVfovID6QU8" />
+				<property name="explication" value="Explication 5" />
+				<property name="submitMoment" value="02/01/2018 11:30" />
+				
+				<property name="status" value="ACCEPTED" />
+				<property name="problem" ref="problem7" />
+				<property name="position" ref="position5" />
+				<property name="curriculum" ref="curriculum5" />
+				<property name="rookie" ref="rookie2" />
+				<property name="controlEntity">
+					<list>
+						<ref bean="controlEntity4" />
+					</list>
+				</property>
+			</bean>
+			
+			<bean id ="application3" class="domain.Application">
 				<property name="creationMoment" value="02/05/2019 12:00" />
 				<property name="status" value="PENDING" />
 				<property name="problem" ref="problem3" />
@@ -3781,12 +3844,6 @@
 			<property name="score" value="9" />
 			<property name="isDraftMode" value="false" />
 			<property name="momentCreation" value="11/11/2018 11:30" />
-			<property name="controlEntity">
-				<list>
-					<ref bean="controlEntity1" />
-					<ref bean="controlEntity2" />
-				</list>
-			</property>
 		</bean>
 		
 		<!-- AUDIT2 -->
