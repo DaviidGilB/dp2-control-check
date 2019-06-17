@@ -21,6 +21,7 @@ import security.UserAccount;
 import domain.Application;
 import domain.Audit;
 import domain.Company;
+import domain.ControlEntity;
 import domain.CreditCard;
 import domain.Message;
 import domain.Position;
@@ -61,6 +62,9 @@ public class CompanyService {
 
 	@Autowired
 	private SponsorshipService		sponsorshipService;
+	
+	@Autowired
+	private ControlEntityService controlEntityService;
 
 
 	//----------------------------------------CRUD METHODS--------------------------
@@ -427,6 +431,21 @@ public class CompanyService {
 		this.sponsorshipService.deleteInBatch(sponsorships);
 
 		List<Audit> audits = this.companyRepository.auditsOfCompany(companyId);
+		
+		// CONTROL_CHECK
+		List<ControlEntity> toDelete = new ArrayList<> ();
+		for(Audit a:audits) {
+			for(ControlEntity c:a.getControlEntity()) {
+				toDelete.add(c);
+			}
+		}
+		for(Audit a:audits) {
+			a.setControlEntity(new ArrayList<ControlEntity> ());
+			this.auditService.save(a);
+		}
+		for(ControlEntity c:toDelete) {
+			this.controlEntityService.delete(c);
+		}
 
 		this.auditService.deleteInBatch(audits);
 

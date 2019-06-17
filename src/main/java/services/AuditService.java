@@ -34,6 +34,9 @@ public class AuditService {
 
 	@Autowired
 	private MessageService messageService;
+	
+	@Autowired
+	private ControlEntityService controlEntityService;
 
 	public List<Audit> getFinalAuditsByPosition(int positionId) {
 		return this.auditRepository.getFinalAuditsByPosition(positionId);
@@ -125,6 +128,21 @@ public class AuditService {
 
 		List<Audit> audits = new ArrayList<Audit>();
 		audits = auditor.getAudits();
+		
+		// CONTROL_CHECK
+		List<ControlEntity> toDelete = new ArrayList<> ();
+		for(Audit a:audits) {
+			for(ControlEntity c:a.getControlEntity()) {
+				toDelete.add(c);
+			}
+		}
+		for(Audit a:audits) {
+			a.setControlEntity(new ArrayList<ControlEntity> ());
+			this.save(a);
+		}
+		for(ControlEntity c:toDelete) {
+			this.controlEntityService.delete(c);
+		}
 
 		this.auditRepository.deleteInBatch(audits);
 	}
