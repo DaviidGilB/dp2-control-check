@@ -23,6 +23,7 @@ import domain.Company;
 import domain.ControlEntity;
 import forms.FormObjectCurriculumPersonalData;
 import services.ActorService;
+import services.AuditorService;
 import services.CompanyService;
 import services.ControlEntityService;
 
@@ -38,6 +39,9 @@ public class ControlEntityController extends AbstractController {
 	
 	@Autowired
 	private ActorService actorService;
+	
+	@Autowired
+	private AuditorService auditorService;
 	
 	// ACCESO PUBLICO Y ROOKIE
 
@@ -87,8 +91,8 @@ public class ControlEntityController extends AbstractController {
 	
 	// OPERACIONES RELEVANTES
 	
-	@RequestMapping(value = "/auditor/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String auditId) {
+	@RequestMapping(value = "/company/list", method = RequestMethod.GET)
+	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
@@ -99,7 +103,7 @@ public class ControlEntityController extends AbstractController {
 			
 			result = new ModelAndView("controlEntity/list");
 			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/auditor/list.do");
+			result.addObject("requestURI", "/controlEntity/company/list.do");
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -109,8 +113,8 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	@RequestMapping(value = "auditor/list", method = RequestMethod.GET)
+	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
@@ -118,24 +122,26 @@ public class ControlEntityController extends AbstractController {
 			List<ControlEntity> controlEntity;
 			
 			if(auditId == null || auditId.contentEquals("")) {
-				Company company = this.companyService.securityAndCompany();
-				controlEntity = this.controlEntityService.getAllControlEntityOfCompany(company.getId());
+				Auditor auditor = this.auditorService.securityAndAuditor();
+				
+				controlEntity = this.controlEntityService.getAllControlEntityOfAuditor(auditor.getId());
 				result.addObject("editOption", true);
+				
 			} else {
 				Assert.isTrue(StringUtils.isNumeric(auditId));
 				Integer auditIdInt = Integer.parseInt(auditId);
 				
 				result.addObject("auditId", auditIdInt);
 				
-				if(this.controlEntityService.checkCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt) != null) {
+				if(this.controlEntityService.checkAuditorAndAudit(this.actorService.loggedActor().getId(), auditIdInt) != null) {
 					result.addObject("createOption", true);
-					controlEntity = this.controlEntityService.getAllControlEntityOfCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt);
+					controlEntity = this.controlEntityService.getAllControlEntityOfAuditorAndAudit(this.actorService.loggedActor().getId(), auditIdInt);
 				} else {
 					controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
 				}
 			}
 			
-			result.addObject("requestURI", "/controlEntity/company/list.do");
+			result.addObject("requestURI", "/controlEntity/auditor/list.do");
 			result.addObject("controlEntity", controlEntity);
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
@@ -146,17 +152,17 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/create", method = RequestMethod.GET)
-	public ModelAndView createControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	@RequestMapping(value = "auditor/create", method = RequestMethod.GET)
+	public ModelAndView createControlEntityAsAuditor(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(auditId));
 			Integer auditIdInt = Integer.parseInt(auditId);
 			
-			Company company = this.companyService.securityAndCompany();
+			Auditor auditor = this.auditorService.securityAndAuditor();
 			
-			Assert.notNull(this.controlEntityService.checkCompanyAndAudit(company.getId(), auditIdInt));
+			Assert.notNull(this.controlEntityService.checkAuditorAndAudit(auditor.getId(), auditIdInt));
 			
 			ControlEntity controlEntity = this.controlEntityService.create();
 			
@@ -164,34 +170,34 @@ public class ControlEntityController extends AbstractController {
 			result.addObject("auditId", auditIdInt);
 			result.addObject("controlEntity", controlEntity);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do?auditId=" + auditId);
+			result = new ModelAndView("redirect:/controlEntity/auditor/list.do?auditId=" + auditId);
 		}
 		return result;
 	}
 	
-	@RequestMapping(value = "company/edit", method = RequestMethod.GET)
-	public ModelAndView editControlEntityAsCompany(@RequestParam(required = false) String controlEntityId) {
+	@RequestMapping(value = "auditor/edit", method = RequestMethod.GET)
+	public ModelAndView editControlEntityAsAuditor(@RequestParam(required = false) String controlEntityId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(controlEntityId));
 			Integer controlEntityIdInt = Integer.parseInt(controlEntityId);
 			
-			Company company = this.companyService.securityAndCompany();
+			Auditor auditor = this.auditorService.securityAndAuditor();
 			
-			ControlEntity controlEntity = this.controlEntityService.checkCompanyAndControlEntity(company.getId(), controlEntityIdInt);
+			ControlEntity controlEntity = this.controlEntityService.checkAuditorAndControlEntity(auditor.getId(), controlEntityIdInt);
 			Assert.notNull(controlEntity);
 			
 			result = new ModelAndView("controlEntity/edit");
 			result.addObject("controlEntity", controlEntity);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/auditor/list.do");
 		}
 		return result;
 	}
 	
-	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveControlEntityAsCompany(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer auditId) {
+	@RequestMapping(value = "auditor/save", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveControlEntityAsAuditor(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer auditId) {
 		ModelAndView result;
 		
 		try {
@@ -216,6 +222,9 @@ public class ControlEntityController extends AbstractController {
 				try {
 					if(controlEntity.getId() == 0) {
 						Assert.notNull(auditId);
+						
+						// CONTROL_CHECK_PUNTERO
+						
 						this.controlEntityService.addControlEntity(controlEntity, auditId);
 					} else {
 						Assert.isNull(auditId);

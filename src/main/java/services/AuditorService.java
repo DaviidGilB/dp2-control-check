@@ -16,6 +16,7 @@ import org.springframework.validation.FieldError;
 
 import domain.Audit;
 import domain.Auditor;
+import domain.Company;
 import domain.CreditCard;
 import domain.Message;
 import domain.Position;
@@ -74,6 +75,14 @@ public class AuditorService {
 		List<Authority> authorities = (List<Authority>) userAccount.getAuthorities();
 		Assert.isTrue(authorities.get(0).toString().equals("AUDITOR"));
 
+	}
+	
+	public Auditor securityAndAuditor() {
+		UserAccount userAccount;
+		userAccount = LoginService.getPrincipal();
+		List<Authority> authorities = (List<Authority>) userAccount.getAuthorities();
+		Assert.isTrue(authorities.get(0).toString().equals("AUDITOR"));
+		return this.auditorRepository.getAuditorByUsername(userAccount.getUsername());
 	}
 
 	public void saveAudit(Audit a) {

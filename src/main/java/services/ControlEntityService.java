@@ -27,6 +27,7 @@ import repositories.PositionRepository;
 import domain.Actor;
 import domain.Application;
 import domain.Audit;
+import domain.Auditor;
 import domain.Company;
 import domain.ControlEntity;
 import domain.Position;
@@ -49,6 +50,9 @@ public class ControlEntityService {
 	
 	@Autowired
 	private Validator validator;
+	
+	@Autowired
+	private AuditorService auditorService;
 
 	// CRUDS
 	
@@ -77,24 +81,24 @@ public class ControlEntityService {
 		return controlEntity;
 	}
 
-	public List<ControlEntity> getAllControlEntityOfCompany(Integer companyId) {
-		Company company = this.companyService.securityAndCompany();
-		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompany(companyId);
+	public List<ControlEntity> getAllControlEntityOfAuditor(Integer auditorId) {
+		Auditor auditor = this.auditorService.securityAndAuditor();
+		Assert.isTrue(auditor.getId() == auditorId);
+		return this.controlEntityRepository.getAllControlEntityOfAuditor(auditorId);
 	}
 	
-	public List<ControlEntity> getAllControlEntityOfCompanyAndAudit(Integer companyId, Integer auditId) {
-		Company company = this.companyService.securityAndCompany();
-		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompanyAndAudit(companyId, auditId);
+	public List<ControlEntity> getAllControlEntityOfAuditorAndAudit(Integer auditorId, Integer auditId) {
+		Auditor auditor = this.auditorService.securityAndAuditor();
+		Assert.isTrue(auditor.getId() == auditorId);
+		return this.controlEntityRepository.getAllControlEntityOfAuditorAndAudit(auditorId, auditId);
 	}
 
-	public Audit checkCompanyAndAudit(Integer companyId, Integer auditId) {
-		return this.controlEntityRepository.checkCompanyAndAudit(companyId, auditId);
+	public Audit checkAuditorAndAudit(Integer auditorId, Integer auditId) {
+		return this.controlEntityRepository.checkAuditorAndAudit(auditorId, auditId);
 	}
 	
-	public ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId) {
-		return this.controlEntityRepository.checkCompanyAndControlEntity(companyId, controlEntityId);
+	public ControlEntity checkAuditorAndControlEntity(Integer auditorId, Integer controlEntityId) {
+		return this.controlEntityRepository.checkAuditorAndControlEntity(auditorId, controlEntityId);
 	}
 
 	public ControlEntity create() {
@@ -137,7 +141,7 @@ public class ControlEntityService {
 	}
 
 	public void addControlEntity(ControlEntity controlEntity, Integer auditId) {
-		Company company = this.companyService.securityAndCompany();
+		Company auditor = this.companyService.securityAndCompany();
 		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), auditId);
 		Assert.notNull(audit);
 		Assert.isTrue(!audit.getIsDraftMode());

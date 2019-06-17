@@ -6,7 +6,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-<security:authorize access="hasRole('COMPANY')">
+<security:authorize access="hasRole('AUDITOR')">
 
 	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
 		<!--Hidden Attributes -->
