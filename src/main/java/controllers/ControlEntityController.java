@@ -223,15 +223,13 @@ public class ControlEntityController extends AbstractController {
 					if(controlEntity.getId() == 0) {
 						Assert.notNull(auditId);
 						
-						// CONTROL_CHECK_PUNTERO
-						
 						this.controlEntityService.addControlEntity(controlEntity, auditId);
 					} else {
 						Assert.isNull(auditId);
 						this.controlEntityService.updateControlEntity(controlEntity);
 					}
 					
-					result = new ModelAndView("redirect:/controlEntity/company/list.do");
+					result = new ModelAndView("redirect:/controlEntity/auditor/list.do");
 				} catch(Throwable oops) {
 					result = new ModelAndView(tiles);
 					result.addObject("controlEntity", controlEntity);
@@ -250,15 +248,15 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "delete")
-	public ModelAndView deleteControlEntityAsCompany(ControlEntity controlEntity) {
+	@RequestMapping(value = "auditor/save", method = RequestMethod.POST, params = "delete")
+	public ModelAndView deleteControlEntityAsAuditor(ControlEntity controlEntity) {
 		ModelAndView result;
 		
 		try {
 			this.controlEntityService.deleteControlEntity(controlEntity);
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/auditor/list.do");
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/auditor/list.do");
 		}
 		
 		return result;

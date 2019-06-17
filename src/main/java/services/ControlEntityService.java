@@ -141,8 +141,8 @@ public class ControlEntityService {
 	}
 
 	public void addControlEntity(ControlEntity controlEntity, Integer auditId) {
-		Company auditor = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), auditId);
+		Auditor auditor = this.auditorService.securityAndAuditor();
+		Audit audit = this.controlEntityRepository.checkAuditorAndAudit(auditor.getId(), auditId);
 		Assert.notNull(audit);
 		Assert.isTrue(!audit.getIsDraftMode());
 		
@@ -161,8 +161,8 @@ public class ControlEntityService {
 	}
 	
 	public void updateControlEntity(ControlEntity controlEntity) {
-		Company company = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), this.controlEntityRepository.getAuditOfControlEntity(controlEntity.getId()).getId());
+		Auditor auditor = this.auditorService.securityAndAuditor();
+		Audit audit = this.controlEntityRepository.checkAuditorAndAudit(auditor.getId(), this.controlEntityRepository.getAuditOfControlEntity(controlEntity.getId()).getId());
 		Assert.notNull(audit);
 		Assert.isTrue(!audit.getIsDraftMode());
 		
@@ -180,8 +180,8 @@ public class ControlEntityService {
 	}
 
 	public void deleteControlEntity(ControlEntity controlEntity) {
-		Company company = this.companyService.securityAndCompany();
-		ControlEntity controlEntityFounded = this.checkCompanyAndControlEntity(company.getId(), controlEntity.getId());
+		Auditor auditor = this.auditorService.securityAndAuditor();
+		ControlEntity controlEntityFounded = this.checkAuditorAndControlEntity(auditor.getId(), controlEntity.getId());
 		Assert.notNull(controlEntityFounded);
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
 		

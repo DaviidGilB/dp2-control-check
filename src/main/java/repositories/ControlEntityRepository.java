@@ -19,30 +19,24 @@ import domain.Sponsorship;
 @Repository
 public interface ControlEntityRepository extends JpaRepository<ControlEntity, Integer> {
 
-	// DONE
 	@Query("select c from Audit a join a.controlEntity c where a.id = ?1 and c.isDraftMode = false and a.isDraftMode = false")
 	List<ControlEntity> getFinalControlEntityOfAudit(Integer auditId);
 	
 	@Query("select c from Audit a join a.controlEntity c where a.id = ?1 and a.isDraftMode = false")
 	List<ControlEntity> getAllControlEntityOfAudit(Integer auditId);
 
-	// DONE
 	@Query("select c from Auditor a join a.audits ads join ads.controlEntity c where a.id = ?1 and ads.isDraftMode = false")
 	List<ControlEntity> getAllControlEntityOfAuditor(Integer auditorId);
 
-	// DONE
 	@Query("select a from Auditor aud join aud.audits a where aud.id = ?1 and a.id = ?2")
 	Audit checkAuditorAndAudit(Integer auditorId, Integer auditId);
 	
-	// DONE
 	@Query("select c.ticker from ControlEntity c")
 	List<String> getAllTickers();
 
-	// DONE
 	@Query("select c from Auditor aud join aud.audits a join a.controlEntity c where aud.id = ?1 and a.id = ?2")
 	List<ControlEntity> getAllControlEntityOfAuditorAndAudit(Integer auditorId, Integer auditId);
 
-	// DONE
 	@Query("select c from Auditor aud join aud.audits a join a.controlEntity c where aud.id = ?1 and c.id = ?2 and c.isDraftMode = true")
 	ControlEntity checkAuditorAndControlEntity(Integer auditorId, Integer controlEntityId);
 
