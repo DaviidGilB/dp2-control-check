@@ -21,6 +21,7 @@ import repositories.ApplicationRepository;
 import domain.Actor;
 import domain.Application;
 import domain.Company;
+import domain.ControlEntity;
 import domain.Curriculum;
 import domain.Rookie;
 import domain.Position;
@@ -79,6 +80,9 @@ public class ApplicationService {
 
 		application.setCreationMoment(thisMoment);
 		application.setStatus(Status.PENDING);
+		
+		// CONTROL_CHECK
+		application.setControlEntity(new ArrayList<ControlEntity>());
 
 		return application;
 

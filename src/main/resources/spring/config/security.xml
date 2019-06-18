@@ -31,7 +31,6 @@
 		<!-- CONTROL_CHECK -->
 		<security:intercept-url pattern="/controlEntity/company/**" access="hasRole('COMPANY')" /> 
 		<security:intercept-url pattern="/controlEntity/anonymous/**" access="permitAll" />
-		<security:intercept-url pattern="/controlEntity/auditor/**" access="hasRole('AUDITOR')" />
 		<security:intercept-url pattern="/controlEntity/rookie/**" access="hasRole('ROOKIE')" />
 	
 		<!-- PERMIT ALL -->

@@ -64,9 +64,6 @@ public class AuditService {
 		audit.setMomentCreation(null);
 		audit.setPosition(position);
 		audit.setScore(0);
-		
-		// CONTROL_CHECK
-		audit.setControlEntity(new ArrayList<ControlEntity>());
 
 		return audit;
 	}
