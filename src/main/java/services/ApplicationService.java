@@ -20,6 +20,7 @@ import org.springframework.web.servlet.ModelAndView;
 import repositories.ApplicationRepository;
 import domain.Actor;
 import domain.Application;
+import domain.Audit;
 import domain.Company;
 import domain.ControlEntity;
 import domain.Curriculum;
@@ -52,6 +53,9 @@ public class ApplicationService {
 
 	@Autowired
 	private CurriculumService curriculumService;
+	
+	@Autowired
+	private ControlEntityService controlEntityService;
 
 	@Autowired
 	private MessageService messageService;
@@ -214,6 +218,21 @@ public class ApplicationService {
 
 		List<Application> applications = new ArrayList<Application>();
 		applications = rookie.getApplications();
+		
+		// CONTROL_CHECK
+		List<ControlEntity> toDelete = new ArrayList<> ();
+		for(Application a:applications) {
+			for(ControlEntity c:a.getControlEntity()) {
+				toDelete.add(c);
+			}
+		}
+		for(Application a:applications) {
+			a.setControlEntity(new ArrayList<ControlEntity> ());
+			this.save(a);
+		}
+		for(ControlEntity c:toDelete) {
+			this.controlEntityService.delete(c);
+		}
 
 		// Quitamos todos los applications de rookie
 

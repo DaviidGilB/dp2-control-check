@@ -431,21 +431,6 @@ public class CompanyService {
 		this.sponsorshipService.deleteInBatch(sponsorships);
 
 		List<Audit> audits = this.companyRepository.auditsOfCompany(companyId);
-		
-		// CONTROL_CHECK
-		List<ControlEntity> toDelete = new ArrayList<> ();
-		for(Audit a:audits) {
-			for(ControlEntity c:a.getControlEntity()) {
-				toDelete.add(c);
-			}
-		}
-		for(Audit a:audits) {
-			a.setControlEntity(new ArrayList<ControlEntity> ());
-			this.auditService.save(a);
-		}
-		for(ControlEntity c:toDelete) {
-			this.controlEntityService.delete(c);
-		}
 
 		this.auditService.deleteInBatch(audits);
 
@@ -455,6 +440,21 @@ public class CompanyService {
 
 		for (Rookie h : rookies) {
 			h.getApplications().removeAll(applications);
+		}
+		
+		// CONTROL_CHECK
+		List<ControlEntity> toDelete = new ArrayList<> ();
+		for(Application a:applications) {
+			for(ControlEntity c:a.getControlEntity()) {
+				toDelete.add(c);
+			}
+		}
+		for(Application a:applications) {
+			a.setControlEntity(new ArrayList<ControlEntity> ());
+			this.applicationService.save(a);
+		}
+		for(ControlEntity c:toDelete) {
+			this.controlEntityService.delete(c);
 		}
 
 		for (Application a : applications) {

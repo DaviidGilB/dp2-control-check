@@ -12,7 +12,6 @@
 
 	<display:table pagesize="5" name="allApplications" id="row" requestURI="${requestURI}" >
 
-
 	
 	<display:column titleKey="application.creationMoment" >
 		<jstl:out value="${row.creationMoment}" />
