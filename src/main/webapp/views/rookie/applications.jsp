@@ -107,6 +107,17 @@
 						code="application.edit" /></a>
 			</jstl:if>
 		</display:column>
+		
+		<!-- CONTROL_CHECK -->
+		<display:column titleKey="audit.controlEntity">
+			<jstl:if test="${row.status == 'ACCEPTED' || row.status == 'REJECTED'}">
+				<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
+					<spring:param name="applicationId" value="${row.id}"/>
+				</spring:url>
+				<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+			</jstl:if>
+		</display:column>
 
 	</display:table>
 

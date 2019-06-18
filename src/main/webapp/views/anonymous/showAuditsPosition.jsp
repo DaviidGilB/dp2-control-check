@@ -25,42 +25,7 @@
 			<jstl:out value="${row.auditor.userAccount.username}" />
 		</display:column>
 		
-		<!-- CONTROL_CHECK -->
-		
-		<display:column titleKey="audit.controlEntity">
-			<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-			
-			<jstl:choose>
-				<jstl:when test="${assignable}">
-					<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
-						<spring:param name="auditId" value="${row.id}"/>
-					</spring:url>
-					<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-				</jstl:when>
-			
-		    	<jstl:otherwise>
-		    		<security:authorize access="hasAnyRole('AUDITOR')">
-		  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-		  			</security:authorize>
-		  			<security:authorize access="hasAnyRole('ROOKIE')">
-		  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-		  			</security:authorize>
-		  			<security:authorize access="hasAnyRole('COMPANY')">
-		  				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-		  			</security:authorize>
-		  		</jstl:otherwise>
-		  	</jstl:choose>
-			
-		</display:column>
+	
 	</display:table>
 	
 	<jstl:choose>
