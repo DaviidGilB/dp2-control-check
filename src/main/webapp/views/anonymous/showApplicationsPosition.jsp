@@ -75,6 +75,8 @@
 	
 	</display:column>
 	
+	</security:authorize>
+	
 	<!-- CONTROL_CHECK -->
 	<display:column titleKey="audit.controlEntity">
 		<jstl:if test="${row.status == 'ACCEPTED' || row.status == 'REJECTED'}">
@@ -85,10 +87,6 @@
 			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
 		</jstl:if>
 	</display:column>
-	
-	
-	</security:authorize>
-	
 	
 	</display:table>
 	
