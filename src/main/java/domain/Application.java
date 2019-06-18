@@ -2,6 +2,7 @@
 package domain;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
@@ -11,6 +12,7 @@ import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.Index;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.Valid;
@@ -35,6 +37,19 @@ public class Application extends DomainEntity {
 	private Position position;
 	private Curriculum curriculum;
 	private Rookie rookie;
+	
+	// CONTROL_CHECK
+	private List<ControlEntity> controlEntity;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@Valid
+	public List<ControlEntity> getControlEntity() {
+		return controlEntity;
+	}
+
+	public void setControlEntity(List<ControlEntity> controlEntity) {
+		this.controlEntity = controlEntity;
+	}
 
 	@Past
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
