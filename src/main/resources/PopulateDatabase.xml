@@ -3854,12 +3854,6 @@
 			<property name="score" value="5" />
 			<property name="isDraftMode" value="false" />
 			<property name="momentCreation" value="11/11/2016 11:30" />
-			<property name="controlEntity">
-				<list>
-					<ref bean="controlEntity3" />
-					<ref bean="controlEntity4" />
-				</list>
-			</property>
 		</bean>
 
 	<!-- CONTROL ENTITY -->

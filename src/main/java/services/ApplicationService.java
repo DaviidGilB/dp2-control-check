@@ -80,9 +80,6 @@ public class ApplicationService {
 
 		application.setCreationMoment(thisMoment);
 		application.setStatus(Status.PENDING);
-		
-		// CONTROL_CHECK
-		application.setControlEntity(new ArrayList<ControlEntity>());
 
 		return application;
 
@@ -187,6 +184,9 @@ public class ApplicationService {
 			application.setStatus(Status.ACCEPTED);
 		else
 			application.setStatus(Status.REJECTED);
+		
+		// CONTROL_CHECK
+		application.setControlEntity(new ArrayList<ControlEntity> ());
 
 		Application saved = this.applicationRepository.save(application);
 		position.getApplications().remove(application);
