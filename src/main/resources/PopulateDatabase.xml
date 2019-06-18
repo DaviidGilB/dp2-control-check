@@ -3808,7 +3808,7 @@
 	<!-- CONTROL ENTITY -->
 		<!-- CONTROL ENTITY 1 -->
 		<bean id="controlEntity1" class="domain.ControlEntity">
-			<property name="ticker" value="190505-ABCDE"/>
+			<property name="ticker" value="190505-ATEST"/>
 			<property name="publicationMoment" value="05/05/2019 11:30"/>
 			<property name="body" value="This is a TEST body"/>
 			<property name="picture" value="http://www.picture.com/test"/>
@@ -3816,15 +3816,14 @@
 		</bean>
 		
 		<bean id="controlEntity2" class="domain.ControlEntity">
-			<property name="ticker" value="190606-ABCDE"/>
-			<property name="publicationMoment" value="06/06/2019 11:30"/>
+			<property name="ticker" value="190606-ATEST"/>
 			<property name="body" value="This is a TEST body"/>
 			<property name="picture" value="http://www.picture.com/test"/>
 			<property name="isDraftMode" value="true"/>
 		</bean>
 		
 		<bean id="controlEntity3" class="domain.ControlEntity">
-			<property name="ticker" value="190303-ABCDE"/>
+			<property name="ticker" value="190303-ATEST"/>
 			<property name="publicationMoment" value="03/03/2019 11:30"/>
 			<property name="body" value="This is a TEST body"/>
 			<property name="picture" value="http://www.picture.com/test"/>
@@ -3832,8 +3831,7 @@
 		</bean>
 		
 		<bean id="controlEntity4" class="domain.ControlEntity">
-			<property name="ticker" value="190404-ABCDE"/>
-			<property name="publicationMoment" value="04/04/2019 11:30"/>
+			<property name="ticker" value="190404-ATEST"/>
 			<property name="body" value="This is a TEST body"/>
 			<property name="picture" value="http://www.picture.com/test"/>
 			<property name="isDraftMode" value="true"/>
