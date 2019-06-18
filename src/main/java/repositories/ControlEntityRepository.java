@@ -29,7 +29,7 @@ public interface ControlEntityRepository extends JpaRepository<ControlEntity, In
 	List<ControlEntity> getAllControlEntityOfCompany(Integer companyId);
 
 	@Query("select a from Company c join c.positions p join p.applications a where c.id = ?1 and a.id = ?2")
-	Audit checkCompanyAndApplication(Integer companyId, Integer applicationId);
+	Application checkCompanyAndApplication(Integer companyId, Integer applicationId);
 	
 	@Query("select c.ticker from ControlEntity c")
 	List<String> getAllTickers();
@@ -41,6 +41,6 @@ public interface ControlEntityRepository extends JpaRepository<ControlEntity, In
 	ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId);
 
 	@Query("select a from Application a join a.controlEntity c where c.id = ?1")
-	Audit getApplicationOfControlEntity(Integer controlEntityId);
+	Application getApplicationOfControlEntity(Integer controlEntityId);
 
 }

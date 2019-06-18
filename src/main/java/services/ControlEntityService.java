@@ -42,7 +42,7 @@ public class ControlEntityService {
 	private ControlEntityRepository	controlEntityRepository;
 	
 	@Autowired
-	private AuditService auditService;
+	private ApplicationService applicationService;
 	
 	@Autowired
 	private CompanyService companyService;
@@ -70,8 +70,8 @@ public class ControlEntityService {
 
 	// OTHER OPERATIONS
 	
-	public List<ControlEntity> getFinalControlEntityOfAudit(Integer auditId) {
-		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfAudit(auditId);
+	public List<ControlEntity> getFinalControlEntityOfApplication(Integer applicationId) {
+		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfApplication(applicationId);
 		Assert.notNull(controlEntity);
 		Assert.notEmpty(controlEntity);
 		return controlEntity;
@@ -83,14 +83,14 @@ public class ControlEntityService {
 		return this.controlEntityRepository.getAllControlEntityOfCompany(companyId);
 	}
 	
-	public List<ControlEntity> getAllControlEntityOfCompanyAndAudit(Integer companyId, Integer auditId) {
+	public List<ControlEntity> getAllControlEntityOfCompanyAndApplication(Integer companyId, Integer applicationId) {
 		Company company = this.companyService.securityAndCompany();
 		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompanyAndAudit(companyId, auditId);
+		return this.controlEntityRepository.getAllControlEntityOfCompanyAndApplication(companyId, applicationId);
 	}
 
-	public Audit checkCompanyAndAudit(Integer companyId, Integer auditId) {
-		return this.controlEntityRepository.checkCompanyAndAudit(companyId, auditId);
+	public Application checkCompanyAndApplication(Integer companyId, Integer applicationId) {
+		return this.controlEntityRepository.checkCompanyAndApplication(companyId, applicationId);
 	}
 	
 	public ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId) {
@@ -136,11 +136,11 @@ public class ControlEntityService {
 		this.validator.validate(controlEntity, binding);
 	}
 
-	public void addControlEntity(ControlEntity controlEntity, Integer auditId) {
+	public void addControlEntity(ControlEntity controlEntity, Integer applicationId) {
 		Company company = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), auditId);
-		Assert.notNull(audit);
-		Assert.isTrue(!audit.getIsDraftMode());
+		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), applicationId);
+		Assert.notNull(application);
+		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -149,18 +149,18 @@ public class ControlEntityService {
 			controlEntity.setPublicationMoment(date);
 		}
 		
-		List<ControlEntity> list = audit.getControlEntity();
+		List<ControlEntity> list = application.getControlEntity();
 		list.add(controlEntity);
-		audit.setControlEntity(list);
+		application.setControlEntity(list);
 		
-		this.auditService.save(audit);
+		this.applicationService.save(application);
 	}
 	
 	public void updateControlEntity(ControlEntity controlEntity) {
 		Company company = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), this.controlEntityRepository.getAuditOfControlEntity(controlEntity.getId()).getId());
-		Assert.notNull(audit);
-		Assert.isTrue(!audit.getIsDraftMode());
+		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), this.controlEntityRepository.getApplicationOfControlEntity(controlEntity.getId()).getId());
+		Assert.notNull(application);
+		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -181,11 +181,11 @@ public class ControlEntityService {
 		Assert.notNull(controlEntityFounded);
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
 		
-		Audit audit = this.controlEntityRepository.getAuditOfControlEntity(controlEntityFounded.getId());
-		List<ControlEntity> list = audit.getControlEntity();
+		Application application = this.controlEntityRepository.getApplicationOfControlEntity(controlEntityFounded.getId());
+		List<ControlEntity> list = application.getControlEntity();
 		list.remove(controlEntityFounded);
-		audit.setControlEntity(list);
-		this.auditService.save(audit);
+		application.setControlEntity(list);
+		this.applicationService.save(application);
 		
 		this.delete(controlEntityFounded);
 	}
