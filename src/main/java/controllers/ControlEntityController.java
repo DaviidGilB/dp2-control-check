@@ -39,17 +39,17 @@ public class ControlEntityController extends AbstractController {
 	@Autowired
 	private ActorService actorService;
 	
-	// ACCESO PUBLICO Y ROOKIE
+	// ACCESO PUBLICO
 
 	@RequestMapping(value = "/anonymous/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAnonymous(@RequestParam(required = false) String auditId) {
+	public ModelAndView listControlEntityAsAnonymous(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
-			Assert.isTrue(StringUtils.isNumeric(auditId));
-			Integer auditIdInt = Integer.parseInt(auditId);
+			Assert.isTrue(StringUtils.isNumeric(applicationId));
+			Integer applicationIdInt = Integer.parseInt(applicationId);
 			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfApplication(applicationIdInt);
 			
 			result = new ModelAndView("controlEntity/list");
 			result.addObject("controlEntity", controlEntity);
@@ -63,15 +63,17 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "rookie/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsRookie(@RequestParam(required = false) String auditId) {
+	// OPERACIONES RELEVANTES
+	
+	@RequestMapping(value = "/rookie/list", method = RequestMethod.GET)
+	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
-			Assert.isTrue(StringUtils.isNumeric(auditId));
-			Integer auditIdInt = Integer.parseInt(auditId);
+			Assert.isTrue(StringUtils.isNumeric(applicationId));
+			Integer applicationIdInt = Integer.parseInt(applicationId);
 			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfApplication(applicationIdInt);
 			
 			result = new ModelAndView("controlEntity/list");
 			result.addObject("controlEntity", controlEntity);
@@ -85,53 +87,29 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	// OPERACIONES RELEVANTES
-	
-	@RequestMapping(value = "/auditor/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String auditId) {
-		ModelAndView result;
-		
-		try {
-			Assert.isTrue(StringUtils.isNumeric(auditId));
-			Integer auditIdInt = Integer.parseInt(auditId);
-			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
-			
-			result = new ModelAndView("controlEntity/list");
-			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/auditor/list.do");
-			
-			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
-			result.addObject("locale", locale);
-		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/");
-		}
-		return result;
-	}
-	
 	@RequestMapping(value = "company/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
 			result = new ModelAndView("controlEntity/list");
 			List<ControlEntity> controlEntity;
 			
-			if(auditId == null || auditId.contentEquals("")) {
+			if(applicationId == null || applicationId.contentEquals("")) {
 				Company company = this.companyService.securityAndCompany();
 				controlEntity = this.controlEntityService.getAllControlEntityOfCompany(company.getId());
 				result.addObject("editOption", true);
 			} else {
-				Assert.isTrue(StringUtils.isNumeric(auditId));
-				Integer auditIdInt = Integer.parseInt(auditId);
+				Assert.isTrue(StringUtils.isNumeric(applicationId));
+				Integer applicationIdInt = Integer.parseInt(applicationId);
 				
-				result.addObject("auditId", auditIdInt);
+				result.addObject("applicationId", applicationIdInt);
 				
-				if(this.controlEntityService.checkCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt) != null) {
+				if(this.controlEntityService.checkCompanyAndApplication(this.actorService.loggedActor().getId(), applicationIdInt) != null) {
 					result.addObject("createOption", true);
-					controlEntity = this.controlEntityService.getAllControlEntityOfCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt);
+					controlEntity = this.controlEntityService.getAllControlEntityOfCompanyAndApplication(this.actorService.loggedActor().getId(), applicationIdInt);
 				} else {
-					controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+					controlEntity = this.controlEntityService.getFinalControlEntityOfApplication(applicationIdInt);
 				}
 			}
 			
@@ -147,24 +125,24 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "company/create", method = RequestMethod.GET)
-	public ModelAndView createControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	public ModelAndView createControlEntityAsCompany(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
-			Assert.isTrue(StringUtils.isNumeric(auditId));
-			Integer auditIdInt = Integer.parseInt(auditId);
+			Assert.isTrue(StringUtils.isNumeric(applicationId));
+			Integer applicationIdInt = Integer.parseInt(applicationId);
 			
 			Company company = this.companyService.securityAndCompany();
 			
-			Assert.notNull(this.controlEntityService.checkCompanyAndAudit(company.getId(), auditIdInt));
+			Assert.notNull(this.controlEntityService.checkCompanyAndApplication(company.getId(), applicationIdInt));
 			
 			ControlEntity controlEntity = this.controlEntityService.create();
 			
 			result = new ModelAndView("controlEntity/create");
-			result.addObject("auditId", auditIdInt);
+			result.addObject("applicationId", applicationIdInt);
 			result.addObject("controlEntity", controlEntity);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do?auditId=" + auditId);
+			result = new ModelAndView("redirect:/controlEntity/company/list.do?applicationId=" + applicationId);
 		}
 		return result;
 	}
@@ -191,7 +169,7 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveControlEntityAsCompany(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer auditId) {
+	public ModelAndView saveControlEntityAsCompany(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer applicationId) {
 		ModelAndView result;
 		
 		try {
@@ -209,16 +187,16 @@ public class ControlEntityController extends AbstractController {
 				result = new ModelAndView(tiles);
 				result.addObject("controlEntity", controlEntity);
 				
-				if(auditId != null) {
-					result.addObject("auditId", auditId);
+				if(applicationId != null) {
+					result.addObject("applicationId", applicationId);
 				}
 			} else {
 				try {
 					if(controlEntity.getId() == 0) {
-						Assert.notNull(auditId);
-						this.controlEntityService.addControlEntity(controlEntity, auditId);
+						Assert.notNull(applicationId);
+						this.controlEntityService.addControlEntity(controlEntity, applicationId);
 					} else {
-						Assert.isNull(auditId);
+						Assert.isNull(applicationId);
 						this.controlEntityService.updateControlEntity(controlEntity);
 					}
 					
@@ -228,8 +206,8 @@ public class ControlEntityController extends AbstractController {
 					result.addObject("controlEntity", controlEntity);
 					result.addObject("message", "controlEntity.commit.error");
 					
-					if(auditId != null) {
-						result.addObject("auditId", auditId);
+					if(applicationId != null) {
+						result.addObject("applicationId", applicationId);
 					}
 				}
 			}
