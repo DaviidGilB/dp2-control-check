@@ -21,6 +21,7 @@ import domain.Actor;
 import domain.Application;
 import domain.Audit;
 import domain.Company;
+import domain.ControlEntity;
 import domain.Position;
 import domain.Problem;
 import domain.Status;
@@ -92,6 +93,9 @@ public class PositionService {
 		position.setRequiredTecnologies(requiredTecnologies);
 		position.setTicker(ticker);
 		position.setTitle("");
+		
+		// CONTROL_CHECK
+		position.setControlEntity(new ArrayList<ControlEntity> ());
 
 		return position;
 	}

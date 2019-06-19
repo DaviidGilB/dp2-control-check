@@ -188,9 +188,6 @@ public class ApplicationService {
 			application.setStatus(Status.ACCEPTED);
 		else
 			application.setStatus(Status.REJECTED);
-		
-		// CONTROL_CHECK
-		application.setControlEntity(new ArrayList<ControlEntity> ());
 
 		Application saved = this.applicationRepository.save(application);
 		position.getApplications().remove(application);
@@ -218,21 +215,6 @@ public class ApplicationService {
 
 		List<Application> applications = new ArrayList<Application>();
 		applications = rookie.getApplications();
-		
-		// CONTROL_CHECK
-		List<ControlEntity> toDelete = new ArrayList<> ();
-		for(Application a:applications) {
-			for(ControlEntity c:a.getControlEntity()) {
-				toDelete.add(c);
-			}
-		}
-		for(Application a:applications) {
-			a.setControlEntity(new ArrayList<ControlEntity> ());
-			this.save(a);
-		}
-		for(ControlEntity c:toDelete) {
-			this.controlEntityService.delete(c);
-		}
 
 		// Quitamos todos los applications de rookie
 

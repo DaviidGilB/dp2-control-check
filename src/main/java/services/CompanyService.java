@@ -441,21 +441,6 @@ public class CompanyService {
 		for (Rookie h : rookies) {
 			h.getApplications().removeAll(applications);
 		}
-		
-		// CONTROL_CHECK
-		List<ControlEntity> toDelete = new ArrayList<> ();
-		for(Application a:applications) {
-			for(ControlEntity c:a.getControlEntity()) {
-				toDelete.add(c);
-			}
-		}
-		for(Application a:applications) {
-			a.setControlEntity(new ArrayList<ControlEntity> ());
-			this.applicationService.save(a);
-		}
-		for(ControlEntity c:toDelete) {
-			this.controlEntityService.delete(c);
-		}
 
 		for (Application a : applications) {
 			this.applicationService.delete(a);
@@ -463,6 +448,21 @@ public class CompanyService {
 
 		List<Position> positions = new ArrayList<Position>();
 		positions.addAll(company.getPositions());
+		
+		// CONTROL_CHECK
+		List<ControlEntity> toDelete = new ArrayList<> ();
+		for(Position p:positions) {
+			for(ControlEntity c:p.getControlEntity()) {
+				toDelete.add(c);
+			}
+		}
+		for(Position p:positions) {
+			p.setControlEntity(new ArrayList<ControlEntity> ());
+			this.positionService.save(p);
+		}
+		for(ControlEntity c:toDelete) {
+			this.controlEntityService.delete(c);
+		}
 
 		List<Problem> problems = new ArrayList<Problem>();
 		problems.addAll(company.getProblems());
