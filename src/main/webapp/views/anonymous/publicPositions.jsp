@@ -95,6 +95,17 @@
 		</spring:url>
 		<a href="${createUrl1}"><spring:message code="annonymous.company" /></a>
 	</display:column>
+	
+	<!-- CONTROL_CHECK -->
+		<display:column titleKey="audit.controlEntity">
+			<jstl:if test="${!row.isDraftMode && !row.isCancelled}">
+				<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+				<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
+					<spring:param name="positionId" value="${row.id}"/>
+				</spring:url>
+				<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+			</jstl:if>
+		</display:column>
 
 	<security:authorize access="hasRole('AUDITOR')">
 		<display:column titleKey="position.createAudit">
