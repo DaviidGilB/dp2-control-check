@@ -1932,6 +1932,10 @@
 			<ref bean="sponsorship3" />
 			</list>
 		</property>
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="position3" class="domain.Position">
@@ -1962,6 +1966,10 @@
 			</list>
 		</property>
 		<property name="audits">
+			<list>
+			</list>
+		</property>
+		<property name="controlEntity">
 			<list>
 			</list>
 		</property>
@@ -1996,6 +2004,10 @@
 			</list>
 		</property>
 		<property name="audits">
+			<list>
+			</list>
+		</property>
+		<property name="controlEntity">
 			<list>
 			</list>
 		</property>
@@ -2075,6 +2087,10 @@
 			<list>
 			</list>
 		</property>
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<!-- COMPANY3 -->
@@ -2112,6 +2128,10 @@
 			<list>
 			</list>
 		</property>
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="position8" class="domain.Position">
@@ -2144,6 +2164,10 @@
 			</list>
 		</property>
 		<property name="audits">
+			<list>
+			</list>
+		</property>
+		<property name="controlEntity">
 			<list>
 			</list>
 		</property>

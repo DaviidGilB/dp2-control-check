@@ -177,17 +177,6 @@
 
 		</display:column>
 		
-		<!-- CONTROL_CHECK -->
-		<display:column titleKey="audit.controlEntity">
-			<jstl:if test="${!row.isDraftMode && !row.isCancelled}">
-				<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
-					<spring:param name="positionId" value="${row.id}"/>
-				</spring:url>
-				<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-			</jstl:if>
-		</display:column>
-		
 	</security:authorize>
 
 </display:table>
