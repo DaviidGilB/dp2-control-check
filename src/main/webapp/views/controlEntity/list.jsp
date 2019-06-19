@@ -85,7 +85,7 @@
 	
 	<security:authorize access="hasRole('COMPANY')">
 		<jstl:if test="${createOption}">
-			<a href="controlEntity/company/create.do?applicationId=${applicationId}"><button type="button"><spring:message code="controlEntity.create"/></button></a>
+			<a href="controlEntity/company/create.do?positionId=${positionId}"><button type="button"><spring:message code="controlEntity.create"/></button></a>
 		</jstl:if>
 	</security:authorize>
 	
