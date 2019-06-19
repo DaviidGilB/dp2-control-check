@@ -19,13 +19,13 @@ import domain.Sponsorship;
 @Repository
 public interface ControlEntityRepository extends JpaRepository<ControlEntity, Integer> {
 
-	@Query("select c from Position p join p.controlEntity c where p.id = ?1 and c.isDraftMode = false and p.isDraftMode = false")
+	@Query("select c from Position p join p.controlEntity c where p.id = ?1 and c.isDraftMode = false and p.isDraftMode = false and p.isCancelled = false")
 	List<ControlEntity> getFinalControlEntityOfPosition(Integer positionId);
 	
-	@Query("select c from Position p join p.controlEntity c where p.id = ?1 and p.isDraftMode = false")
+	@Query("select c from Position p join p.controlEntity c where p.id = ?1 and p.isDraftMode = false and p.isCancelled = false")
 	List<ControlEntity> getAllControlEntityOfPosition(Integer positionId);
 
-	@Query("select c from Company co join co.positions p join p.controlEntity c where co.id = ?1 and p.isDraftMode = false")
+	@Query("select c from Company co join co.positions p join p.controlEntity c where co.id = ?1 and p.isDraftMode = false and p.isCancelled = false")
 	List<ControlEntity> getAllControlEntityOfCompany(Integer companyId);
 
 	@Query("select p from Company c join c.positions p where c.id = ?1 and p.id = ?2")
