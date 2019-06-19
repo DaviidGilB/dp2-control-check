@@ -42,7 +42,7 @@ public class ControlEntityService {
 	private ControlEntityRepository	controlEntityRepository;
 	
 	@Autowired
-	private ApplicationService applicationService;
+	private PositionService positionService;
 	
 	@Autowired
 	private CompanyService companyService;
@@ -70,8 +70,8 @@ public class ControlEntityService {
 
 	// OTHER OPERATIONS
 	
-	public List<ControlEntity> getFinalControlEntityOfApplication(Integer applicationId) {
-		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfApplication(applicationId);
+	public List<ControlEntity> getFinalControlEntityOfPosition(Integer positionId) {
+		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfPosition(positionId);
 		Assert.notNull(controlEntity);
 		Assert.notEmpty(controlEntity);
 		return controlEntity;
@@ -83,14 +83,14 @@ public class ControlEntityService {
 		return this.controlEntityRepository.getAllControlEntityOfCompany(companyId);
 	}
 	
-	public List<ControlEntity> getAllControlEntityOfCompanyAndApplication(Integer companyId, Integer applicationId) {
+	public List<ControlEntity> getAllControlEntityOfCompanyAndPosition(Integer companyId, Integer positionId) {
 		Company company = this.companyService.securityAndCompany();
 		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompanyAndApplication(companyId, applicationId);
+		return this.controlEntityRepository.getAllControlEntityOfCompanyAndPosition(companyId, positionId);
 	}
 
-	public Application checkCompanyAndApplication(Integer companyId, Integer applicationId) {
-		return this.controlEntityRepository.checkCompanyAndApplication(companyId, applicationId);
+	public Position checkCompanyAndPosition(Integer companyId, Integer positionId) {
+		return this.controlEntityRepository.checkCompanyAndPosition(companyId, positionId);
 	}
 	
 	public ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId) {
@@ -136,11 +136,11 @@ public class ControlEntityService {
 		this.validator.validate(controlEntity, binding);
 	}
 
-	public void addControlEntity(ControlEntity controlEntity, Integer applicationId) {
+	public void addControlEntity(ControlEntity controlEntity, Integer positionId) {
 		Company company = this.companyService.securityAndCompany();
-		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), applicationId);
-		Assert.notNull(application);
-		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
+		Position position = this.controlEntityRepository.checkCompanyAndPosition(company.getId(), positionId);
+		Assert.notNull(position);
+		Assert.isTrue(!position.getIsDraftMode() && !position.getIsCancelled());
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -149,18 +149,18 @@ public class ControlEntityService {
 			controlEntity.setPublicationMoment(date);
 		}
 		
-		List<ControlEntity> list = application.getControlEntity();
+		List<ControlEntity> list = position.getControlEntity();
 		list.add(controlEntity);
-		application.setControlEntity(list);
+		position.setControlEntity(list);
 		
-		this.applicationService.save(application);
+		this.positionService.save(position);
 	}
 	
 	public void updateControlEntity(ControlEntity controlEntity) {
 		Company company = this.companyService.securityAndCompany();
-		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), this.controlEntityRepository.getApplicationOfControlEntity(controlEntity.getId()).getId());
-		Assert.notNull(application);
-		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
+		Position position = this.controlEntityRepository.checkCompanyAndPosition(company.getId(), this.controlEntityRepository.getPositionOfControlEntity(controlEntity.getId()).getId());
+		Assert.notNull(position);
+		Assert.isTrue(!position.getIsDraftMode() && !position.getIsCancelled());
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -181,11 +181,11 @@ public class ControlEntityService {
 		Assert.notNull(controlEntityFounded);
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
 		
-		Application application = this.controlEntityRepository.getApplicationOfControlEntity(controlEntityFounded.getId());
-		List<ControlEntity> list = application.getControlEntity();
+		Position position = this.controlEntityRepository.getPositionOfControlEntity(controlEntityFounded.getId());
+		List<ControlEntity> list = position.getControlEntity();
 		list.remove(controlEntityFounded);
-		application.setControlEntity(list);
-		this.applicationService.save(application);
+		position.setControlEntity(list);
+		this.positionService.save(position);
 		
 		this.delete(controlEntityFounded);
 	}
