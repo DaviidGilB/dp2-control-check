@@ -44,11 +44,13 @@
     <!-- CONTROL_CHECK -->
     
     <display:column titleKey="audit.controlEntity">
-    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-    	<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
-			<spring:param name="auditId" value="${row.id}"/>
-		</spring:url>
-		<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+    	<jstl:if test="${!row.isDraftMode}">
+	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+	    	<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
+				<spring:param name="auditId" value="${row.id}"/>
+			</spring:url>
+			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		</jstl:if>
     </display:column>
     
     <display:column>

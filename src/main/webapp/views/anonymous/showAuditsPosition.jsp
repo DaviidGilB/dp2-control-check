@@ -32,30 +32,38 @@
 			
 			<jstl:choose>
 				<jstl:when test="${assignable}">
-					<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
-						<spring:param name="auditId" value="${row.id}"/>
-					</spring:url>
-					<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+					<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+						<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
+							<spring:param name="auditId" value="${row.id}"/>
+						</spring:url>
+						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+					</jstl:if>
 				</jstl:when>
 			
 		    	<jstl:otherwise>
 		    		<security:authorize access="hasAnyRole('AUDITOR')">
-		  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		    			<jstl:if test="${!row.isDraftMode}">
+			  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
+								<spring:param name="auditId" value="${row.id}"/>
+							</spring:url>
+							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+						</jstl:if>
 		  			</security:authorize>
 		  			<security:authorize access="hasAnyRole('ROOKIE')">
-		  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		  				<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+			  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
+								<spring:param name="auditId" value="${row.id}"/>
+							</spring:url>
+							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+						</jstl:if>
 		  			</security:authorize>
 		  			<security:authorize access="hasAnyRole('COMPANY')">
-		  				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		  				<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+			  				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
+								<spring:param name="auditId" value="${row.id}"/>
+							</spring:url>
+							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+						</jstl:if>
 		  			</security:authorize>
 		  		</jstl:otherwise>
 		  	</jstl:choose>
