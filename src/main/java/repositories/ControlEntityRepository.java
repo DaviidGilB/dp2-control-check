@@ -28,7 +28,7 @@ public interface ControlEntityRepository extends JpaRepository<ControlEntity, In
 	@Query("select c from Company co join co.positions p join p.audits a join a.controlEntity c where co.id = ?1 and a.isDraftMode = false")
 	List<ControlEntity> getAllControlEntityOfCompany(Integer companyId);
 
-	@Query("select a from Company c join c.positions p join p.audits a where c.id = ?1 and a.id = ?2")
+	@Query("select a from Company c join c.positions p join p.audits a where c.id = ?1 and a.id = ?2 and a.isDraftMode = false")
 	Audit checkCompanyAndAudit(Integer companyId, Integer auditId);
 	
 	@Query("select c.ticker from ControlEntity c")
