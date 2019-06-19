@@ -6,6 +6,7 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Index;
@@ -48,6 +49,19 @@ public class Position extends DomainEntity {
 	private List<Audit> audits;
 
 	private List<Sponsorship> sponsorships;
+	
+	// CONTROL_CHECK
+	private List<ControlEntity> controlEntity;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@Valid
+	public List<ControlEntity> getControlEntity() {
+		return controlEntity;
+	}
+
+	public void setControlEntity(List<ControlEntity> controlEntity) {
+		this.controlEntity = controlEntity;
+	}
 
 	@NotBlank
 	public String getTitle() {

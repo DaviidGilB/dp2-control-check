@@ -1751,11 +1751,6 @@
 				<property name="position" ref="position1" />
 				<property name="curriculum" ref="curriculum5" />
 				<property name="rookie" ref="rookie1" />
-				<property name="controlEntity">
-					<list>
-						<ref bean="controlEntity1" />
-					</list>
-				</property>
 			</bean>
 			
 			<bean id ="application2" class="domain.Application">
@@ -1769,11 +1764,6 @@
 				<property name="position" ref="position1" />
 				<property name="curriculum" ref="curriculum5" />
 				<property name="rookie" ref="rookie2" />
-				<property name="controlEntity">
-					<list>
-						<ref bean="controlEntity3" />
-					</list>
-				</property>
 			</bean>
 			
 			<bean id ="application4" class="domain.Application">
@@ -1787,11 +1777,6 @@
 				<property name="position" ref="position5" />
 				<property name="curriculum" ref="curriculum5" />
 				<property name="rookie" ref="rookie1" />
-				<property name="controlEntity">
-					<list>
-						<ref bean="controlEntity2" />
-					</list>
-				</property>
 			</bean>
 			
 			<bean id ="application5" class="domain.Application">
@@ -1805,11 +1790,6 @@
 				<property name="position" ref="position5" />
 				<property name="curriculum" ref="curriculum5" />
 				<property name="rookie" ref="rookie2" />
-				<property name="controlEntity">
-					<list>
-						<ref bean="controlEntity4" />
-					</list>
-				</property>
 			</bean>
 			
 			<bean id ="application3" class="domain.Application">
@@ -1902,6 +1882,12 @@
 			<list>
 			<ref bean="sponsorship1" />
 			<ref bean="sponsorship2" />
+			</list>
+		</property>
+		<property name="controlEntity">
+			<list>
+				<ref bean="controlEntity1" />
+				<ref bean="controlEntity3" />
 			</list>
 		</property>
 	</bean>
@@ -2048,6 +2034,12 @@
 		<property name="audits">
 			<list>
 				<ref bean="audit2" />
+			</list>
+		</property>
+		<property name="controlEntity">
+			<list>
+				<ref bean="controlEntity2" />
+				<ref bean="controlEntity4" />
 			</list>
 		</property>
 	</bean>

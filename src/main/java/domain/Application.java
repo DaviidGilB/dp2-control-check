@@ -37,19 +37,6 @@ public class Application extends DomainEntity {
 	private Position position;
 	private Curriculum curriculum;
 	private Rookie rookie;
-	
-	// CONTROL_CHECK
-	private List<ControlEntity> controlEntity;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@Valid
-	public List<ControlEntity> getControlEntity() {
-		return controlEntity;
-	}
-
-	public void setControlEntity(List<ControlEntity> controlEntity) {
-		this.controlEntity = controlEntity;
-	}
 
 	@Past
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
