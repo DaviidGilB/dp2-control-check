@@ -42,6 +42,6 @@ public interface ControlEntityRepository extends JpaRepository<ControlEntity, In
 	ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId);
 
 	@Query("select p from Problem p join p.controlEntity c where c.id = ?1")
-	Problem getAuditOfControlEntity(Integer controlEntityId);
+	Problem getProblemOfControlEntity(Integer controlEntityId);
 
 }
