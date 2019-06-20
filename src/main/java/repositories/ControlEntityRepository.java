@@ -13,34 +13,35 @@ import domain.Company;
 import domain.ControlEntity;
 import domain.Curriculum;
 import domain.Position;
+import domain.Problem;
 import domain.Rookie;
 import domain.Sponsorship;
 
 @Repository
 public interface ControlEntityRepository extends JpaRepository<ControlEntity, Integer> {
 
-	@Query("select c from Audit a join a.controlEntity c where a.id = ?1 and c.isDraftMode = false and a.isDraftMode = false")
-	List<ControlEntity> getFinalControlEntityOfAudit(Integer auditId);
+	@Query("select c from Problem p join p.controlEntity c where p.id = ?1 and c.isDraftMode = false and p.isDraftMode = false")
+	List<ControlEntity> getFinalControlEntityOfProblem(Integer problemId);
 	
-	@Query("select c from Audit a join a.controlEntity c where a.id = ?1 and a.isDraftMode = false")
-	List<ControlEntity> getAllControlEntityOfAudit(Integer auditId);
+	@Query("select c from Problem p join p.controlEntity c where p.id = ?1 and p.isDraftMode = false")
+	List<ControlEntity> getAllControlEntityOfProblem(Integer problemId);
 
-	@Query("select c from Company co join co.positions p join p.audits a join a.controlEntity c where co.id = ?1 and a.isDraftMode = false")
+	@Query("select c from Company co join co.problems p join p.controlEntity c where co.id = ?1 and p.isDraftMode = false")
 	List<ControlEntity> getAllControlEntityOfCompany(Integer companyId);
 
-	@Query("select a from Company c join c.positions p join p.audits a where c.id = ?1 and a.id = ?2 and a.isDraftMode = false")
-	Audit checkCompanyAndAudit(Integer companyId, Integer auditId);
+	@Query("select p from Company c join c.problems p where c.id = ?1 and p.id = ?2 and p.isDraftMode = false")
+	Problem checkCompanyAndProblem(Integer companyId, Integer problemId);
 	
 	@Query("select c.ticker from ControlEntity c")
 	List<String> getAllTickers();
 
-	@Query("select c from Company co join co.positions p join p.audits a join a.controlEntity c where co.id = ?1 and a.id = ?2")
-	List<ControlEntity> getAllControlEntityOfCompanyAndAudit(Integer companyId, Integer auditId);
+	@Query("select c from Company co join co.problems p join p.controlEntity c where co.id = ?1 and p.id = ?2")
+	List<ControlEntity> getAllControlEntityOfCompanyAndProblem(Integer companyId, Integer problemId);
 
-	@Query("select c from Company co join co.positions p join p.audits a join a.controlEntity c where co.id = ?1 and c.id = ?2 and c.isDraftMode = true")
+	@Query("select c from Company co join co.problems p join p.controlEntity c where co.id = ?1 and c.id = ?2 and c.isDraftMode = true")
 	ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId);
 
-	@Query("select a from Audit a join a.controlEntity c where c.id = ?1")
-	Audit getAuditOfControlEntity(Integer controlEntityId);
+	@Query("select p from Problem p join p.controlEntity c where c.id = ?1")
+	Problem getAuditOfControlEntity(Integer controlEntityId);
 
 }
