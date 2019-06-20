@@ -21,10 +21,12 @@ import domain.Audit;
 import domain.Auditor;
 import domain.Company;
 import domain.ControlEntity;
+import domain.Rookie;
 import forms.FormObjectCurriculumPersonalData;
 import services.ActorService;
 import services.CompanyService;
 import services.ControlEntityService;
+import services.RookieService;
 
 @Controller
 @RequestMapping("/controlEntity")
@@ -34,7 +36,7 @@ public class ControlEntityController extends AbstractController {
 	private ControlEntityService controlEntityService;
 	
 	@Autowired
-	private CompanyService companyService;
+	private RookieService rookieService;
 	
 	@Autowired
 	private ActorService actorService;
@@ -65,8 +67,8 @@ public class ControlEntityController extends AbstractController {
 	
 	// OPERACIONES RELEVANTES
 	
-	@RequestMapping(value = "/rookie/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String applicationId) {
+	@RequestMapping(value = "/company/list", method = RequestMethod.GET)
+	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
@@ -77,7 +79,7 @@ public class ControlEntityController extends AbstractController {
 			
 			result = new ModelAndView("controlEntity/list");
 			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/rookie/list.do");
+			result.addObject("requestURI", "/controlEntity/company/list.do");
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -87,8 +89,8 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String applicationId) {
+	@RequestMapping(value = "rookie/list", method = RequestMethod.GET)
+	public ModelAndView listControlEntityAsRookie(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
@@ -96,8 +98,8 @@ public class ControlEntityController extends AbstractController {
 			List<ControlEntity> controlEntity;
 			
 			if(applicationId == null || applicationId.contentEquals("")) {
-				Company company = this.companyService.securityAndCompany();
-				controlEntity = this.controlEntityService.getAllControlEntityOfCompany(company.getId());
+				Rookie rookie = this.rookieService.securityAndRookie();
+				controlEntity = this.controlEntityService.getAllControlEntityOfRookie(rookie.getId());
 				result.addObject("editOption", true);
 			} else {
 				Assert.isTrue(StringUtils.isNumeric(applicationId));
@@ -105,15 +107,15 @@ public class ControlEntityController extends AbstractController {
 				
 				result.addObject("applicationId", applicationIdInt);
 				
-				if(this.controlEntityService.checkCompanyAndApplication(this.actorService.loggedActor().getId(), applicationIdInt) != null) {
+				if(this.controlEntityService.checkRookieAndApplication(this.actorService.loggedActor().getId(), applicationIdInt) != null) {
 					result.addObject("createOption", true);
-					controlEntity = this.controlEntityService.getAllControlEntityOfCompanyAndApplication(this.actorService.loggedActor().getId(), applicationIdInt);
+					controlEntity = this.controlEntityService.getAllControlEntityOfRookieAndApplication(this.actorService.loggedActor().getId(), applicationIdInt);
 				} else {
 					controlEntity = this.controlEntityService.getFinalControlEntityOfApplication(applicationIdInt);
 				}
 			}
 			
-			result.addObject("requestURI", "/controlEntity/company/list.do");
+			result.addObject("requestURI", "/controlEntity/rookie/list.do");
 			result.addObject("controlEntity", controlEntity);
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
@@ -124,17 +126,17 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/create", method = RequestMethod.GET)
-	public ModelAndView createControlEntityAsCompany(@RequestParam(required = false) String applicationId) {
+	@RequestMapping(value = "rookie/create", method = RequestMethod.GET)
+	public ModelAndView createControlEntityAsRookie(@RequestParam(required = false) String applicationId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(applicationId));
 			Integer applicationIdInt = Integer.parseInt(applicationId);
 			
-			Company company = this.companyService.securityAndCompany();
+			Rookie rookie = this.rookieService.securityAndRookie();
 			
-			Assert.notNull(this.controlEntityService.checkCompanyAndApplication(company.getId(), applicationIdInt));
+			Assert.notNull(this.controlEntityService.checkRookieAndApplication(rookie.getId(), applicationIdInt));
 			
 			ControlEntity controlEntity = this.controlEntityService.create();
 			
@@ -142,34 +144,34 @@ public class ControlEntityController extends AbstractController {
 			result.addObject("applicationId", applicationIdInt);
 			result.addObject("controlEntity", controlEntity);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do?applicationId=" + applicationId);
+			result = new ModelAndView("redirect:/controlEntity/rookie/list.do?applicationId=" + applicationId);
 		}
 		return result;
 	}
 	
-	@RequestMapping(value = "company/edit", method = RequestMethod.GET)
-	public ModelAndView editControlEntityAsCompany(@RequestParam(required = false) String controlEntityId) {
+	@RequestMapping(value = "rookie/edit", method = RequestMethod.GET)
+	public ModelAndView editControlEntityAsRookie(@RequestParam(required = false) String controlEntityId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(controlEntityId));
 			Integer controlEntityIdInt = Integer.parseInt(controlEntityId);
 			
-			Company company = this.companyService.securityAndCompany();
+			Rookie rookie = this.rookieService.securityAndRookie();
 			
-			ControlEntity controlEntity = this.controlEntityService.checkCompanyAndControlEntity(company.getId(), controlEntityIdInt);
+			ControlEntity controlEntity = this.controlEntityService.checkRookieAndControlEntity(rookie.getId(), controlEntityIdInt);
 			Assert.notNull(controlEntity);
 			
 			result = new ModelAndView("controlEntity/edit");
 			result.addObject("controlEntity", controlEntity);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/rookie/list.do");
 		}
 		return result;
 	}
 	
-	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveControlEntityAsCompany(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer applicationId) {
+	@RequestMapping(value = "rookie/save", method = RequestMethod.POST, params = "save")
+	public ModelAndView saveControlEntityAsRookie(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer applicationId) {
 		ModelAndView result;
 		
 		try {
@@ -200,7 +202,7 @@ public class ControlEntityController extends AbstractController {
 						this.controlEntityService.updateControlEntity(controlEntity);
 					}
 					
-					result = new ModelAndView("redirect:/controlEntity/company/list.do");
+					result = new ModelAndView("redirect:/controlEntity/rookie/list.do");
 				} catch(Throwable oops) {
 					result = new ModelAndView(tiles);
 					result.addObject("controlEntity", controlEntity);
@@ -219,15 +221,15 @@ public class ControlEntityController extends AbstractController {
 		return result;
 	}
 	
-	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "delete")
-	public ModelAndView deleteControlEntityAsCompany(ControlEntity controlEntity) {
+	@RequestMapping(value = "rookie/save", method = RequestMethod.POST, params = "delete")
+	public ModelAndView deleteControlEntityAsRookie(ControlEntity controlEntity) {
 		ModelAndView result;
 		
 		try {
 			this.controlEntityService.deleteControlEntity(controlEntity);
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/rookie/list.do");
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/controlEntity/rookie/list.do");
 		}
 		
 		return result;
