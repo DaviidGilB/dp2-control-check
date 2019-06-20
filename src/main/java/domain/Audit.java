@@ -33,35 +33,6 @@ public class Audit extends DomainEntity {
 	private Auditor auditor;
 	private Boolean isDraftMode;
 	
-	// CONTROL_CHECK
-	private List<ControlEntity> controlEntity;
-	
-	@OneToMany(cascade = CascadeType.ALL)
-	@Valid
-	public List<ControlEntity> getControlEntity() {
-		return controlEntity;
-	}
-	
-	public Boolean hasAnyFinalControlEntity() {
-		Boolean res = false;
-		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
-			for(ControlEntity c:this.controlEntity) {
-				if(!c.getIsDraftMode()) {
-					res = true;
-					break;
-				}
-			}
-		}
-		return res;
-	}
-	
-	//
-
-	public void setControlEntity(List<ControlEntity> controlEntity) {
-		this.controlEntity = controlEntity;
-	}
-	
-
 	@NotNull
 	public Boolean getIsDraftMode() {
 		return this.isDraftMode;

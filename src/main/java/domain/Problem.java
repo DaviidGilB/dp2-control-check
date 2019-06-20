@@ -5,8 +5,10 @@ import java.util.List;
 
 import javax.persistence.Access;
 import javax.persistence.AccessType;
+import javax.persistence.CascadeType;
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.OneToMany;
 import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
@@ -21,6 +23,34 @@ public class Problem extends DomainEntity {
 	private String			hint;
 	private List<String>	attachments;
 	private Boolean			isDraftMode;
+	
+	// CONTROL_CHECK
+	private List<ControlEntity> controlEntity;
+	
+	@OneToMany(cascade = CascadeType.ALL)
+	@Valid
+	public List<ControlEntity> getControlEntity() {
+		return controlEntity;
+	}
+	
+	public void setControlEntity(List<ControlEntity> controlEntity) {
+		this.controlEntity = controlEntity;
+	}
+	
+	public Boolean hasAnyFinalControlEntity() {
+		Boolean res = false;
+		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
+			for(ControlEntity c:this.controlEntity) {
+				if(!c.getIsDraftMode()) {
+					res = true;
+					break;
+				}
+			}
+		}
+		return res;
+	}
+	
+	//
 
 	@NotBlank
 	public String getTitle() {
