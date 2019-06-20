@@ -131,9 +131,22 @@
 		</jstl:if>
     </display:column>
 	
-	</jstl:if>
+	</jstl:if> 
+	
 	</security:authorize>
 	
+	<!-- CONTROL_CHECK -->
+	<security:authorize access="hasRole('AUDITOR')">
+		<display:column titleKey="audit.controlEntity">
+    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
+	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+	    	<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
+				<spring:param name="problemId" value="${row.id}"/>
+			</spring:url>
+			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		</jstl:if>
+    </display:column>
+	</security:authorize> 
 												
 </display:table>
 
