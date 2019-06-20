@@ -7,7 +7,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags" %>
 
-	
+<%@ page import="domain.Problem" %>
+
 	<display:table
 	pagesize="5" name="problems" id="row"
 	requestURI="${requestURI}" >
@@ -78,6 +79,17 @@
         	
     	
     </display:column>
+    
+    <display:column titleKey="audit.controlEntity">
+    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
+	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+	    	<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
+				<spring:param name="problemId" value="${row.id}"/>
+			</spring:url>
+			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		</jstl:if>
+    </display:column>
+    
      </security:authorize>
 
 	<security:authorize access="hasRole('COMPANY')">   
@@ -92,6 +104,33 @@
 			</jstl:otherwise>
 		</jstl:choose>
 	</display:column>
+	
+	<!-- CONTROL_CHECK -->
+    
+    <display:column titleKey="audit.controlEntity">
+    	<jstl:if test="${!row.isDraftMode}">
+	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+	    	<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
+				<spring:param name="problemId" value="${row.id}"/>
+			</spring:url>
+			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		</jstl:if>
+    </display:column>
+	
+	</jstl:if>
+	
+	<jstl:if test="${!sameActorLogged || sameActorLogged == null}">
+	
+	<display:column titleKey="audit.controlEntity">
+    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
+	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+	    	<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
+				<spring:param name="problemId" value="${row.id}"/>
+			</spring:url>
+			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+		</jstl:if>
+    </display:column>
+	
 	</jstl:if>
 	</security:authorize>
 	

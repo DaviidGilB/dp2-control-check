@@ -7,8 +7,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%@ page import="domain.Position" %>
-
 <p><spring:message code="position.audits.list" /></p>
 
 	<display:table pagesize="5" name="audits" id="row" requestURI="${requestURI}" >
@@ -40,18 +38,6 @@
         	</jstl:otherwise>
         	
         </jstl:choose>
-    </display:column>
-    
-    <!-- CONTROL_CHECK -->
-    
-    <display:column titleKey="audit.controlEntity">
-    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-	    	<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
-				<spring:param name="auditId" value="${row.id}"/>
-			</spring:url>
-			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-		</jstl:if>
     </display:column>
     
     <display:column>

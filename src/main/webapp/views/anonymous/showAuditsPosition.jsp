@@ -7,8 +7,6 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
-<%@ page import="domain.Position" %>
-
 	<display:table pagesize="5" name="finalAudits" id="row" requestURI="${requestURI}" >
 
 		<display:column titleKey="audit.momentCreation" >
@@ -26,51 +24,7 @@
 		<display:column titleKey="audit.auditor">
 			<jstl:out value="${row.auditor.userAccount.username}" />
 		</display:column>
-		
-		<!-- CONTROL_CHECK -->
-		
-		<display:column titleKey="audit.controlEntity">
-			<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-			
-			<jstl:choose>
-				<jstl:when test="${assignable}">
-					<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-						<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
-							<spring:param name="auditId" value="${row.id}"/>
-						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-					</jstl:if>
-				</jstl:when>
-			
-		    	<jstl:otherwise>
-		    		<security:authorize access="hasAnyRole('AUDITOR')">
-		    			<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-			  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
-								<spring:param name="auditId" value="${row.id}"/>
-							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-						</jstl:if>
-		  			</security:authorize>
-		  			<security:authorize access="hasAnyRole('ROOKIE')">
-		  				<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-			  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
-								<spring:param name="auditId" value="${row.id}"/>
-							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-						</jstl:if>
-		  			</security:authorize>
-		  			<security:authorize access="hasAnyRole('COMPANY')">
-		  				<jstl:if test="${!row.isDraftMode}">
-			  				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
-								<spring:param name="auditId" value="${row.id}"/>
-							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
-						</jstl:if>
-		  			</security:authorize>
-		  		</jstl:otherwise>
-		  	</jstl:choose>
-			
-		</display:column>
+
 	</display:table>
 	
 	<jstl:choose>
