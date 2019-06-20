@@ -72,10 +72,10 @@
 		</display:column>
 		
 		<jstl:if test="${editOption || createOption}">
-			<security:authorize access="hasRole('COMPANY')">
+			<security:authorize access="hasRole('ROOKIE')">
 				<display:column>
 					<jstl:if test="${row.isDraftMode}">
-						<a href="controlEntity/company/edit.do?controlEntityId=${row.id}"><spring:message code="controlEntity.edit"/></a>
+						<a href="controlEntity/rookie/edit.do?controlEntityId=${row.id}"><spring:message code="controlEntity.edit"/></a>
 					</jstl:if>
 				</display:column>
 			</security:authorize>
@@ -83,9 +83,9 @@
 
 	</display:table>
 	
-	<security:authorize access="hasRole('COMPANY')">
+	<security:authorize access="hasRole('ROOKIE')">
 		<jstl:if test="${createOption}">
-			<a href="controlEntity/company/create.do?applicationId=${applicationId}"><button type="button"><spring:message code="controlEntity.create"/></button></a>
+			<a href="controlEntity/rookie/create.do?applicationId=${applicationId}"><button type="button"><spring:message code="controlEntity.create"/></button></a>
 		</jstl:if>
 	</security:authorize>
 	

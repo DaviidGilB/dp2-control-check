@@ -47,8 +47,6 @@
 					<li class="arrow"></li>
 					<li><a href="position/company/list.do"><spring:message code="master.page.company.PositionList" /></a></li>
 					<li><a href="problem/company/list.do"><spring:message code="master.page.company.listProblems" /></a></li>	
-					<!-- CONTROL_CHECK -->
-					<li><a href="controlEntity/company/list.do"><spring:message code="master.page.company.listControlEntity" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>
@@ -59,7 +57,9 @@
 					<li class="arrow"></li>
 					<li><a href="finder/rookie/list.do"><spring:message code="master.page.rookie.finder" /></a></li>
 					<li><a href="curriculum/rookie/list.do"><spring:message code="master.page.rookie.curriculums" /></a></li>
-					<li><a href="application/rookie/list.do"><spring:message code="master.page.rookie.application" /></a></li>			
+					<li><a href="application/rookie/list.do"><spring:message code="master.page.rookie.application" /></a></li>
+					<!-- CONTROL_CHECK -->
+					<li><a href="controlEntity/rookie/list.do"><spring:message code="master.page.company.listControlEntity" /></a></li>	
 				</ul>
 			</li>
 		</security:authorize>
