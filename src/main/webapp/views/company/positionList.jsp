@@ -10,13 +10,9 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
 <p>
 	<spring:message code="company.position.list" />
 </p>
-
-
-
 
 
 <display:table pagesize="5" name="positions" id="row"

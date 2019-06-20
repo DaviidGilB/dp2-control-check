@@ -62,6 +62,21 @@ public class Position extends DomainEntity {
 	public void setControlEntity(List<ControlEntity> controlEntity) {
 		this.controlEntity = controlEntity;
 	}
+	
+	public Boolean hasAnyFinalControlEntity() {
+		Boolean res = false;
+		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
+			for(ControlEntity c:this.controlEntity) {
+				if(!c.getIsDraftMode()) {
+					res = true;
+					break;
+				}
+			}
+		}
+		return res;
+	}
+	
+	//
 
 	@NotBlank
 	public String getTitle() {

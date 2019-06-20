@@ -9,6 +9,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<%@ page import="domain.Position" %>
+
 <security:authorize access="hasRole('ROOKIE')">
 
 	<form:form action="finder/rookie/clean.do">
@@ -98,7 +100,7 @@
 		
 		<!-- CONTROL_CHECK -->
 		<display:column titleKey="audit.controlEntity">
-			<jstl:if test="${!row.isDraftMode && !row.isCancelled && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+			<jstl:if test="${!row.isDraftMode && !row.isCancelled && row.hasAnyFinalControlEntity()}">
 				<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
 				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
 					<spring:param name="positionId" value="${row.id}"/>

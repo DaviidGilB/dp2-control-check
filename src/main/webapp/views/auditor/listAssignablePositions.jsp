@@ -9,7 +9,7 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
-
+<%@ page import="domain.Position" %>
 
 <display:table name="positions" id="row" pagesize="5" class="displaytag" requestURI="/position/auditor/listAssignablePositions.do">
 
@@ -92,7 +92,7 @@
 		
 		<!-- CONTROL_CHECK -->
 		<display:column titleKey="audit.controlEntity">
-			<jstl:if test="${!row.isDraftMode && !row.isCancelled && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+			<jstl:if test="${!row.isDraftMode && !row.isCancelled && row.hasAnyFinalControlEntity()}">
 				<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
 				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
 					<spring:param name="positionId" value="${row.id}"/>
