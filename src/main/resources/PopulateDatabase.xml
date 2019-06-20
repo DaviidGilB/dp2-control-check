@@ -1771,7 +1771,7 @@
 				<property name="rookie" ref="rookie2" />
 				<property name="controlEntity">
 					<list>
-						<ref bean="controlEntity3" />
+						<ref bean="controlEntity2" />
 					</list>
 				</property>
 			</bean>
@@ -1789,7 +1789,7 @@
 				<property name="rookie" ref="rookie1" />
 				<property name="controlEntity">
 					<list>
-						<ref bean="controlEntity2" />
+						<ref bean="controlEntity3" />
 					</list>
 				</property>
 			</bean>
