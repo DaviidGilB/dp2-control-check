@@ -17,6 +17,7 @@ import org.springframework.validation.Validator;
 
 import repositories.ProblemRepository;
 import domain.Company;
+import domain.ControlEntity;
 import domain.Problem;
 
 
@@ -106,6 +107,9 @@ public class ProblemService {
 		problem.setIsDraftMode(true);
 		problem.setStatement("");
 
+		// CONTROL_CHECK
+		problem.setControlEntity(new ArrayList<ControlEntity>());
+		
 		return problem;
 	}
 
