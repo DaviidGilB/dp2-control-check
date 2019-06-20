@@ -42,7 +42,7 @@ public class ControlEntityService {
 	private ControlEntityRepository	controlEntityRepository;
 	
 	@Autowired
-	private AuditService auditService;
+	private ProblemService problemService;
 	
 	@Autowired
 	private CompanyService companyService;
@@ -70,8 +70,8 @@ public class ControlEntityService {
 
 	// OTHER OPERATIONS
 	
-	public List<ControlEntity> getFinalControlEntityOfAudit(Integer auditId) {
-		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfAudit(auditId);
+	public List<ControlEntity> getFinalControlEntityOfProblem(Integer problemId) {
+		List<ControlEntity> controlEntity = this.controlEntityRepository.getFinalControlEntityOfProblem(problemId);
 		Assert.notNull(controlEntity);
 		Assert.notEmpty(controlEntity);
 		return controlEntity;
@@ -83,14 +83,14 @@ public class ControlEntityService {
 		return this.controlEntityRepository.getAllControlEntityOfCompany(companyId);
 	}
 	
-	public List<ControlEntity> getAllControlEntityOfCompanyAndAudit(Integer companyId, Integer auditId) {
+	public List<ControlEntity> getAllControlEntityOfCompanyAndProblem(Integer companyId, Integer problemId) {
 		Company company = this.companyService.securityAndCompany();
 		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompanyAndAudit(companyId, auditId);
+		return this.controlEntityRepository.getAllControlEntityOfCompanyAndProblem(companyId, problemId);
 	}
 
-	public Audit checkCompanyAndAudit(Integer companyId, Integer auditId) {
-		return this.controlEntityRepository.checkCompanyAndAudit(companyId, auditId);
+	public Problem checkCompanyAndProblem(Integer companyId, Integer problemId) {
+		return this.controlEntityRepository.checkCompanyAndProblem(companyId, problemId);
 	}
 	
 	public ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId) {
@@ -136,11 +136,11 @@ public class ControlEntityService {
 		this.validator.validate(controlEntity, binding);
 	}
 
-	public void addControlEntity(ControlEntity controlEntity, Integer auditId) {
+	public void addControlEntity(ControlEntity controlEntity, Integer problemId) {
 		Company company = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), auditId);
-		Assert.notNull(audit);
-		Assert.isTrue(!audit.getIsDraftMode());
+		Problem problem = this.controlEntityRepository.checkCompanyAndProblem(company.getId(), problemId);
+		Assert.notNull(problem);
+		Assert.isTrue(!problem.getIsDraftMode());
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -149,18 +149,18 @@ public class ControlEntityService {
 			controlEntity.setPublicationMoment(date);
 		}
 		
-		List<ControlEntity> list = audit.getControlEntity();
+		List<ControlEntity> list = problem.getControlEntity();
 		list.add(controlEntity);
-		audit.setControlEntity(list);
+		problem.setControlEntity(list);
 		
-		this.auditService.save(audit);
+		this.problemService.save(problem);
 	}
 	
 	public void updateControlEntity(ControlEntity controlEntity) {
 		Company company = this.companyService.securityAndCompany();
-		Audit audit = this.controlEntityRepository.checkCompanyAndAudit(company.getId(), this.controlEntityRepository.getAuditOfControlEntity(controlEntity.getId()).getId());
-		Assert.notNull(audit);
-		Assert.isTrue(!audit.getIsDraftMode());
+		Problem problem = this.controlEntityRepository.checkCompanyAndProblem(company.getId(), this.controlEntityRepository.getProblemOfControlEntity(controlEntity.getId()).getId());
+		Assert.notNull(problem);
+		Assert.isTrue(!problem.getIsDraftMode());
 		
 		if(!controlEntity.getIsDraftMode()) {
 			Calendar c1 = Calendar.getInstance();
@@ -181,11 +181,11 @@ public class ControlEntityService {
 		Assert.notNull(controlEntityFounded);
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
 		
-		Audit audit = this.controlEntityRepository.getAuditOfControlEntity(controlEntityFounded.getId());
-		List<ControlEntity> list = audit.getControlEntity();
+		Problem problem = this.controlEntityRepository.getProblemOfControlEntity(controlEntityFounded.getId());
+		List<ControlEntity> list = problem.getControlEntity();
 		list.remove(controlEntityFounded);
-		audit.setControlEntity(list);
-		this.auditService.save(audit);
+		problem.setControlEntity(list);
+		this.problemService.save(problem);
 		
 		this.delete(controlEntityFounded);
 	}

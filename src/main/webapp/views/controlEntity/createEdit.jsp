@@ -16,7 +16,7 @@
 		<form:hidden path="publicationMoment" />
 		
 		<jstl:if test="${controlEntity.id == 0}">
-			<input type="hidden" name="auditId" value="${auditId}">
+			<input type="hidden" name="problemId" value="${problemId}">
 		</jstl:if>
 
 		<acme:textarea code="controlEntity.body" path="body" />
