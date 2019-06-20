@@ -50,6 +50,21 @@ public class Application extends DomainEntity {
 	public void setControlEntity(List<ControlEntity> controlEntity) {
 		this.controlEntity = controlEntity;
 	}
+	
+	public Boolean hasAnyFinalControlEntity() {
+		Boolean res = false;
+		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
+			for(ControlEntity c:this.controlEntity) {
+				if(!c.getIsDraftMode()) {
+					res = true;
+					break;
+				}
+			}
+		}
+		return res;
+	}
+	
+	//
 
 	@Past
 	@DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
