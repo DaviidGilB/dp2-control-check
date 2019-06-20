@@ -7,6 +7,8 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
+<%@ page import="domain.Position" %>
+
 	<display:table pagesize="5" name="finalAudits" id="row" requestURI="${requestURI}" >
 
 		<display:column titleKey="audit.momentCreation" >
@@ -32,7 +34,7 @@
 			
 			<jstl:choose>
 				<jstl:when test="${assignable}">
-					<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+					<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
 						<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
 							<spring:param name="auditId" value="${row.id}"/>
 						</spring:url>
@@ -42,7 +44,7 @@
 			
 		    	<jstl:otherwise>
 		    		<security:authorize access="hasAnyRole('AUDITOR')">
-		    			<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+		    			<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
 			  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
 								<spring:param name="auditId" value="${row.id}"/>
 							</spring:url>
@@ -50,7 +52,7 @@
 						</jstl:if>
 		  			</security:authorize>
 		  			<security:authorize access="hasAnyRole('ROOKIE')">
-		  				<jstl:if test="${!row.isDraftMode && row.controlEntity != null && !row.controlEntity.isEmpty()}">
+		  				<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
 			  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
 								<spring:param name="auditId" value="${row.id}"/>
 							</spring:url>

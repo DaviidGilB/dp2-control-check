@@ -41,6 +41,21 @@ public class Audit extends DomainEntity {
 	public List<ControlEntity> getControlEntity() {
 		return controlEntity;
 	}
+	
+	public Boolean hasAnyFinalControlEntity() {
+		Boolean res = false;
+		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
+			for(ControlEntity c:this.controlEntity) {
+				if(!c.getIsDraftMode()) {
+					res = true;
+					break;
+				}
+			}
+		}
+		return res;
+	}
+	
+	//
 
 	public void setControlEntity(List<ControlEntity> controlEntity) {
 		this.controlEntity = controlEntity;
