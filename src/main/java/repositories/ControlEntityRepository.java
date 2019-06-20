@@ -25,20 +25,20 @@ public interface ControlEntityRepository extends JpaRepository<ControlEntity, In
 	@Query("select c from Application a join a.controlEntity c where a.id = ?1 and (a.status ='ACCEPTED' or a.status = 'REJECTED')")
 	List<ControlEntity> getAllControlEntityOfApplication(Integer applicationId);
 
-	@Query("select c from Company co join co.positions p join p.applications a join a.controlEntity c where co.id = ?1 and (a.status ='ACCEPTED' or a.status = 'REJECTED')")
-	List<ControlEntity> getAllControlEntityOfCompany(Integer companyId);
+	@Query("select c from Rookie r join r.applications a join a.controlEntity c where r.id = ?1 and (a.status ='ACCEPTED' or a.status = 'REJECTED')")
+	List<ControlEntity> getAllControlEntityOfRookie(Integer rookieId);
 
-	@Query("select a from Company c join c.positions p join p.applications a where c.id = ?1 and a.id = ?2 and a.status ='ACCEPTED'")
-	Application checkCompanyAndApplication(Integer companyId, Integer applicationId);
+	@Query("select a from Rookie r join r.applications a where r.id = ?1 and a.id = ?2 and a.status ='ACCEPTED'")
+	Application checkRookieAndApplication(Integer rookieId, Integer applicationId);
 	
 	@Query("select c.ticker from ControlEntity c")
 	List<String> getAllTickers();
 
-	@Query("select c from Company co join co.positions p join p.applications a join a.controlEntity c where co.id = ?1 and a.id = ?2")
-	List<ControlEntity> getAllControlEntityOfCompanyAndApplication(Integer companyId, Integer applicationId);
+	@Query("select c from Rookie r join r.applications a join a.controlEntity c where r.id = ?1 and a.id = ?2")
+	List<ControlEntity> getAllControlEntityOfRookieAndApplication(Integer rookieId, Integer applicationId);
 
-	@Query("select c from Company co join co.positions p join p.applications a join a.controlEntity c where co.id = ?1 and c.id = ?2 and c.isDraftMode = true")
-	ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId);
+	@Query("select c from Rookie r join r.applications a join a.controlEntity c where r.id = ?1 and c.id = ?2 and c.isDraftMode = true")
+	ControlEntity checkRookieAndControlEntity(Integer rookieId, Integer controlEntityId);
 
 	@Query("select a from Application a join a.controlEntity c where c.id = ?1")
 	Application getApplicationOfControlEntity(Integer controlEntityId);
