@@ -2110,6 +2110,12 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+				<ref bean="controlEntity1" />
+				<ref bean="controlEntity2" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem2" class="domain.Problem">
@@ -2124,6 +2130,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem3" class="domain.Problem">
@@ -2138,6 +2148,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem4" class="domain.Problem">
@@ -2149,6 +2163,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem5" class="domain.Problem">
@@ -2161,6 +2179,10 @@
 			</list>
 		</property>
 		<property value="true" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem6" class="domain.Problem">
@@ -2174,6 +2196,10 @@
 			</list>
 		</property>
 		<property value="true" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<!-- COMPANY2 -->
@@ -2187,6 +2213,12 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+				<ref bean="controlEntity3" />
+				<ref bean="controlEntity4" />
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem8" class="domain.Problem">
@@ -2199,6 +2231,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem9" class="domain.Problem">
@@ -2211,6 +2247,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 	<!-- COMPANY3 -->
 	<bean id="problem10" class="domain.Problem">
@@ -2223,6 +2263,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem11" class="domain.Problem">
@@ -2235,6 +2279,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 	<bean id="problem12" class="domain.Problem">
@@ -2247,6 +2295,10 @@
 			</list>
 		</property>
 		<property value="false" name="isDraftMode" />
+		<property name="controlEntity">
+			<list>
+			</list>
+		</property>
 	</bean>
 
 
@@ -3781,12 +3833,6 @@
 			<property name="score" value="9" />
 			<property name="isDraftMode" value="false" />
 			<property name="momentCreation" value="11/11/2018 11:30" />
-			<property name="controlEntity">
-				<list>
-					<ref bean="controlEntity1" />
-					<ref bean="controlEntity2" />
-				</list>
-			</property>
 		</bean>
 		
 		<!-- AUDIT2 -->
@@ -3797,12 +3843,6 @@
 			<property name="score" value="5" />
 			<property name="isDraftMode" value="false" />
 			<property name="momentCreation" value="11/11/2016 11:30" />
-			<property name="controlEntity">
-				<list>
-					<ref bean="controlEntity3" />
-					<ref bean="controlEntity4" />
-				</list>
-			</property>
 		</bean>
 
 	<!-- CONTROL ENTITY -->
