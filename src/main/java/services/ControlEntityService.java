@@ -31,6 +31,7 @@ import domain.Company;
 import domain.ControlEntity;
 import domain.Position;
 import domain.Problem;
+import domain.Rookie;
 import domain.Status;
 import forms.FormObjectPositionProblemCheckbox;
 
@@ -45,7 +46,7 @@ public class ControlEntityService {
 	private ApplicationService applicationService;
 	
 	@Autowired
-	private CompanyService companyService;
+	private RookieService rookieService;
 	
 	@Autowired
 	private Validator validator;
@@ -77,24 +78,24 @@ public class ControlEntityService {
 		return controlEntity;
 	}
 
-	public List<ControlEntity> getAllControlEntityOfCompany(Integer companyId) {
-		Company company = this.companyService.securityAndCompany();
-		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompany(companyId);
+	public List<ControlEntity> getAllControlEntityOfRookie(Integer rookieId) {
+		Rookie rookie = this.rookieService.securityAndRookie();
+		Assert.isTrue(rookie.getId() == rookieId);
+		return this.controlEntityRepository.getAllControlEntityOfRookie(rookieId);
 	}
 	
-	public List<ControlEntity> getAllControlEntityOfCompanyAndApplication(Integer companyId, Integer applicationId) {
-		Company company = this.companyService.securityAndCompany();
-		Assert.isTrue(company.getId() == companyId);
-		return this.controlEntityRepository.getAllControlEntityOfCompanyAndApplication(companyId, applicationId);
+	public List<ControlEntity> getAllControlEntityOfRookieAndApplication(Integer rookieId, Integer applicationId) {
+		Rookie rookie = this.rookieService.securityAndRookie();
+		Assert.isTrue(rookie.getId() == rookieId);
+		return this.controlEntityRepository.getAllControlEntityOfRookieAndApplication(rookieId, applicationId);
 	}
 
-	public Application checkCompanyAndApplication(Integer companyId, Integer applicationId) {
-		return this.controlEntityRepository.checkCompanyAndApplication(companyId, applicationId);
+	public Application checkRookieAndApplication(Integer rookieId, Integer applicationId) {
+		return this.controlEntityRepository.checkRookieAndApplication(rookieId, applicationId);
 	}
 	
-	public ControlEntity checkCompanyAndControlEntity(Integer companyId, Integer controlEntityId) {
-		return this.controlEntityRepository.checkCompanyAndControlEntity(companyId, controlEntityId);
+	public ControlEntity checkRookieAndControlEntity(Integer rookieId, Integer controlEntityId) {
+		return this.controlEntityRepository.checkRookieAndControlEntity(rookieId, controlEntityId);
 	}
 
 	public ControlEntity create() {
@@ -137,8 +138,8 @@ public class ControlEntityService {
 	}
 
 	public void addControlEntity(ControlEntity controlEntity, Integer applicationId) {
-		Company company = this.companyService.securityAndCompany();
-		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), applicationId);
+		Rookie rookie = this.rookieService.securityAndRookie();
+		Application application = this.controlEntityRepository.checkRookieAndApplication(rookie.getId(), applicationId);
 		Assert.notNull(application);
 		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
 		
@@ -157,8 +158,8 @@ public class ControlEntityService {
 	}
 	
 	public void updateControlEntity(ControlEntity controlEntity) {
-		Company company = this.companyService.securityAndCompany();
-		Application application = this.controlEntityRepository.checkCompanyAndApplication(company.getId(), this.controlEntityRepository.getApplicationOfControlEntity(controlEntity.getId()).getId());
+		Rookie rookie = this.rookieService.securityAndRookie();
+		Application application = this.controlEntityRepository.checkRookieAndApplication(rookie.getId(), this.controlEntityRepository.getApplicationOfControlEntity(controlEntity.getId()).getId());
 		Assert.notNull(application);
 		Assert.isTrue(application.getStatus().equals(Status.ACCEPTED));
 		
@@ -176,8 +177,8 @@ public class ControlEntityService {
 	}
 
 	public void deleteControlEntity(ControlEntity controlEntity) {
-		Company company = this.companyService.securityAndCompany();
-		ControlEntity controlEntityFounded = this.checkCompanyAndControlEntity(company.getId(), controlEntity.getId());
+		Rookie rookie = this.rookieService.securityAndRookie();
+		ControlEntity controlEntityFounded = this.checkRookieAndControlEntity(rookie.getId(), controlEntity.getId());
 		Assert.notNull(controlEntityFounded);
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
 		
