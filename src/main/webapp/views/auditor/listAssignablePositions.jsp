@@ -11,6 +11,19 @@
 
 <%@ page import="domain.Position" %>
 
+<%
+	String scheme = request.getScheme();             
+	String serverName = request.getServerName(); 
+	int serverPort = request.getServerPort();    
+	String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
+	String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
+	String url = scheme + "://" +serverName + ":" + serverPort + uri;
+	if(prmstr != null) {
+		url = url + "?" + prmstr;
+	}
+	request.getSession().setAttribute("listBackUrl", url);
+%>
+
 <display:table name="positions" id="row" pagesize="5" class="displaytag" requestURI="/position/auditor/listAssignablePositions.do">
 
 	<display:column titleKey="possition.title" >

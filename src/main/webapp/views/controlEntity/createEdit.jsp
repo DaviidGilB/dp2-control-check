@@ -6,14 +6,20 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<%
+	String backUrl = request.getSession().getAttribute("backUrl").toString();
+%>
+<jstl:set var="backUrl" value="<%=backUrl%>"/>
+
 <security:authorize access="hasRole('COMPANY')">
 
 	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
 		<!--Hidden Attributes -->
 		<form:hidden path="id" />
-		<form:hidden path="version" />
-		<form:hidden path="ticker" />
-		<form:hidden path="publicationMoment" />
+		
+		<jstl:if test="${controlEntity.id > 0}">
+			<form:hidden path="ticker" />
+		</jstl:if>
 		
 		<jstl:if test="${controlEntity.id == 0}">
 			<input type="hidden" name="positionId" value="${positionId}">
@@ -37,7 +43,7 @@
 			</jstl:otherwise>
 		</jstl:choose>
 		
-		<acme:cancel url="/controlEntity/company/list.do" code="controlEntity.cancel" />
+		<a href="${backUrl}"><input type="button" value="<spring:message code='controlEntity.cancel'/>"/></a>
 
 	</form:form>
 	

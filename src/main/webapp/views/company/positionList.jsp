@@ -10,6 +10,19 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<%
+	String scheme = request.getScheme();             
+	String serverName = request.getServerName(); 
+	int serverPort = request.getServerPort();    
+	String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
+	String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
+	String url = scheme + "://" +serverName + ":" + serverPort + uri;
+	if(prmstr != null) {
+		url = url + "?" + prmstr;
+	}
+	request.getSession().setAttribute("listBackUrl", url);
+%>
+
 <p>
 	<spring:message code="company.position.list" />
 </p>
