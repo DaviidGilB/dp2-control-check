@@ -6,6 +6,23 @@
 <%@taglib prefix="display" uri="http://displaytag.sf.net"%>
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
+<%
+	String scheme = request.getScheme();             
+	String serverName = request.getServerName(); 
+	int serverPort = request.getServerPort();    
+	String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
+	String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
+	String url = scheme + "://" +serverName + ":" + serverPort + uri;
+	if(prmstr != null) {
+		url = url + "?" + prmstr;
+	}
+	
+	String backUrl = request.getSession().getAttribute("backUrl").toString();
+	
+	request.getSession().setAttribute("backUrl", url);
+%>
+<jstl:set var="backUrl" value="<%=backUrl%>"/>
+
 <security:authorize access="hasRole('COMPANY')">
 
 	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
@@ -37,7 +54,7 @@
 			</jstl:otherwise>
 		</jstl:choose>
 		
-		<acme:cancel url="/controlEntity/company/list.do" code="controlEntity.cancel" />
+		<a href="${backUrl}"><input type="button" value="<spring:message code='controlEntity.cancel'/>"/></a>
 
 	</form:form>
 	
