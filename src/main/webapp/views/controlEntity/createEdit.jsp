@@ -11,9 +11,9 @@
 %>
 <jstl:set var="backUrl" value="<%=backUrl%>"/>
 
-<security:authorize access="hasRole('COMPANY')">
+<security:authorize access="hasRole('ROOKIE')">
 
-	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
+	<form:form modelAttribute="controlEntity" action="controlEntity/rookie/save.do">
 		<!--Hidden Attributes -->
 		<form:hidden path="id" />
 		
