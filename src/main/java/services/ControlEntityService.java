@@ -108,7 +108,7 @@ public class ControlEntityService {
 		controlEntity.setBody("");
 		controlEntity.setPicture("");
 		controlEntity.setPublicationMoment(null);
-		controlEntity.setTicker("");
+		controlEntity.setTicker(this.generateTicker());
 		
 		return controlEntity;
 	}
@@ -175,6 +175,8 @@ public class ControlEntityService {
 
 		ControlEntity controlEntityFounded = this.findOne(controlEntity.getId());
 		Assert.isTrue(controlEntityFounded.getIsDraftMode());
+		
+		controlEntity.setVersion(controlEntityFounded.getVersion());
 		
 		this.save(controlEntity);
 	}
