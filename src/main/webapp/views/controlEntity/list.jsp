@@ -30,6 +30,26 @@
 <jstl:set var="oneMonth" value="<%=oneMonth%>"/>
 <jstl:set var="twoMonth" value="<%=twoMonth%>"/>
 
+<%
+	String scheme = request.getScheme();             
+	String serverName = request.getServerName(); 
+	int serverPort = request.getServerPort();    
+	String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
+	String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
+	String url = scheme + "://" +serverName + ":" + serverPort + uri;
+	if(prmstr != null) {
+		url = url + "?" + prmstr;
+	}
+	
+	String listBackUrl = "";
+	if(request.getSession().getAttribute("listBackUrl") != null) {
+		listBackUrl = request.getSession().getAttribute("listBackUrl").toString();
+	}
+	
+	request.getSession().setAttribute("backUrl", url);
+%>
+<jstl:set var="listBackUrl" value="<%=listBackUrl%>"/>
+
 	<display:table pagesize="5" name="controlEntity" id="row" requestURI="${requestURI}" >
 	
 		<jstl:choose>
@@ -90,4 +110,4 @@
 	</security:authorize>
 	
 	<spring:message code="controlEntity.back" var="messageBack"/>
-	<p><a href=""><jstl:out value="${messageBack}"/></a></p>
+	<p><a href="${listBackUrl}"><jstl:out value="${messageBack}"/></a></p>
