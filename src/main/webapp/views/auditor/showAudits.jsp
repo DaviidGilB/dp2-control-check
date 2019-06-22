@@ -17,7 +17,7 @@
 	if(prmstr != null) {
 		url = url + "?" + prmstr;
 	}
-	request.getSession().setAttribute("backUrl", url);
+	request.getSession().setAttribute("listBackUrl", url);
 %>
 
 <%@ page import="domain.Position" %>

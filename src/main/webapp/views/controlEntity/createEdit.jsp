@@ -7,19 +7,7 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <%
-	String scheme = request.getScheme();             
-	String serverName = request.getServerName(); 
-	int serverPort = request.getServerPort();    
-	String uri = (String) request.getAttribute("javax.servlet.forward.request_uri");
-	String prmstr = (String) request.getAttribute("javax.servlet.forward.query_string");
-	String url = scheme + "://" +serverName + ":" + serverPort + uri;
-	if(prmstr != null) {
-		url = url + "?" + prmstr;
-	}
-	
 	String backUrl = request.getSession().getAttribute("backUrl").toString();
-	
-	request.getSession().setAttribute("backUrl", url);
 %>
 <jstl:set var="backUrl" value="<%=backUrl%>"/>
 
@@ -28,9 +16,10 @@
 	<form:form modelAttribute="controlEntity" action="controlEntity/company/save.do">
 		<!--Hidden Attributes -->
 		<form:hidden path="id" />
-		<form:hidden path="version" />
-		<form:hidden path="ticker" />
-		<form:hidden path="publicationMoment" />
+		
+		<jstl:if test="${controlEntity.id > 0}">
+			<form:hidden path="ticker" />
+		</jstl:if>
 		
 		<jstl:if test="${controlEntity.id == 0}">
 			<input type="hidden" name="auditId" value="${auditId}">

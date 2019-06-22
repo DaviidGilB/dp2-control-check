@@ -41,11 +41,14 @@
 		url = url + "?" + prmstr;
 	}
 	
-	String backUrl = request.getSession().getAttribute("backUrl").toString();
+	String listBackUrl = "";
+	if(request.getSession().getAttribute("listBackUrl") != null) {
+		listBackUrl = request.getSession().getAttribute("listBackUrl").toString();
+	}
 	
 	request.getSession().setAttribute("backUrl", url);
 %>
-<jstl:set var="backUrl" value="<%=backUrl%>"/>
+<jstl:set var="listBackUrl" value="<%=listBackUrl%>"/>
 
 	<display:table pagesize="5" name="controlEntity" id="row" requestURI="${requestURI}" >
 	
@@ -107,4 +110,4 @@
 	</security:authorize>
 	
 	<spring:message code="controlEntity.back" var="messageBack"/>
-	<p><a href="${backUrl}"><jstl:out value="${messageBack}"/></a></p>
+	<p><a href="${listBackUrl}"><jstl:out value="${messageBack}"/></a></p>
