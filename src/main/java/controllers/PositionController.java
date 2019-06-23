@@ -92,7 +92,7 @@ public class PositionController extends AbstractController {
 			for (Position p : positions)
 				if (!p.getSponsorships().isEmpty()) {
 					Sponsorship spo = this.sponsorshipService.getRandomSponsorship(p.getId());
-					this.sponsorshipService.sendMessageToProvider(spo.getProvider());
+//					this.sponsorshipService.sendMessageToProvider(spo.getProvider());
 					randomSpo.put(p.getId(), spo);
 				}
 
