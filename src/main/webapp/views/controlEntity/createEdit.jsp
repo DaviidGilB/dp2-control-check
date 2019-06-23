@@ -7,7 +7,10 @@
 <%@ taglib prefix="acme" tagdir="/WEB-INF/tags"%>
 
 <%
-	String backUrl = request.getSession().getAttribute("backUrl").toString();
+	String backUrl = "";
+	if(request.getSession().getAttribute("backUrl") != null) {
+		backUrl = request.getSession().getAttribute("backUrl").toString();
+	}
 %>
 <jstl:set var="backUrl" value="<%=backUrl%>"/>
 
