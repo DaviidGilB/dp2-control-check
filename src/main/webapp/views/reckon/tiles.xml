@@ -16,19 +16,19 @@
        
 <tiles-definitions>
 
-	<definition name="controlEntity/list" extends="master.page">	
+	<definition name="reckon/list" extends="master.page">	
 		<put-attribute name="title" value="Control entity list" />
-		<put-attribute name="body" value="/views/controlEntity/list.jsp" />
+		<put-attribute name="body" value="/views/reckon/list.jsp" />
 	</definition>
 	
-	<definition name="controlEntity/create" extends="master.page">	
+	<definition name="reckon/create" extends="master.page">	
 		<put-attribute name="title" value="Create a control entity" />
-		<put-attribute name="body" value="/views/controlEntity/createEdit.jsp" />
+		<put-attribute name="body" value="/views/reckon/createEdit.jsp" />
 	</definition>
 	
-	<definition name="controlEntity/edit" extends="master.page">	
+	<definition name="reckon/edit" extends="master.page">	
 		<put-attribute name="title" value="Edit a control entity" />
-		<put-attribute name="body" value="/views/controlEntity/createEdit.jsp" />
+		<put-attribute name="body" value="/views/reckon/createEdit.jsp" />
 	</definition>
 	
 </tiles-definitions>

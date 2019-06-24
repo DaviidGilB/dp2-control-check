@@ -50,7 +50,7 @@
 %>
 <jstl:set var="listBackUrl" value="<%=listBackUrl%>"/>
 
-	<display:table pagesize="5" name="controlEntity" id="row" requestURI="${requestURI}" >
+	<display:table pagesize="5" name="reckon" id="row" requestURI="${requestURI}" >
 	
 		<jstl:choose>
 			<jstl:when test="${row.publicationMoment < now && row.publicationMoment >= oneMonth && !row.isDraftMode}">
@@ -70,7 +70,7 @@
 			</jstl:otherwise>
 		</jstl:choose>
 
-		<display:column titleKey="controlEntity.ticker" style="color:${color}">
+		<display:column titleKey="reckon.ticker" style="color:${color}">
 			<b><jstl:out value="${row.ticker}" /></b>
 		</display:column>
 		
@@ -81,13 +81,13 @@
 			<jstl:set var="format" value="{0,date,dd-MM-yy HH:mm}"/>
 		</jstl:if>
 	
-		<display:column titleKey="controlEntity.publicationMoment" property="publicationMoment" format="${format}" style="color:${color}"/>
+		<display:column titleKey="reckon.publicationMoment" property="publicationMoment" format="${format}" style="color:${color}"/>
 	
-		<display:column titleKey="controlEntity.body" style="color:${color}">
+		<display:column titleKey="reckon.body" style="color:${color}">
 			<jstl:out value="${row.body}" />
 		</display:column>
 	
-		<display:column titleKey="controlEntity.picture" style="color:${color}">
+		<display:column titleKey="reckon.picture" style="color:${color}">
 			<jstl:out value="${row.picture}" />
 		</display:column>
 		
@@ -95,7 +95,7 @@
 			<security:authorize access="hasRole('COMPANY')">
 				<display:column>
 					<jstl:if test="${row.isDraftMode}">
-						<a href="controlEntity/company/edit.do?controlEntityId=${row.id}"><spring:message code="controlEntity.edit"/></a>
+						<a href="reckon/company/edit.do?reckonId=${row.id}"><spring:message code="reckon.edit"/></a>
 					</jstl:if>
 				</display:column>
 			</security:authorize>
@@ -105,9 +105,9 @@
 	
 	<security:authorize access="hasRole('COMPANY')">
 		<jstl:if test="${createOption}">
-			<a href="controlEntity/company/create.do?auditId=${auditId}"><button type="button"><spring:message code="controlEntity.create"/></button></a>
+			<a href="reckon/company/create.do?auditId=${auditId}"><button type="button"><spring:message code="reckon.create"/></button></a>
 		</jstl:if>
 	</security:authorize>
 	
-	<spring:message code="controlEntity.back" var="messageBack"/>
+	<spring:message code="reckon.back" var="messageBack"/>
 	<p><a href="${listBackUrl}"><jstl:out value="${messageBack}"/></a></p>

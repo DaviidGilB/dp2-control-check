@@ -15,7 +15,7 @@ import org.springframework.validation.Validator;
 
 import domain.Audit;
 import domain.Auditor;
-import domain.ControlEntity;
+import domain.Reckon;
 import domain.Position;
 import repositories.AuditRepository;
 
@@ -36,7 +36,7 @@ public class AuditService {
 	private MessageService messageService;
 	
 	@Autowired
-	private ControlEntityService controlEntityService;
+	private ReckonService reckonService;
 
 	public List<Audit> getFinalAuditsByPosition(int positionId) {
 		return this.auditRepository.getFinalAuditsByPosition(positionId);
@@ -66,7 +66,7 @@ public class AuditService {
 		audit.setScore(0);
 		
 		// CONTROL_CHECK
-		audit.setControlEntity(new ArrayList<ControlEntity>());
+		audit.setReckon(new ArrayList<Reckon>());
 
 		return audit;
 	}
@@ -130,18 +130,18 @@ public class AuditService {
 		audits = auditor.getAudits();
 		
 		// CONTROL_CHECK
-		List<ControlEntity> toDelete = new ArrayList<> ();
+		List<Reckon> toDelete = new ArrayList<> ();
 		for(Audit a:audits) {
-			for(ControlEntity c:a.getControlEntity()) {
+			for(Reckon c:a.getReckon()) {
 				toDelete.add(c);
 			}
 		}
 		for(Audit a:audits) {
-			a.setControlEntity(new ArrayList<ControlEntity> ());
+			a.setReckon(new ArrayList<Reckon> ());
 			this.save(a);
 		}
-		for(ControlEntity c:toDelete) {
-			this.controlEntityService.delete(c);
+		for(Reckon c:toDelete) {
+			this.reckonService.delete(c);
 		}
 
 		this.auditRepository.deleteInBatch(audits);

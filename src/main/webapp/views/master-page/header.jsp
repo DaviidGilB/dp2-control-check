@@ -48,7 +48,7 @@
 					<li><a href="position/company/list.do"><spring:message code="master.page.company.PositionList" /></a></li>
 					<li><a href="problem/company/list.do"><spring:message code="master.page.company.listProblems" /></a></li>	
 					<!-- CONTROL_CHECK -->
-					<li><a href="controlEntity/company/list.do"><spring:message code="master.page.company.listControlEntity" /></a></li>
+					<li><a href="reckon/company/list.do"><spring:message code="master.page.company.listReckon" /></a></li>
 				</ul>
 			</li>
 		</security:authorize>

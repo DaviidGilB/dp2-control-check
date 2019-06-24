@@ -20,7 +20,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Access(AccessType.PROPERTY)
-public class ControlEntity extends DomainEntity {
+public class Reckon extends DomainEntity {
 
 	private String ticker;
 	private Date publicationMoment;
@@ -29,7 +29,7 @@ public class ControlEntity extends DomainEntity {
 	
 	private Boolean isDraftMode;
 	
-	public ControlEntity() {
+	public Reckon() {
 		super();
 	}
 	

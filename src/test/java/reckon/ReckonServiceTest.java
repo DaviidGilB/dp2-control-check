@@ -1,4 +1,4 @@
-package controlEntity;
+package reckon;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -8,20 +8,20 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import domain.ControlEntity;
-import services.ControlEntityService;
+import domain.Reckon;
+import services.ReckonService;
 import utilities.AbstractTest;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "classpath:spring/junit.xml" })
 @Transactional
-public class ControlEntityServiceTest extends AbstractTest {
+public class ReckonServiceTest extends AbstractTest {
 	
 	@Autowired
-	private ControlEntityService controlEntityService;
+	private ReckonService reckonService;
 
 	@Test
-	public void driverCreateControlEntity() {
+	public void driverCreateReckon() {
 
 		Object testingData[][] = {
 
@@ -34,15 +34,15 @@ public class ControlEntityServiceTest extends AbstractTest {
 						"company2", super.getEntityId("audit1"), "body", true, IllegalArgumentException.class } };
 
 		for (int i = 0; i < testingData.length; i++)
-			this.createControlEntityTemplate((String) testingData[i][0], (Integer) testingData[i][1], (String) testingData[i][2], (Boolean) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.createReckonTemplate((String) testingData[i][0], (Integer) testingData[i][1], (String) testingData[i][2], (Boolean) testingData[i][3], (Class<?>) testingData[i][4]);
 
 	}
 
-	private void createControlEntityTemplate(String company, Integer auditId, String body, Boolean isDraftMode, Class<?> expected) {
+	private void createReckonTemplate(String company, Integer auditId, String body, Boolean isDraftMode, Class<?> expected) {
 
-		ControlEntity controlEntity = this.controlEntityService.create();
-		controlEntity.setBody(body);
-		controlEntity.setIsDraftMode(isDraftMode);
+		Reckon reckon = this.reckonService.create();
+		reckon.setBody(body);
+		reckon.setIsDraftMode(isDraftMode);
 		
 		Class<?> caught = null;
 
@@ -50,12 +50,12 @@ public class ControlEntityServiceTest extends AbstractTest {
 			super.startTransaction();
 			super.authenticate(company);
 			
-			Integer count1 = this.controlEntityService.findAll().size();
+			Integer count1 = this.reckonService.findAll().size();
 
-			this.controlEntityService.addControlEntity(controlEntity, auditId);
+			this.reckonService.addReckon(reckon, auditId);
 			super.flushTransaction();
 			
-			Integer count2 = this.controlEntityService.findAll().size();
+			Integer count2 = this.reckonService.findAll().size();
 			
 			Assert.isTrue(count1 == count2 - 1);
 			

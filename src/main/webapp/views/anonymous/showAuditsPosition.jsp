@@ -42,42 +42,42 @@
 		
 		<!-- CONTROL_CHECK -->
 		
-		<display:column titleKey="audit.controlEntity">
-			<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
+		<display:column titleKey="audit.reckon">
+			<spring:message code="audit.list.reckon" var="listReckon"/>
 			
 			<jstl:choose>
 				<jstl:when test="${assignable}">
-					<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-						<spring:url value="/controlEntity/anonymous/list.do" var="urlControlEntity">
+					<jstl:if test="${!row.isDraftMode && row.hasAnyFinalReckon()}">
+						<spring:url value="/reckon/anonymous/list.do" var="urlReckon">
 							<spring:param name="auditId" value="${row.id}"/>
 						</spring:url>
-						<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+						<a href="${urlReckon}"><jstl:out value="${listReckon}"/></a>
 					</jstl:if>
 				</jstl:when>
 			
 		    	<jstl:otherwise>
 		    		<security:authorize access="hasAnyRole('AUDITOR')">
-		    			<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-			  				<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
+		    			<jstl:if test="${!row.isDraftMode && row.hasAnyFinalReckon()}">
+			  				<spring:url value="/reckon/auditor/list.do" var="urlReckon">
 								<spring:param name="auditId" value="${row.id}"/>
 							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+							<a href="${urlReckon}"><jstl:out value="${listReckon}"/></a>
 						</jstl:if>
 		  			</security:authorize>
 		  			<security:authorize access="hasAnyRole('ROOKIE')">
-		  				<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-			  				<spring:url value="/controlEntity/rookie/list.do" var="urlControlEntity">
+		  				<jstl:if test="${!row.isDraftMode && row.hasAnyFinalReckon()}">
+			  				<spring:url value="/reckon/rookie/list.do" var="urlReckon">
 								<spring:param name="auditId" value="${row.id}"/>
 							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+							<a href="${urlReckon}"><jstl:out value="${listReckon}"/></a>
 						</jstl:if>
 		  			</security:authorize>
 		  			<security:authorize access="hasAnyRole('COMPANY')">
 		  				<jstl:if test="${!row.isDraftMode}">
-			  				<spring:url value="/controlEntity/company/list.do" var="urlControlEntity">
+			  				<spring:url value="/reckon/company/list.do" var="urlReckon">
 								<spring:param name="auditId" value="${row.id}"/>
 							</spring:url>
-							<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+							<a href="${urlReckon}"><jstl:out value="${listReckon}"/></a>
 						</jstl:if>
 		  			</security:authorize>
 		  		</jstl:otherwise>

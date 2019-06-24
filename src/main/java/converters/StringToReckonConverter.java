@@ -8,21 +8,21 @@ import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.StringUtils;
 
 import repositories.ActorRepository;
-import repositories.ControlEntityRepository;
+import repositories.ReckonRepository;
 import domain.Actor;
-import domain.ControlEntity;
+import domain.Reckon;
 
 @Component
 @Transactional
-public class StringToControlEntityConverter implements Converter<String, ControlEntity> {
+public class StringToReckonConverter implements Converter<String, Reckon> {
 
 	@Autowired
-	ControlEntityRepository	controlEntityRepository;
+	ReckonRepository	reckonRepository;
 
 	@Override
-	public ControlEntity convert(String text) {
+	public Reckon convert(String text) {
 
-		ControlEntity result = new ControlEntity();
+		Reckon result = new Reckon();
 		int id;
 
 		try {
@@ -30,7 +30,7 @@ public class StringToControlEntityConverter implements Converter<String, Control
 				result = null;
 			} else {
 				id = Integer.valueOf(text);
-				result = this.controlEntityRepository.findOne(id);
+				result = this.reckonRepository.findOne(id);
 			}
 
 		} catch (Throwable oops) {

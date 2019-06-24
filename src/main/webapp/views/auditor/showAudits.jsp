@@ -57,13 +57,13 @@
     
     <!-- CONTROL_CHECK -->
     
-    <display:column titleKey="audit.controlEntity">
-    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalControlEntity()}">
-	    	<spring:message code="audit.list.controlEntity" var="listControlEntity"/>
-	    	<spring:url value="/controlEntity/auditor/list.do" var="urlControlEntity">
+    <display:column titleKey="audit.reckon">
+    	<jstl:if test="${!row.isDraftMode && row.hasAnyFinalReckon()}">
+	    	<spring:message code="audit.list.reckon" var="listReckon"/>
+	    	<spring:url value="/reckon/auditor/list.do" var="urlReckon">
 				<spring:param name="auditId" value="${row.id}"/>
 			</spring:url>
-			<a href="${urlControlEntity}"><jstl:out value="${listControlEntity}"/></a>
+			<a href="${urlReckon}"><jstl:out value="${listReckon}"/></a>
 		</jstl:if>
     </display:column>
     

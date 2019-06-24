@@ -25,7 +25,7 @@
 		
 		<value>/views/administrator/messages</value>
 		<value>/views/anonymous/messages</value>
-		<value>/views/controlEntity/messages</value>
+		<value>/views/reckon/messages</value>
 		<value>/views/company/messages</value>
 		<value>/views/actor/messages</value>
 		<value>/views/rookie/messages</value>

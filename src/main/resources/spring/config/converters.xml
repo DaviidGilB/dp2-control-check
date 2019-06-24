@@ -82,8 +82,8 @@
 		<bean class="converters.SponsorshipToStringConverter" />
 		<bean class="converters.StringToSponsorshipConverter" />
 		
-		<bean class="converters.ControlEntityToStringConverter" />
-		<bean class="converters.StringToControlEntityConverter" />
+		<bean class="converters.ReckonToStringConverter" />
+		<bean class="converters.StringToReckonConverter" />
 	</util:list>
 	
 </beans>

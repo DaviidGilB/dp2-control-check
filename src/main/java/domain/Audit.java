@@ -34,18 +34,18 @@ public class Audit extends DomainEntity {
 	private Boolean isDraftMode;
 	
 	// CONTROL_CHECK
-	private List<ControlEntity> controlEntity;
+	private List<Reckon> reckon;
 	
 	@OneToMany(cascade = CascadeType.ALL)
 	@Valid
-	public List<ControlEntity> getControlEntity() {
-		return controlEntity;
+	public List<Reckon> getReckon() {
+		return reckon;
 	}
 	
-	public Boolean hasAnyFinalControlEntity() {
+	public Boolean hasAnyFinalReckon() {
 		Boolean res = false;
-		if(this.controlEntity != null && !this.controlEntity.isEmpty()) {
-			for(ControlEntity c:this.controlEntity) {
+		if(this.reckon != null && !this.reckon.isEmpty()) {
+			for(Reckon c:this.reckon) {
 				if(!c.getIsDraftMode()) {
 					res = true;
 					break;
@@ -57,8 +57,8 @@ public class Audit extends DomainEntity {
 	
 	//
 
-	public void setControlEntity(List<ControlEntity> controlEntity) {
-		this.controlEntity = controlEntity;
+	public void setReckon(List<Reckon> reckon) {
+		this.reckon = reckon;
 	}
 	
 

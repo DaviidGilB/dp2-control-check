@@ -21,7 +21,7 @@ import security.UserAccount;
 import domain.Application;
 import domain.Audit;
 import domain.Company;
-import domain.ControlEntity;
+import domain.Reckon;
 import domain.CreditCard;
 import domain.Message;
 import domain.Position;
@@ -64,7 +64,7 @@ public class CompanyService {
 	private SponsorshipService		sponsorshipService;
 	
 	@Autowired
-	private ControlEntityService controlEntityService;
+	private ReckonService reckonService;
 
 
 	//----------------------------------------CRUD METHODS--------------------------
@@ -433,18 +433,18 @@ public class CompanyService {
 		List<Audit> audits = this.companyRepository.auditsOfCompany(companyId);
 		
 		// CONTROL_CHECK
-		List<ControlEntity> toDelete = new ArrayList<> ();
+		List<Reckon> toDelete = new ArrayList<> ();
 		for(Audit a:audits) {
-			for(ControlEntity c:a.getControlEntity()) {
+			for(Reckon c:a.getReckon()) {
 				toDelete.add(c);
 			}
 		}
 		for(Audit a:audits) {
-			a.setControlEntity(new ArrayList<ControlEntity> ());
+			a.setReckon(new ArrayList<Reckon> ());
 			this.auditService.save(a);
 		}
-		for(ControlEntity c:toDelete) {
-			this.controlEntityService.delete(c);
+		for(Reckon c:toDelete) {
+			this.reckonService.delete(c);
 		}
 
 		this.auditService.deleteInBatch(audits);

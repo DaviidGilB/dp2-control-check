@@ -6,20 +6,20 @@ import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 
 import domain.Actor;
-import domain.ControlEntity;
+import domain.Reckon;
 
 @Component
 @Transactional
-public class ControlEntityToStringConverter implements Converter<ControlEntity, String> {
+public class ReckonToStringConverter implements Converter<Reckon, String> {
 
 	@Override
-	public String convert(ControlEntity controlEntity) {
+	public String convert(Reckon reckon) {
 		String result;
 
-		if (controlEntity == null) {
+		if (reckon == null) {
 			result = null;
 		} else {
-			result = String.valueOf(controlEntity.getId());
+			result = String.valueOf(reckon.getId());
 		}
 		return result;
 	}

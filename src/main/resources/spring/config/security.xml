@@ -29,10 +29,10 @@
 	<security:http auto-config="true" use-expressions="true">
 	
 		<!-- CONTROL_CHECK -->
-		<security:intercept-url pattern="/controlEntity/company/**" access="hasRole('COMPANY')" /> 
-		<security:intercept-url pattern="/controlEntity/anonymous/**" access="permitAll" />
-		<security:intercept-url pattern="/controlEntity/auditor/**" access="hasRole('AUDITOR')" />
-		<security:intercept-url pattern="/controlEntity/rookie/**" access="hasRole('ROOKIE')" />
+		<security:intercept-url pattern="/reckon/company/**" access="hasRole('COMPANY')" /> 
+		<security:intercept-url pattern="/reckon/anonymous/**" access="permitAll" />
+		<security:intercept-url pattern="/reckon/auditor/**" access="hasRole('AUDITOR')" />
+		<security:intercept-url pattern="/reckon/rookie/**" access="hasRole('ROOKIE')" />
 	
 		<!-- PERMIT ALL -->
 		<security:intercept-url pattern="/" access="permitAll" /> 

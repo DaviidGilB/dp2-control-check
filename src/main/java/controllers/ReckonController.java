@@ -20,18 +20,18 @@ import org.springframework.web.servlet.ModelAndView;
 import domain.Audit;
 import domain.Auditor;
 import domain.Company;
-import domain.ControlEntity;
+import domain.Reckon;
 import forms.FormObjectCurriculumPersonalData;
 import services.ActorService;
 import services.CompanyService;
-import services.ControlEntityService;
+import services.ReckonService;
 
 @Controller
-@RequestMapping("/controlEntity")
-public class ControlEntityController extends AbstractController {
+@RequestMapping("/reckon")
+public class ReckonController extends AbstractController {
 	
 	@Autowired
-	private ControlEntityService controlEntityService;
+	private ReckonService reckonService;
 	
 	@Autowired
 	private CompanyService companyService;
@@ -42,18 +42,18 @@ public class ControlEntityController extends AbstractController {
 	// ACCESO PUBLICO Y ROOKIE
 
 	@RequestMapping(value = "/anonymous/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAnonymous(@RequestParam(required = false) String auditId) {
+	public ModelAndView listReckonAsAnonymous(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(auditId));
 			Integer auditIdInt = Integer.parseInt(auditId);
 			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+			List<Reckon> reckon = this.reckonService.getFinalReckonOfAudit(auditIdInt);
 			
-			result = new ModelAndView("controlEntity/list");
-			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/anonymous/list.do");
+			result = new ModelAndView("reckon/list");
+			result.addObject("reckon", reckon);
+			result.addObject("requestURI", "/reckon/anonymous/list.do");
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -64,18 +64,18 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "rookie/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsRookie(@RequestParam(required = false) String auditId) {
+	public ModelAndView listReckonAsRookie(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(auditId));
 			Integer auditIdInt = Integer.parseInt(auditId);
 			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+			List<Reckon> reckon = this.reckonService.getFinalReckonOfAudit(auditIdInt);
 			
-			result = new ModelAndView("controlEntity/list");
-			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/rookie/list.do");
+			result = new ModelAndView("reckon/list");
+			result.addObject("reckon", reckon);
+			result.addObject("requestURI", "/reckon/rookie/list.do");
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -88,18 +88,18 @@ public class ControlEntityController extends AbstractController {
 	// OPERACIONES RELEVANTES
 	
 	@RequestMapping(value = "/auditor/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsAuditor(@RequestParam(required = false) String auditId) {
+	public ModelAndView listReckonAsAuditor(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
 			Assert.isTrue(StringUtils.isNumeric(auditId));
 			Integer auditIdInt = Integer.parseInt(auditId);
 			
-			List<ControlEntity> controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+			List<Reckon> reckon = this.reckonService.getFinalReckonOfAudit(auditIdInt);
 			
-			result = new ModelAndView("controlEntity/list");
-			result.addObject("controlEntity", controlEntity);
-			result.addObject("requestURI", "/controlEntity/auditor/list.do");
+			result = new ModelAndView("reckon/list");
+			result.addObject("reckon", reckon);
+			result.addObject("requestURI", "/reckon/auditor/list.do");
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -110,16 +110,16 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "company/list", method = RequestMethod.GET)
-	public ModelAndView listControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	public ModelAndView listReckonAsCompany(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
-			result = new ModelAndView("controlEntity/list");
-			List<ControlEntity> controlEntity;
+			result = new ModelAndView("reckon/list");
+			List<Reckon> reckon;
 			
 			if(auditId == null || auditId.contentEquals("")) {
 				Company company = this.companyService.securityAndCompany();
-				controlEntity = this.controlEntityService.getAllControlEntityOfCompany(company.getId());
+				reckon = this.reckonService.getAllReckonOfCompany(company.getId());
 				result.addObject("editOption", true);
 			} else {
 				Assert.isTrue(StringUtils.isNumeric(auditId));
@@ -127,16 +127,16 @@ public class ControlEntityController extends AbstractController {
 				
 				result.addObject("auditId", auditIdInt);
 				
-				if(this.controlEntityService.checkCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt) != null) {
+				if(this.reckonService.checkCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt) != null) {
 					result.addObject("createOption", true);
-					controlEntity = this.controlEntityService.getAllControlEntityOfCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt);
+					reckon = this.reckonService.getAllReckonOfCompanyAndAudit(this.actorService.loggedActor().getId(), auditIdInt);
 				} else {
-					controlEntity = this.controlEntityService.getFinalControlEntityOfAudit(auditIdInt);
+					reckon = this.reckonService.getFinalReckonOfAudit(auditIdInt);
 				}
 			}
 			
-			result.addObject("requestURI", "/controlEntity/company/list.do");
-			result.addObject("controlEntity", controlEntity);
+			result.addObject("requestURI", "/reckon/company/list.do");
+			result.addObject("reckon", reckon);
 			
 			String locale = LocaleContextHolder.getLocale().getLanguage().toUpperCase();
 			result.addObject("locale", locale);
@@ -147,7 +147,7 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "company/create", method = RequestMethod.GET)
-	public ModelAndView createControlEntityAsCompany(@RequestParam(required = false) String auditId) {
+	public ModelAndView createReckonAsCompany(@RequestParam(required = false) String auditId) {
 		ModelAndView result;
 		
 		try {
@@ -156,77 +156,77 @@ public class ControlEntityController extends AbstractController {
 			
 			Company company = this.companyService.securityAndCompany();
 			
-			Assert.notNull(this.controlEntityService.checkCompanyAndAudit(company.getId(), auditIdInt));
+			Assert.notNull(this.reckonService.checkCompanyAndAudit(company.getId(), auditIdInt));
 			
-			ControlEntity controlEntity = this.controlEntityService.create();
+			Reckon reckon = this.reckonService.create();
 			
-			result = new ModelAndView("controlEntity/create");
+			result = new ModelAndView("reckon/create");
 			result.addObject("auditId", auditIdInt);
-			result.addObject("controlEntity", controlEntity);
+			result.addObject("reckon", reckon);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do?auditId=" + auditId);
+			result = new ModelAndView("redirect:/reckon/company/list.do?auditId=" + auditId);
 		}
 		return result;
 	}
 	
 	@RequestMapping(value = "company/edit", method = RequestMethod.GET)
-	public ModelAndView editControlEntityAsCompany(@RequestParam(required = false) String controlEntityId) {
+	public ModelAndView editReckonAsCompany(@RequestParam(required = false) String reckonId) {
 		ModelAndView result;
 		
 		try {
-			Assert.isTrue(StringUtils.isNumeric(controlEntityId));
-			Integer controlEntityIdInt = Integer.parseInt(controlEntityId);
+			Assert.isTrue(StringUtils.isNumeric(reckonId));
+			Integer reckonIdInt = Integer.parseInt(reckonId);
 			
 			Company company = this.companyService.securityAndCompany();
 			
-			ControlEntity controlEntity = this.controlEntityService.checkCompanyAndControlEntity(company.getId(), controlEntityIdInt);
-			Assert.notNull(controlEntity);
+			Reckon reckon = this.reckonService.checkCompanyAndReckon(company.getId(), reckonIdInt);
+			Assert.notNull(reckon);
 			
-			result = new ModelAndView("controlEntity/edit");
-			result.addObject("controlEntity", controlEntity);
+			result = new ModelAndView("reckon/edit");
+			result.addObject("reckon", reckon);
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/reckon/company/list.do");
 		}
 		return result;
 	}
 	
 	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "save")
-	public ModelAndView saveControlEntityAsCompany(@ModelAttribute("controlEntity") ControlEntity controlEntity, BindingResult binding, @RequestParam(required = false) Integer auditId) {
+	public ModelAndView saveReckonAsCompany(@ModelAttribute("reckon") Reckon reckon, BindingResult binding, @RequestParam(required = false) Integer auditId) {
 		ModelAndView result;
 		
 		try {
 			String tiles;
-			if (controlEntity.getId() > 0)
-				tiles = "controlEntity/edit";
+			if (reckon.getId() > 0)
+				tiles = "reckon/edit";
 			else
-				tiles = "controlEntity/create";
+				tiles = "reckon/create";
 			
-			controlEntity.setTicker(this.controlEntityService.generateTicker());
+			reckon.setTicker(this.reckonService.generateTicker());
 			
-			this.controlEntityService.validate(controlEntity, binding);
+			this.reckonService.validate(reckon, binding);
 			
 			if(binding.hasErrors()) {
 				result = new ModelAndView(tiles);
-				result.addObject("controlEntity", controlEntity);
+				result.addObject("reckon", reckon);
 				
 				if(auditId != null) {
 					result.addObject("auditId", auditId);
 				}
 			} else {
 				try {
-					if(controlEntity.getId() == 0) {
+					if(reckon.getId() == 0) {
 						Assert.notNull(auditId);
-						this.controlEntityService.addControlEntity(controlEntity, auditId);
+						this.reckonService.addReckon(reckon, auditId);
 					} else {
 						Assert.isNull(auditId);
-						this.controlEntityService.updateControlEntity(controlEntity);
+						this.reckonService.updateReckon(reckon);
 					}
 					
-					result = new ModelAndView("redirect:/controlEntity/company/list.do");
+					result = new ModelAndView("redirect:/reckon/company/list.do");
 				} catch(Throwable oops) {
 					result = new ModelAndView(tiles);
-					result.addObject("controlEntity", controlEntity);
-					result.addObject("message", "controlEntity.commit.error");
+					result.addObject("reckon", reckon);
+					result.addObject("message", "reckon.commit.error");
 					
 					if(auditId != null) {
 						result.addObject("auditId", auditId);
@@ -242,14 +242,14 @@ public class ControlEntityController extends AbstractController {
 	}
 	
 	@RequestMapping(value = "company/save", method = RequestMethod.POST, params = "delete")
-	public ModelAndView deleteControlEntityAsCompany(ControlEntity controlEntity) {
+	public ModelAndView deleteReckonAsCompany(Reckon reckon) {
 		ModelAndView result;
 		
 		try {
-			this.controlEntityService.deleteControlEntity(controlEntity);
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			this.reckonService.deleteReckon(reckon);
+			result = new ModelAndView("redirect:/reckon/company/list.do");
 		} catch(Throwable oops) {
-			result = new ModelAndView("redirect:/controlEntity/company/list.do");
+			result = new ModelAndView("redirect:/reckon/company/list.do");
 		}
 		
 		return result;
