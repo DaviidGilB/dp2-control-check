@@ -201,7 +201,10 @@ public class ReckonController extends AbstractController {
 			else
 				tiles = "reckon/create";
 			
-			reckon.setTicker(this.reckonService.generateTicker());
+			if (reckon.getId() > 0)
+				reckon.setTicker(this.reckonService.findOne(reckon.getId()).getTicker());
+			else
+				reckon.setTicker(this.reckonService.generateTicker());
 			
 			this.reckonService.validate(reckon, binding);
 			

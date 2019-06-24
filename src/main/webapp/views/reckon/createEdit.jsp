@@ -20,10 +20,6 @@
 		<!--Hidden Attributes -->
 		<form:hidden path="id" />
 		
-		<jstl:if test="${reckon.id > 0}">
-			<form:hidden path="ticker" />
-		</jstl:if>
-		
 		<jstl:if test="${reckon.id == 0}">
 			<input type="hidden" name="auditId" value="${auditId}">
 		</jstl:if>
