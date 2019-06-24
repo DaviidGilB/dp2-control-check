@@ -3783,8 +3783,9 @@
 			<property name="momentCreation" value="11/11/2018 11:30" />
 			<property name="reckon">
 				<list>
-					<ref bean="reckon1" />
-					<ref bean="reckon2" />
+					<ref bean="reckonTest1" />
+					<ref bean="reckonTest2" />
+					<ref bean="reckonTest5" />
 				</list>
 			</property>
 		</bean>
@@ -3799,40 +3800,57 @@
 			<property name="momentCreation" value="11/11/2016 11:30" />
 			<property name="reckon">
 				<list>
-					<ref bean="reckon3" />
-					<ref bean="reckon4" />
+					<ref bean="reckonTest3" />
+					<ref bean="reckonTest4" />
+					<ref bean="reckonTest6" />
 				</list>
 			</property>
 		</bean>
 
 	<!-- CONTROL ENTITY -->
 		<!-- CONTROL ENTITY 1 -->
-		<bean id="reckon1" class="domain.Reckon">
-			<property name="ticker" value="190505-ATEST"/>
-			<property name="publicationMoment" value="05/05/2019 11:30"/>
-			<property name="body" value="This is a TEST body"/>
+		<bean id="reckonTest1" class="domain.Reckon">
+			<property name="ticker" value="1906/20-59637"/>
+			<property name="publicationMoment" value="06/20/2019 11:30"/>
+			<property name="body" value="This is a TEST body, one"/>
 			<property name="picture" value="http://www.picture.com/test"/>
 			<property name="isDraftMode" value="false"/>
 		</bean>
 		
-		<bean id="reckon2" class="domain.Reckon">
-			<property name="ticker" value="190606-ATEST"/>
-			<property name="body" value="This is a TEST body"/>
+		<bean id="reckonTest2" class="domain.Reckon">
+			<property name="ticker" value="1905/20-58374"/>
+			<property name="publicationMoment" value="05/20/2019 11:30"/>
+			<property name="body" value="This is a TEST body, two"/>
+			<property name="picture" value="http://www.picture.com/test"/>
+			<property name="isDraftMode" value="false"/>
+		</bean>
+		
+		<bean id="reckonTest3" class="domain.Reckon">
+			<property name="ticker" value="1904/20-97857"/>
+			<property name="publicationMoment" value="04/20/2019 11:30"/>
+			<property name="body" value="This is a TEST body, three"/>
+			<property name="picture" value="http://www.picture.com/test"/>
+			<property name="isDraftMode" value="false"/>
+		</bean>
+		
+		<bean id="reckonTest4" class="domain.Reckon">
+			<property name="ticker" value="1903/20-15978"/>
+			<property name="publicationMoment" value="03/20/2019 11:30"/>
+			<property name="body" value="This is a TEST body, four"/>
+			<property name="picture" value="http://www.picture.com/test"/>
+			<property name="isDraftMode" value="false"/>
+		</bean>
+		
+		<bean id="reckonTest5" class="domain.Reckon">
+			<property name="ticker" value="1906/22-59831"/>
+			<property name="body" value="This is a TEST body, five"/>
 			<property name="picture" value="http://www.picture.com/test"/>
 			<property name="isDraftMode" value="true"/>
 		</bean>
 		
-		<bean id="reckon3" class="domain.Reckon">
-			<property name="ticker" value="190303-ATEST"/>
-			<property name="publicationMoment" value="03/03/2019 11:30"/>
-			<property name="body" value="This is a TEST body"/>
-			<property name="picture" value="http://www.picture.com/test"/>
-			<property name="isDraftMode" value="false"/>
-		</bean>
-		
-		<bean id="reckon4" class="domain.Reckon">
-			<property name="ticker" value="190404-ATEST"/>
-			<property name="body" value="This is a TEST body"/>
+		<bean id="reckonTest6" class="domain.Reckon">
+			<property name="ticker" value="1906/23-15684"/>
+			<property name="body" value="This is a TEST body, six"/>
 			<property name="picture" value="http://www.picture.com/test"/>
 			<property name="isDraftMode" value="true"/>
 		</bean>

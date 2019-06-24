@@ -114,9 +114,9 @@ public class ReckonService {
 		Date date = null;
 		String date1;
 		String date2 = LocalDate.now().toString();
-		String gen = RandomStringUtils.randomAlphanumeric(6);
+		String gen = RandomStringUtils.randomNumeric(5);
 		List<String> tickers = this.reckonRepository.getAllTickers();
-		SimpleDateFormat df_in = new SimpleDateFormat("yyMMdd");
+		SimpleDateFormat df_in = new SimpleDateFormat("yyMM/dd");
 		SimpleDateFormat df_output = new SimpleDateFormat("yyyy-MM-dd");
 		try {
 			date = df_output.parse(date2);
