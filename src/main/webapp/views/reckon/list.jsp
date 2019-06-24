@@ -54,15 +54,15 @@
 	
 		<jstl:choose>
 			<jstl:when test="${row.publicationMoment < now && row.publicationMoment >= oneMonth && !row.isDraftMode}">
-				<jstl:set var="color" value="Indigo" />
+				<jstl:set var="color" value="YellowGreen" />
 			</jstl:when>
 			
 			<jstl:when test="${row.publicationMoment < oneMonth && row.publicationMoment >= twoMonth && !row.isDraftMode}">
-				<jstl:set var="color" value="DarkSlateGrey" />
+				<jstl:set var="color" value="LightSeaGreen" />
 			</jstl:when>
 			
 			<jstl:when test="${row.publicationMoment < twoMonth && !row.isDraftMode}">
-				<jstl:set var="color" value="PapayaWhip" />
+				<jstl:set var="color" value="Thistle" />
 			</jstl:when>
 			
 			<jstl:otherwise>
