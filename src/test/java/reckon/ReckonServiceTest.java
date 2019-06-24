@@ -1,5 +1,7 @@
 package reckon;
 
+import javax.validation.ConstraintViolationException;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,22 +29,35 @@ public class ReckonServiceTest extends AbstractTest {
 
 				{
 						// POSITIVE CASE
-						"company1", super.getEntityId("audit1"), "body", true, null },
-
+						"company1", super.getEntityId("audit1"), "body", "http://www.picture.com/test", true, null },
+				{
+						// POSITIVE CASE
+						"company1", super.getEntityId("audit1"), "body", "http://www.picture.com/test", false, null },
 				{
 						// NEGATIVE CASE
-						"company2", super.getEntityId("audit1"), "body", true, IllegalArgumentException.class } };
+						"company2", super.getEntityId("audit1"), "body", "http://www.picture.com/test", true, IllegalArgumentException.class },
+				{
+						// NEGATIVE CASE
+						"company1", super.getEntityId("audit1"), "", "http://www.picture.com/test", false, ConstraintViolationException.class },
+				{
+						// NEGATIVE CASE
+						"company1", super.getEntityId("audit1"), "alongbodyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy", "http://www.picture.com/test", false, ConstraintViolationException.class },
+				{
+						// NEGATIVE CASE
+						"company1", super.getEntityId("audit1"), "body", "wrong url", false, ConstraintViolationException.class }
+				};
 
 		for (int i = 0; i < testingData.length; i++)
-			this.createReckonTemplate((String) testingData[i][0], (Integer) testingData[i][1], (String) testingData[i][2], (Boolean) testingData[i][3], (Class<?>) testingData[i][4]);
+			this.createReckonTemplate((String) testingData[i][0], (Integer) testingData[i][1], (String) testingData[i][2], (String) testingData[i][3], (Boolean) testingData[i][4], (Class<?>) testingData[i][5]);
 
 	}
 
-	private void createReckonTemplate(String company, Integer auditId, String body, Boolean isDraftMode, Class<?> expected) {
+	private void createReckonTemplate(String company, Integer auditId, String body, String picture, Boolean isDraftMode, Class<?> expected) {
 
 		Reckon reckon = this.reckonService.create();
 		reckon.setBody(body);
 		reckon.setIsDraftMode(isDraftMode);
+		reckon.setPicture(picture);
 		
 		Class<?> caught = null;
 
